@@ -717,8 +717,8 @@ if test "$use_optimizations" = "yes"; then
     CXXFLAGS="$CXXFLAGS"
     CFLAGS="$CFLAGS"
   else
-    CXXFLAGS="$CXXFLAGS -O2"
-    CFLAGS="$CFLAGS -O2"
+    CXXFLAGS="-O2 $CXXFLAGS"
+    CFLAGS="-O2 $CFLAGS"
   fi
 else
   final_message="$final_message\n  Optimization:\tNo"
@@ -1449,9 +1449,9 @@ if test "x$use_libcec" != "xno"; then
   # libcec is dyloaded, so we need to check for its headers and link any depends.
   if test "x$use_libcec" != "xno"; then
     if test "x$use_libcec" != "xauto"; then
-      PKG_CHECK_MODULES([CEC],[libcec >= 1.8.0],,[use_libcec="no";AC_MSG_ERROR($libcec_disabled)])
+      PKG_CHECK_MODULES([CEC],[libcec >= 2.0.0],,[use_libcec="no";AC_MSG_ERROR($libcec_disabled)])
     else
-      PKG_CHECK_MODULES([CEC],[libcec >= 1.8.0],,[use_libcec="no";AC_MSG_RESULT($libcec_disabled)])
+      PKG_CHECK_MODULES([CEC],[libcec >= 2.0.0],,[use_libcec="no";AC_MSG_RESULT($libcec_disabled)])
     fi
 
     if test "x$use_libcec" != "xno"; then
@@ -2120,7 +2120,7 @@ else
 fi
 
 if test "$use_asap" = "yes"; then
-  AC_CHECK_PROG(HAVE_GDC,gdc,"yes","no")
+  AC_CHECK_PROGS(HAVE_GDC,gdc-4.4 gdc-4.3 gdc,"no")
   if test "$HAVE_GDC" = "no"; then
     AC_MSG_ERROR($missing_program);
   fi
