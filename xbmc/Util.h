@@ -58,7 +58,6 @@ class CUtil
 public:
   CUtil(void);
   virtual ~CUtil(void);
-  static bool GetVolumeFromFileName(const CStdString& strFileName, CStdString& strFileTitle, CStdString& strVolumeNumber);
   static void CleanString(const CStdString& strFileName, CStdString& strTitle, CStdString& strTitleAndYear, CStdString& strYear, bool bRemoveExtension = false, bool bCleanChars = true);
   static CStdString GetTitleFromPath(const CStdString& strFileNameAndPath, bool bIsFolder = false);
   static void GetQualifiedFilename(const CStdString &strBasePath, CStdString &strFilename);
@@ -138,8 +137,6 @@ public:
   static CStdString MusicPlaylistsLocation();
   static CStdString VideoPlaylistsLocation();
 
-  static bool SetSysDateTimeYear(int iYear, int iMonth, int iDay, int iHour, int iMinute);
-  static int GMTZoneCalc(int iRescBiases, int iHour, int iMinute, int &iMinuteNew);
   static void GetSkinThemes(std::vector<CStdString>& vecTheme);
   static void GetRecursiveListing(const CStdString& strPath, CFileItemList& items, const CStdString& strMask, bool bUseFileDirectories=false);
   static void GetRecursiveDirsListing(const CStdString& strPath, CFileItemList& items);
