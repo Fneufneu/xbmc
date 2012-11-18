@@ -3075,56 +3075,64 @@ bool CVideoDatabase::GetStreamDetails(CVideoInfoTag& tag) const
 
   bool retVal = false;
 
-  auto_ptr<Dataset> pDS(m_pDB->CreateDataset());
-  CStdString strSQL = PrepareSQL("SELECT * FROM streamdetails WHERE idFile = %i", tag.m_iFileId);
-  pDS->query(strSQL);
-
   CStreamDetails& details = tag.m_streamDetails;
   details.Reset();
-  while (!pDS->eof())
+
+  auto_ptr<Dataset> pDS(m_pDB->CreateDataset());
+  try
   {
-    CStreamDetail::StreamType e = (CStreamDetail::StreamType)pDS->fv(1).get_asInt();
-    switch (e)
+    CStdString strSQL = PrepareSQL("SELECT * FROM streamdetails WHERE idFile = %i", tag.m_iFileId);
+    pDS->query(strSQL);
+
+    while (!pDS->eof())
     {
-    case CStreamDetail::VIDEO:
+      CStreamDetail::StreamType e = (CStreamDetail::StreamType)pDS->fv(1).get_asInt();
+      switch (e)
       {
-        CStreamDetailVideo *p = new CStreamDetailVideo();
-        p->m_strCodec = pDS->fv(2).get_asString();
-        p->m_fAspect = pDS->fv(3).get_asFloat();
-        p->m_iWidth = pDS->fv(4).get_asInt();
-        p->m_iHeight = pDS->fv(5).get_asInt();
-        p->m_iDuration = pDS->fv(10).get_asInt();
-        details.AddStream(p);
-        retVal = true;
-        break;
+      case CStreamDetail::VIDEO:
+        {
+          CStreamDetailVideo *p = new CStreamDetailVideo();
+          p->m_strCodec = pDS->fv(2).get_asString();
+          p->m_fAspect = pDS->fv(3).get_asFloat();
+          p->m_iWidth = pDS->fv(4).get_asInt();
+          p->m_iHeight = pDS->fv(5).get_asInt();
+          p->m_iDuration = pDS->fv(10).get_asInt();
+          details.AddStream(p);
+          retVal = true;
+          break;
+        }
+      case CStreamDetail::AUDIO:
+        {
+          CStreamDetailAudio *p = new CStreamDetailAudio();
+          p->m_strCodec = pDS->fv(6).get_asString();
+          if (pDS->fv(7).get_isNull())
+            p->m_iChannels = -1;
+          else
+            p->m_iChannels = pDS->fv(7).get_asInt();
+          p->m_strLanguage = pDS->fv(8).get_asString();
+          details.AddStream(p);
+          retVal = true;
+          break;
+        }
+      case CStreamDetail::SUBTITLE:
+        {
+          CStreamDetailSubtitle *p = new CStreamDetailSubtitle();
+          p->m_strLanguage = pDS->fv(9).get_asString();
+          details.AddStream(p);
+          retVal = true;
+          break;
+        }
       }
-    case CStreamDetail::AUDIO:
-      {
-        CStreamDetailAudio *p = new CStreamDetailAudio();
-        p->m_strCodec = pDS->fv(6).get_asString();
-        if (pDS->fv(7).get_isNull())
-          p->m_iChannels = -1;
-        else
-          p->m_iChannels = pDS->fv(7).get_asInt();
-        p->m_strLanguage = pDS->fv(8).get_asString();
-        details.AddStream(p);
-        retVal = true;
-        break;
-      }
-    case CStreamDetail::SUBTITLE:
-      {
-        CStreamDetailSubtitle *p = new CStreamDetailSubtitle();
-        p->m_strLanguage = pDS->fv(9).get_asString();
-        details.AddStream(p);
-        retVal = true;
-        break;
-      }
+
+      pDS->next();
     }
 
-    pDS->next();
+    pDS->close();
   }
-
-  pDS->close();
+  catch (...)
+  {
+    CLog::Log(LOGERROR, "%s(%i) failed", __FUNCTION__, tag.m_iFileId);
+  }
   details.DetermineBestStreams();
 
   if (details.GetVideoDuration() > 0)
@@ -7793,7 +7801,7 @@ void CVideoDatabase::CleanDatabase(CGUIDialogProgressBarHandle* handle, const se
     }
 
     CLog::Log(LOGDEBUG, "%s: Cleaning paths that don't exist and have content set...", __FUNCTION__);
-    sql = "select * from path where strContent != ''";
+    sql = "select * from path where not (strContent='' and strSettings='' and strHash='' and exclude!=1)";
     m_pDS->query(sql.c_str());
     CStdString strIds;
     while (!m_pDS->eof())
@@ -7891,7 +7899,14 @@ void CVideoDatabase::CleanDatabase(CGUIDialogProgressBarHandle* handle, const se
     }
 
     CLog::Log(LOGDEBUG, "%s: Cleaning path table", __FUNCTION__);
-    sql = "delete from path where idPath not in (select distinct idPath from files) and idPath not in (select distinct idPath from tvshowlinkpath) and strContent=''";
+    sql.Format("delete from path where strContent='' and strSettings='' and strHash='' and exclude!=1 "
+                                  "and idPath not in (select distinct idPath from files) "
+                                  "and idPath not in (select distinct idPath from tvshowlinkpath) "
+                                  "and idPath not in (select distinct c%02d from movie) "
+                                  "and idPath not in (select distinct c%02d from tvshow) "
+                                  "and idPath not in (select distinct c%02d from episode) "
+                                  "and idPath not in (select distinct c%02d from musicvideo)"
+                , VIDEODB_ID_PARENTPATHID, VIDEODB_ID_TV_PARENTPATHID, VIDEODB_ID_EPISODE_PARENTPATHID, VIDEODB_ID_MUSICVIDEO_PARENTPATHID );
     m_pDS->exec(sql.c_str());
 
     CLog::Log(LOGDEBUG, "%s: Cleaning genre table", __FUNCTION__);
@@ -9327,7 +9342,7 @@ bool CVideoDatabase::GetFilter(CDbUrl &videoUrl, Filter &filter, SortDescription
     }
     // remove the filter if it doesn't match the item type
     else
-      videoUrl.AddOption("filter", "");
+      videoUrl.RemoveOption("filter");
   }
 
   return true;
