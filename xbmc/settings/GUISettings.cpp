@@ -923,10 +923,10 @@ void CGUISettings::Initialize()
   AddBool(fl, "filelists.showhidden", 21330, false);
 
   CSettingsCategory* ss = AddCategory(SETTINGS_APPEARANCE, "screensaver", 360);
-  AddInt(ss, "screensaver.time", 355, 3, 1, 1, 60, SPIN_CONTROL_INT_PLUS, MASK_MINS);
   AddDefaultAddon(ss, "screensaver.mode", 356, "screensaver.xbmc.builtin.dim", ADDON_SCREENSAVER);
   AddString(ss, "screensaver.settings", 21417, "", BUTTON_CONTROL_STANDARD);
   AddString(ss, "screensaver.preview", 1000, "", BUTTON_CONTROL_STANDARD);
+  AddInt(ss, "screensaver.time", 355, 3, 1, 1, 60, SPIN_CONTROL_INT_PLUS, MASK_MINS);
   AddSeparator(ss, "screensaver.sep1");
   AddBool(ss, "screensaver.usemusicvisinstead", 13392, true);
   AddBool(ss, "screensaver.usedimonpause", 22014, true);
@@ -1381,6 +1381,17 @@ void CGUISettings::LoadXML(TiXmlElement *pRootElement, bool hideSettings /* = fa
 
       updated = true;
     }
+  }
+
+  // and fix the videoscreen.screenmode if necessary
+  std::string screenmode = GetString("videoscreen.screenmode");
+  // in Eden there was no character ("i" or "p") indicating interlaced/progressive
+  // at the end so we just add a "p" and assume progressive
+  if (screenmode.size() == 20)
+  {
+    screenmode += "p";
+    SetString("videoscreen.screenmode", screenmode.c_str());
+    updated = true;
   }
 
   // Get hardware based stuff...
