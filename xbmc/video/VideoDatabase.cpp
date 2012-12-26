@@ -5523,7 +5523,7 @@ bool CVideoDatabase::GetStackedTvShowList(int idShow, CStdString& strIn) const
   return false;
 }
 
-bool CVideoDatabase::GetSeasonsNav(const CStdString& strBaseDir, CFileItemList& items, int idActor, int idDirector, int idGenre, int idYear, int idShow)
+bool CVideoDatabase::GetSeasonsNav(const CStdString& strBaseDir, CFileItemList& items, int idActor, int idDirector, int idGenre, int idYear, int idShow, bool getLinkedMovies /* = true */)
 {
   try
   {
@@ -5693,14 +5693,17 @@ bool CVideoDatabase::GetSeasonsNav(const CStdString& strBaseDir, CFileItemList& 
     }
 
     // now add any linked movies
-    Filter movieFilter;
-    movieFilter.join  = PrepareSQL("join movielinktvshow on movielinktvshow.idMovie=movieview.idMovie");
-    movieFilter.where = PrepareSQL("movielinktvshow.idShow %s", strIn.c_str());
-    CFileItemList movieItems;
-    GetMoviesByWhere("videodb://1/2/", movieFilter, movieItems);
+    if (getLinkedMovies)
+    {
+      Filter movieFilter;
+      movieFilter.join  = PrepareSQL("join movielinktvshow on movielinktvshow.idMovie=movieview.idMovie");
+      movieFilter.where = PrepareSQL("movielinktvshow.idShow %s", strIn.c_str());
+      CFileItemList movieItems;
+      GetMoviesByWhere("videodb://1/2/", movieFilter, movieItems);
 
-    if (movieItems.Size() > 0)
-      items.Append(movieItems);
+      if (movieItems.Size() > 0)
+        items.Append(movieItems);
+    }
 
     return true;
   }
@@ -8842,11 +8845,12 @@ void CVideoDatabase::ImportFromXML(const CStdString &path)
 bool CVideoDatabase::ImportArtFromXML(const TiXmlNode *node, map<string, string> &artwork)
 {
   if (!node) return false;
-  CStdString art;
-  if (XMLUtils::GetString(node, "thumb", art))
-    artwork.insert(make_pair("thumb", art));
-  if (XMLUtils::GetString(node, "fanart", art))
-    artwork.insert(make_pair("fanart", art));
+  const TiXmlNode *art = node->FirstChild();
+  while (art && art->FirstChild())
+  {
+    artwork.insert(make_pair(art->ValueStr(), art->FirstChild()->ValueStr()));
+    art = art->NextSibling();
+  }
   return !artwork.empty();
 }
 

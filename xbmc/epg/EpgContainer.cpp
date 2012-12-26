@@ -292,14 +292,20 @@ CEpg *CEpgContainer::GetByChannel(const CPVRChannel &channel) const
 
 void CEpgContainer::InsertFromDatabase(int iEpgID, const CStdString &strName, const CStdString &strScraperName)
 {
+  // table might already have been created when pvr channels were loaded
   CEpg* epg = GetById(iEpgID);
   if (epg)
   {
     if (!epg->Name().Equals(strName) || !epg->ScraperName().Equals(strScraperName))
+    {
+      // current table data differs from the info in the db
+      epg->SetChanged();
       SetChanged();
+    }
   }
   else
   {
+    // create a new epg table
     epg = new CEpg(iEpgID, strName, strScraperName, true);
     if (epg)
     {
@@ -382,6 +388,7 @@ bool CEpgContainer::DeleteEpg(const CEpg &epg, bool bDeleteFromDatabase /* = fal
   if (it == m_epgs.end())
     return false;
 
+  CLog::Log(LOGDEBUG, "deleting EPG table %s (%d)", epg.Name().c_str(), epg.EpgID());
   if (bDeleteFromDatabase && !m_bIgnoreDbForClient && m_database.IsOpen())
     m_database.Delete(*it->second);
 
@@ -490,6 +497,8 @@ bool CEpgContainer::UpdateEPG(bool bOnlyPending /* = false */)
     return false;
   }
 
+  vector<CEpg*> invalidTables;
+
   /* load or update all EPG tables */
   CEpg *epg;
   unsigned int iCounter(0);
@@ -509,8 +518,13 @@ bool CEpgContainer::UpdateEPG(bool bOnlyPending /* = false */)
       UpdateProgressDialog(++iCounter, m_epgs.size(), epg->Name());
 
     if ((!bOnlyPending || epg->UpdatePending()) && epg->Update(start, end, m_iUpdateTime, bOnlyPending))
-      ++iUpdatedTables;
+      iUpdatedTables++;
+    else if (!epg->IsValid())
+      invalidTables.push_back(epg);
   }
+
+  for (vector<CEpg*>::iterator it = invalidTables.begin(); it != invalidTables.end(); it++)
+    DeleteEpg(**it, true);
 
   if (bInterrupted)
   {

@@ -27,6 +27,7 @@
 #include <taglib/id3v2tag.h>
 #include <taglib/apetag.h>
 #include <taglib/xiphcomment.h>
+#include <taglib/id3v1genres.h>
 
 #include <taglib/textidentificationframe.h>
 #include <taglib/uniquefileidentifierframe.h>
@@ -249,7 +250,7 @@ bool CTagLoaderTagLib::ParseASF(ASF::Tag *asf, EmbeddedArt *art, CMusicInfoTag& 
       else
         tag.SetTrackNumber(atoi(it->second.front().toString().toCString(true)));
     }
-    else if (it->first == "WM/PartOfSet")                tag.SetPartOfSet(it->second.front().toUInt());
+    else if (it->first == "WM/PartOfSet")                tag.SetPartOfSet(atoi(it->second.front().toString().toCString(true)));
     else if (it->first == "WM/Genre")                    SetGenre(tag, GetASFStringList(it->second));
     else if (it->first == "WM/AlbumArtistSortOrder")     {} // Known unsupported, supress warnings
     else if (it->first == "WM/ArtistSortOrder")          {} // Known unsupported, supress warnings
@@ -645,8 +646,24 @@ void CTagLoaderTagLib::SetAlbumArtist(CMusicInfoTag &tag, const vector<string> &
 
 void CTagLoaderTagLib::SetGenre(CMusicInfoTag &tag, const vector<string> &values)
 {
-  if (values.size() == 1)
-    tag.SetGenre(values[0]);
+  /*
+   TagLib doesn't resolve ID3v1 genre numbers in the case were only
+   a number is specified, thus this workaround.
+   */
+  vector<string> genres;
+  for (vector<string>::const_iterator i = values.begin(); i != values.end(); ++i)
+  {
+    string genre = *i;
+    if (StringUtils::IsNaturalNumber(genre))
+    {
+      int number = strtol(i->c_str(), NULL, 10);
+      if (number >= 0 && number < 256)
+        genre = ID3v1::genre(number).to8Bit(true);
+    }
+    genres.push_back(genre);
+  }
+  if (genres.size() == 1)
+    tag.SetGenre(genres[0]);
   else
-    tag.SetGenre(values);
+    tag.SetGenre(genres);
 }

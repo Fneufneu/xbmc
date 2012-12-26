@@ -195,8 +195,8 @@ bool OMXPlayerVideo::CloseStream(bool bWaitForBuffers)
 
   m_av_clock->Lock();
   m_av_clock->OMXStop(false);
-  m_av_clock->HasVideo(false);
   m_omxVideo.Close();
+  m_av_clock->HasVideo(false);
   m_av_clock->OMXReset(false);
   m_av_clock->UnLock();
 
@@ -640,29 +640,23 @@ void OMXPlayerVideo::Process()
         if (pPacket->dts == DVD_NOPTS_VALUE && pPacket->pts == DVD_NOPTS_VALUE)
           output_pts = pts;
         else if (pPacket->pts == DVD_NOPTS_VALUE)
-          output_pts = pPacket->dts;
+          output_pts = pts;
         else
           output_pts = pPacket->pts;
 
         if(pPacket->pts != DVD_NOPTS_VALUE)
           pPacket->pts += m_iVideoDelay;
 
-        if(output_pts != DVD_NOPTS_VALUE)
-          output_pts += m_iVideoDelay;
+        if(pPacket->dts != DVD_NOPTS_VALUE)
+          pPacket->dts += m_iVideoDelay;
 
         if(pPacket->duration == 0)
           pPacket->duration = frametime;
 
-        switch(m_hints.codec)
-        {
-          case CODEC_ID_MPEG1VIDEO:
-          case CODEC_ID_MPEG2VIDEO:
-            m_omxVideo.Decode(pPacket->pData, pPacket->iSize, pPacket->pts, pPacket->pts);
-            break;
-          default:
-            m_omxVideo.Decode(pPacket->pData, pPacket->iSize, output_pts, output_pts);
-            break;
-        }
+        if(output_pts != DVD_NOPTS_VALUE)
+          pts = output_pts;
+
+        m_omxVideo.Decode(pPacket->pData, pPacket->iSize, pPacket->dts, pPacket->pts);
 
         Output(pPacket->iGroupId, output_pts, bRequestDrop);
 
@@ -714,6 +708,7 @@ bool OMXPlayerVideo::OpenDecoder()
   // use aspect in stream always
   m_fForcedAspectRatio = m_hints.aspect;
 
+
   m_av_clock->Lock();
   m_av_clock->OMXStop(false);
 
@@ -743,9 +738,11 @@ bool OMXPlayerVideo::OpenDecoder()
       m_av_clock->SetRefreshRate(m_fFrameRate);
   }
 
+  m_av_clock->OMXStateExecute(false);
   m_av_clock->HasVideo(bVideoDecoderOpen);
   m_av_clock->OMXReset(false);
   m_av_clock->UnLock();
+
   return bVideoDecoderOpen;
 }
 
