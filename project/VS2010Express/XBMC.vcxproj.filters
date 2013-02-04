@@ -2798,6 +2798,9 @@
     <ClCompile Include="..\..\xbmc\network\upnp\UPnPInternal.cpp">
       <Filter>network\upnp</Filter>
     </ClCompile>
+     <ClCompile Include="..\..\xbmc\network\upnp\UPnPPlayer.cpp">
+      <Filter>network\upnp</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\xbmc\network\upnp\UPnPRenderer.cpp">
       <Filter>network\upnp</Filter>
     </ClCompile>
@@ -2956,6 +2959,9 @@
     </ClCompile>
     <ClCompile Include="..\..\xbmc\interfaces\python\PyContext.cpp">
       <Filter>interfaces\python</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\xbmc\video\FFmpegVideoDecoder.cpp">
+      <Filter>video</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -5602,6 +5608,9 @@
     <ClInclude Include="..\..\xbmc\network\upnp\UPnPInternal.h">
       <Filter>network\upnp</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\xbmc\network\upnp\UPnPPlayer.h">
+      <Filter>network\upnp</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\xbmc\network\upnp\UPnPRenderer.h">
       <Filter>network\upnp</Filter>
     </ClInclude>
@@ -5772,6 +5781,12 @@
     </ClInclude>
     <ClInclude Include="..\..\xbmc\interfaces\python\PyContext.h">
       <Filter>interfaces\python</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\music\karaoke\karaokevideobackground.h">
+      <Filter>music\karaoke</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\xbmc\video\FFmpegVideoDecoder.h">
+      <Filter>video</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

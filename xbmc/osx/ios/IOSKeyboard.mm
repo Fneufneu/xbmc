@@ -22,9 +22,12 @@
 #include "IOSKeyboard.h"
 #include "IOSKeyboardView.h"
 
+#import "AutoPool.h"
+
 
 bool CIOSKeyboard::ShowAndGetInput(char_callback_t pCallback, const std::string &initialString, std::string &typedString, const std::string &heading, bool bHiddenInput)
 {
+  CCocoaAutoPool pool;
   bool confirmed = false;
   CGRect keyboardFrame;
 
@@ -37,21 +40,30 @@ bool CIOSKeyboard::ShowAndGetInput(char_callback_t pCallback, const std::string 
   keyboardFrame.origin.x = frameHeight / 2;
   keyboardFrame.origin.y = (pCurrentScreen.bounds.size.width/2) - frameHeight*scale + 10;
   //create the keyboardview
-  KeyboardView *iosKeyboard = [[KeyboardView alloc] initWithFrame:keyboardFrame];
-
+  KeyboardView *keyboard = [[KeyboardView alloc] initWithFrame:keyboardFrame];
   m_pCharCallback = pCallback;
 
   // init keyboard stuff
-  [iosKeyboard setText:[NSString stringWithUTF8String:initialString.c_str()]];
-  [iosKeyboard SetHiddenInput:bHiddenInput];
-  [iosKeyboard SetHeading:[NSString stringWithUTF8String:heading.c_str()]];
-  [iosKeyboard RegisterKeyboard:this]; // for calling back
-  [iosKeyboard activate];//blocks and loops our application loop (like a modal dialog)
-  // user is done - get resulted text and confirmation
-  typedString = [[iosKeyboard GetText] UTF8String];
-  confirmed = [iosKeyboard GetResult];
-  [iosKeyboard release]; // bye bye native keyboard
+  [keyboard setText:[NSString stringWithUTF8String:initialString.c_str()]];
+  [keyboard SetHiddenInput:bHiddenInput];
+  [keyboard SetHeading:[NSString stringWithUTF8String:heading.c_str()]];
+  [keyboard RegisterKeyboard:this]; // for calling back
+  if (!m_bCanceled)
+  {
+    [keyboard setCancelFlag:&m_bCanceled];
+    [keyboard activate];//blocks and loops our application loop (like a modal dialog)
+    // user is done - get resulted text and confirmation
+    confirmed = [keyboard GetResult];
+    if (confirmed)
+      typedString = [[keyboard GetText] UTF8String];
+  }
+  [keyboard release]; // bye bye native keyboard
   return confirmed;
+}
+
+void CIOSKeyboard::Cancel()
+{
+  m_bCanceled = true;
 }
 
 //wrap our callback between objc and c++
