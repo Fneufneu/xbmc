@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2005-2012 Team XBMC
+ *      Copyright (C) 2005-2013 Team XBMC
  *      http://www.xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -34,10 +34,7 @@
 #include "utils/Weather.h"
 #include "music/MusicDatabase.h"
 #include "video/VideoDatabase.h"
-#include "ViewDatabase.h"
-#ifdef HAS_LCD
-#include "utils/LCDFactory.h"
-#endif
+#include "view/ViewDatabase.h"
 #include "PlayListPlayer.h"
 #include "addons/Skin.h"
 #include "guilib/GUIAudioManager.h"
@@ -872,7 +869,8 @@ void CGUIWindowSettingsCategory::UpdateSettings()
        if (pControl) pControl->SetEnabled(enabled);
     }
     else if (strSetting.Equals("network.httpproxyserver")   || strSetting.Equals("network.httpproxyport") ||
-             strSetting.Equals("network.httpproxyusername") || strSetting.Equals("network.httpproxypassword"))
+             strSetting.Equals("network.httpproxyusername") || strSetting.Equals("network.httpproxypassword") ||
+             strSetting.Equals("network.httpproxytype"))
     {
       CGUIControl *pControl = (CGUIControl *)GetControl(pSettingControl->GetID());
       if (pControl) pControl->SetEnabled(g_guiSettings.GetBool("network.usehttpproxy"));
@@ -1249,16 +1247,6 @@ void CGUIWindowSettingsCategory::OnSettingChanged(BaseSettingControlPtr pSetting
     g_guiSettings.m_replayGain.iNoGainPreAmp = g_guiSettings.GetInt("musicplayer.replaygainnogainpreamp");
     g_guiSettings.m_replayGain.bAvoidClipping = g_guiSettings.GetBool("musicplayer.replaygainavoidclipping");
   }
-#ifdef HAS_LCD
-  else if (strSetting.Equals("videoscreen.haslcd"))
-  {
-    g_lcd->Stop();
-    CLCDFactory factory;
-    delete g_lcd;
-    g_lcd = factory.Create();
-    g_lcd->Initialize();
-  }
-#endif
 #ifdef HAS_WEB_SERVER
   else if ( strSetting.Equals("services.webserver") || strSetting.Equals("services.webserverport"))
   {

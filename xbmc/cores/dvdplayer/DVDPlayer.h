@@ -1,7 +1,7 @@
 #pragma once
 
 /*
- *      Copyright (C) 2005-2012 Team XBMC
+ *      Copyright (C) 2005-2013 Team XBMC
  *      http://www.xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -424,6 +424,7 @@ protected:
       time_offset   = 0;
       time_src      = ETIMESOURCE_CLOCK;
       dts           = DVD_NOPTS_VALUE;
+      dts_state     = DVD_NOPTS_VALUE;
       player_state  = "";
       chapter       = 0;
       chapter_name  = "";
@@ -449,6 +450,7 @@ protected:
     double time_total;        // total playback time
     ETimeSource time_src;     // current time source
     double dts;               // last known dts
+    double dts_state;         // dts of last update
 
     std::string player_state;  // full player state
 
