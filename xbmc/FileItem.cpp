@@ -1,5 +1,5 @@
 /*
- *      Copyright (C) 2005-2012 Team XBMC
+ *      Copyright (C) 2005-2013 Team XBMC
  *      http://www.xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -2789,7 +2789,7 @@ CStdString CFileItem::GetLocalArt(const std::string &artFile, bool useFolder) co
     useFolder = true;
     strFile = GetLocalMetadataPath();
   }
-  else if (useFolder)
+  else if (useFolder && !(m_bIsFolder && !IsFileFolder()))
     strFile = URIUtils::GetDirectory(strFile);
 
   if (strFile.empty()) // empty filepath -> nothing to find
