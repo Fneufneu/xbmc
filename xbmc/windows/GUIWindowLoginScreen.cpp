@@ -22,9 +22,9 @@
 #include "Application.h"
 #include "ApplicationMessenger.h"
 #include "GUIWindowLoginScreen.h"
-#include "settings/GUIWindowSettingsProfile.h"
+#include "settings/windows/GUIWindowSettingsProfile.h"
 #include "dialogs/GUIDialogContextMenu.h"
-#include "settings/GUIDialogProfileSettings.h"
+#include "settings/dialogs/GUIDialogProfileSettings.h"
 #include "GUIPassword.h"
 #ifdef HAS_PYTHON
 #include "interfaces/python/XBPython.h"
@@ -44,6 +44,7 @@
 #include "settings/Settings.h"
 #include "settings/GUISettings.h"
 #include "FileItem.h"
+#include "guilib/Key.h"
 #include "guilib/LocalizeStrings.h"
 #include "addons/AddonManager.h"
 

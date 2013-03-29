@@ -84,6 +84,7 @@ class TiXmlElement;
 #define AUDIO_ANALOG      0
 #define AUDIO_IEC958      1
 #define AUDIO_HDMI        2
+#define AUDIO_COUNT       3
 #define AUDIO_IS_BITSTREAM(x) ((x) == AUDIO_IEC958 || (x) == AUDIO_HDMI)
 
 #define VIDEO_NORMAL 0
@@ -435,13 +436,7 @@ public:
     m_vecCategories.clear();
   };
 
-  CSettingsCategory* AddCategory(const char *strCategory, int labelID)
-  {
-    CSettingsCategory *pCategory = new CSettingsCategory(strCategory, labelID);
-    if (pCategory)
-      m_vecCategories.push_back(pCategory);
-    return pCategory;
-  }
+  CSettingsCategory* AddCategory(const char *strCategory, int labelID);
   void GetCategories(vecSettingsCategory &vecCategories);
   int GetLabelID() { return m_labelID; };
   int GetGroupID() { return m_groupID; };

@@ -26,6 +26,7 @@
 #include "Application.h"
 #include "ApplicationMessenger.h"
 #include "guilib/GUIWindowManager.h"
+#include "guilib/Key.h"
 #ifdef HAS_SDL_JOYSTICK
 #include "input/SDLJoystick.h"
 #endif
@@ -41,8 +42,6 @@
 #include "input/XBMC_keysym.h"
 #include "utils/log.h"
 #endif
-
-PHANDLE_EVENT_FUNC CWinEventsBase::m_pEventFunc = NULL;
 
 #if defined(_LINUX) && !defined(__APPLE__)
 // The following chunk of code is Linux specific. For keys that have
@@ -383,7 +382,7 @@ bool CWinEventsSDL::MessagePump()
         g_windowManager.MarkDirty();
         break;
     }
-    memset(&event, 0, sizeof(XBMC_Event));
+    memset(&event, 0, sizeof(SDL_Event));
   }
 
   return ret;

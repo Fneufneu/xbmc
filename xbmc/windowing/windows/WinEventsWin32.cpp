@@ -64,7 +64,7 @@ uint32_t g_uQueryCancelAutoPlay = 0;
 
 int XBMC_TranslateUNICODE = 1;
 
-PHANDLE_EVENT_FUNC CWinEventsBase::m_pEventFunc = NULL;
+PHANDLE_EVENT_FUNC CWinEventsWin32::m_pEventFunc = NULL;
 int CWinEventsWin32::m_lastGesturePosX = 0;
 int CWinEventsWin32::m_lastGesturePosY = 0;
 
@@ -817,17 +817,17 @@ void CWinEventsWin32::OnGestureNotify(HWND hWnd, LPARAM lParam)
   if (g_windowManager.SendMessage(message))
   {
     int gestures = message.GetParam1();
-    if (gestures == EVENT_RESULT_ZOOM)
+    if (gestures & EVENT_RESULT_ZOOM)
       gc[0].dwWant |= GC_ZOOM;
-    if (gestures == EVENT_RESULT_ROTATE)
+    if (gestures & EVENT_RESULT_ROTATE)
       gc[1].dwWant |= GC_ROTATE;
-    if (gestures == EVENT_RESULT_PAN_VERTICAL)
+    if (gestures & EVENT_RESULT_PAN_VERTICAL)
       gc[2].dwWant |= GC_PAN_WITH_SINGLE_FINGER_VERTICALLY | GC_PAN_WITH_GUTTER | GC_PAN_WITH_INERTIA;
-    if (gestures == EVENT_RESULT_PAN_VERTICAL_WITHOUT_INERTIA)
+    if (gestures & EVENT_RESULT_PAN_VERTICAL_WITHOUT_INERTIA)
       gc[2].dwWant |= GC_PAN_WITH_SINGLE_FINGER_VERTICALLY;
-    if (gestures == EVENT_RESULT_PAN_HORIZONTAL)
+    if (gestures & EVENT_RESULT_PAN_HORIZONTAL)
       gc[2].dwWant |= GC_PAN_WITH_SINGLE_FINGER_HORIZONTALLY | GC_PAN_WITH_GUTTER | GC_PAN_WITH_INERTIA;
-    if (gestures == EVENT_RESULT_PAN_HORIZONTAL_WITHOUT_INERTIA)
+    if (gestures & EVENT_RESULT_PAN_HORIZONTAL_WITHOUT_INERTIA)
       gc[2].dwWant |= GC_PAN_WITH_SINGLE_FINGER_HORIZONTALLY;
     gc[0].dwBlock = gc[0].dwWant ^ 1;
     gc[1].dwBlock = gc[1].dwWant ^ 1;

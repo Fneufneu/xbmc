@@ -131,6 +131,12 @@ void CPlayerSelectionRule::GetPlayers(const CFileItem& item, VECPLAYERCORES &vec
     CStreamDetails streamDetails = item.GetVideoInfoTag()->m_streamDetails;
 
     if (CompileRegExp(m_audioCodec, regExp) && !MatchesRegExp(streamDetails.GetAudioCodec(), regExp)) return;
+    
+    std::stringstream itoa;
+    itoa << streamDetails.GetAudioChannels();
+    CStdString audioChannelsstr = itoa.str();
+
+    if (CompileRegExp(m_audioChannels, regExp) && !MatchesRegExp(audioChannelsstr, regExp)) return;
 
     if (CompileRegExp(m_videoCodec, regExp) && !MatchesRegExp(streamDetails.GetVideoCodec(), regExp)) return;
 
@@ -168,7 +174,7 @@ PLAYERCOREID CPlayerSelectionRule::GetPlayerCore()
 {
   if (!m_playerCoreId)
   {
-    m_playerCoreId = CPlayerCoreFactory::GetPlayerCore(m_playerName);
+    m_playerCoreId = CPlayerCoreFactory::Get().GetPlayerCore(m_playerName);
   }
   return m_playerCoreId;
 }
