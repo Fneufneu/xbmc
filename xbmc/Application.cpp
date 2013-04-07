@@ -30,6 +30,7 @@
 #include "Util.h"
 #include "URL.h"
 #include "guilib/TextureManager.h"
+#include "cores/IPlayer.h"
 #include "cores/dvdplayer/DVDFileInfo.h"
 #include "cores/AudioEngine/AEFactory.h"
 #include "cores/AudioEngine/Utils/AEUtil.h"
@@ -403,6 +404,9 @@ CApplication::CApplication(void)
 #ifdef HAS_GLX
   XInitThreads();
 #endif
+
+  // we start in frontend
+  m_bInBackground = false;
 
   /* for now always keep this around */
 #ifdef HAS_KARAOKE
@@ -1645,7 +1649,7 @@ bool CApplication::StartJSONRPCServer()
     if (CTCPServer::StartServer(g_advancedSettings.m_jsonTcpPort, g_guiSettings.GetBool("services.esallinterfaces")))
     {
       std::vector<std::pair<std::string, std::string> > txt;
-      CZeroconf::GetInstance()->PublishService("servers.jsonrpc-tpc", "_xbmc-jsonrpc._tcp", g_infoManager.GetLabel(SYSTEM_FRIENDLY_NAME), g_advancedSettings.m_jsonTcpPort, txt);
+      CZeroconf::GetInstance()->PublishService("servers.jsonrpc-tcp", "_xbmc-jsonrpc._tcp", g_infoManager.GetLabel(SYSTEM_FRIENDLY_NAME), g_advancedSettings.m_jsonTcpPort, txt);
       return true;
     }
     else
@@ -2260,8 +2264,8 @@ void CApplication::NewFrame()
 
 void CApplication::Render()
 {
-  // do not render if we are stopped
-  if (m_bStop)
+  // do not render if we are stopped or in background
+  if (m_bStop || m_bInBackground)
     return;
 
   if (!m_AppActive && !m_bStop && (!IsPlayingVideo() || IsPaused()))
@@ -2742,6 +2746,10 @@ bool CApplication::OnAction(const CAction &action)
 
     return true;
   }
+
+  // forward action to g_PVRManager and break if it was able to handle it
+  if (g_PVRManager.OnAction(action))
+    return true;
 
   if (IsPlaying())
   {
@@ -4610,6 +4618,8 @@ bool CApplication::WakeUpScreenSaver(bool bPowerOffKeyPressed /* = false */)
 
 void CApplication::CheckScreenSaverAndDPMS()
 {
+  if (m_bInBackground)
+    return;
   if (!m_dpmsIsActive)
     g_Windowing.ResetOSScreensaver();
 
@@ -4700,6 +4710,15 @@ void CApplication::ActivateScreenSaver(bool forceType /*= false */)
     return;
   else if (!m_screenSaver->ID().IsEmpty())
     g_windowManager.ActivateWindow(WINDOW_SCREENSAVER);
+}
+
+void CApplication::SetInBackground(bool background)
+{
+  if (!background)
+  {
+    ResetScreenSaverTimer();
+  }
+  m_bInBackground = background;
 }
 
 void CApplication::CheckShutdown()
