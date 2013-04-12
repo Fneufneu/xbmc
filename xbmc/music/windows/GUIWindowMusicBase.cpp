@@ -44,15 +44,16 @@
 #include "music/dialogs/GUIDialogSongInfo.h"
 #include "addons/GUIDialogAddonInfo.h"
 #include "dialogs/GUIDialogSmartPlaylistEditor.h"
-#include "music/LastFmManager.h"
 #include "music/tags/MusicInfoTag.h"
 #include "guilib/GUIWindowManager.h"
+#include "guilib/Key.h"
 #include "dialogs/GUIDialogOK.h"
 #include "dialogs/GUIDialogYesNo.h"
 #include "guilib/GUIKeyboardFactory.h"
 #include "dialogs/GUIDialogProgress.h"
 #include "FileItem.h"
 #include "filesystem/File.h"
+#include "profiles/ProfilesManager.h"
 #include "storage/MediaManager.h"
 #include "settings/Settings.h"
 #include "settings/AdvancedSettings.h"
@@ -65,6 +66,7 @@
 #include "utils/StringUtils.h"
 #include "URL.h"
 #include "music/infoscanner/MusicInfoScanner.h"
+#include "cores/IPlayer.h"
 
 using namespace std;
 using namespace XFILE;
@@ -412,7 +414,7 @@ void CGUIWindowMusicBase::OnManualAlbumInfo()
 void CGUIWindowMusicBase::ShowArtistInfo(const CArtist& artist, const CStdString& path, bool bRefresh, bool bShowInfo)
 {
   bool saveDb = artist.idArtist != -1;
-  if (!g_settings.GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
+  if (!CProfilesManager::Get().GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
     saveDb = false;
 
   // check cache
@@ -502,7 +504,7 @@ void CGUIWindowMusicBase::ShowArtistInfo(const CArtist& artist, const CStdString
 void CGUIWindowMusicBase::ShowAlbumInfo(const CAlbum& album, const CStdString& path, bool bRefresh, bool bShowInfo)
 {
   bool saveDb = album.idAlbum != -1;
-  if (!g_settings.GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
+  if (!CProfilesManager::Get().GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
     saveDb = false;
 
   // check cache
@@ -890,15 +892,7 @@ void CGUIWindowMusicBase::GetContextButtons(int itemNumber, CContextButtons &but
     {
       if (!m_vecItems->IsPlugin() && (item->IsPlugin() || item->IsScript()))
         buttons.Add(CONTEXT_BUTTON_INFO,24003); // Add-on info
-      if (item->GetExtraInfo().Equals("lastfmloved"))
-      {
-        buttons.Add(CONTEXT_BUTTON_LASTFM_UNLOVE_ITEM, 15295); //unlove
-      }
-      else if (item->GetExtraInfo().Equals("lastfmbanned"))
-      {
-        buttons.Add(CONTEXT_BUTTON_LASTFM_UNBAN_ITEM, 15296); //unban
-      }
-      else if (item->CanQueue() && !item->IsAddonsPath() && !item->IsScript())
+      if (item->CanQueue() && !item->IsAddonsPath() && !item->IsScript())
       {
         buttons.Add(CONTEXT_BUTTON_QUEUE_ITEM, 13347); //queue
 
@@ -911,7 +905,7 @@ void CGUIWindowMusicBase::GetContextButtons(int itemNumber, CContextButtons &but
         else
         { // check what players we have, if we have multiple display play with option
           VECPLAYERCORES vecCores;
-          CPlayerCoreFactory::GetPlayers(*item, vecCores);
+          CPlayerCoreFactory::Get().GetPlayers(*item, vecCores);
           if (vecCores.size() >= 1)
             buttons.Add(CONTEXT_BUTTON_PLAY_WITH, 15213); // Play With...
         }
@@ -985,8 +979,8 @@ bool CGUIWindowMusicBase::OnContextButton(int itemNumber, CONTEXT_BUTTON button)
   case CONTEXT_BUTTON_PLAY_WITH:
     {
       VECPLAYERCORES vecCores;  // base class?
-      CPlayerCoreFactory::GetPlayers(*item, vecCores);
-      g_application.m_eForcedNextPlayer = CPlayerCoreFactory::SelectPlayerDialog(vecCores);
+      CPlayerCoreFactory::Get().GetPlayers(*item, vecCores);
+      g_application.m_eForcedNextPlayer = CPlayerCoreFactory::Get().SelectPlayerDialog(vecCores);
       if( g_application.m_eForcedNextPlayer != EPC_NONE )
         OnClick(itemNumber);
       return true;
@@ -1012,20 +1006,6 @@ bool CGUIWindowMusicBase::OnContextButton(int itemNumber, CONTEXT_BUTTON button)
 
   case CONTEXT_BUTTON_SETTINGS:
     g_windowManager.ActivateWindow(WINDOW_SETTINGS_MYMUSIC);
-    return true;
-  case CONTEXT_BUTTON_LASTFM_UNBAN_ITEM:
-    if (CLastFmManager::GetInstance()->Unban(*item->GetMusicInfoTag()))
-    {
-      g_directoryCache.ClearDirectory(m_vecItems->GetPath());
-      Refresh(true);
-    }
-    return true;
-  case CONTEXT_BUTTON_LASTFM_UNLOVE_ITEM:
-    if (CLastFmManager::GetInstance()->Unlove(*item->GetMusicInfoTag()))
-    {
-      g_directoryCache.ClearDirectory(m_vecItems->GetPath());
-      Refresh(true);
-    }
     return true;
   default:
     break;
@@ -1173,7 +1153,7 @@ bool CGUIWindowMusicBase::OnPlayMedia(int iItem)
   CFileItemPtr pItem = m_vecItems->Get(iItem);
 
   // party mode
-  if (g_partyModeManager.IsEnabled() && !pItem->IsLastFM())
+  if (g_partyModeManager.IsEnabled())
   {
     CPlayList playlistTemp;
     playlistTemp.Add(pItem);
@@ -1207,7 +1187,7 @@ void CGUIWindowMusicBase::UpdateThumb(const CAlbum &album, const CStdString &pat
   // check user permissions
   bool saveDb = album.idAlbum != -1;
   bool saveDirThumb = true;
-  if (!g_settings.GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
+  if (!CProfilesManager::Get().GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
   {
     saveDb = false;
     saveDirThumb = false;
@@ -1333,7 +1313,7 @@ bool CGUIWindowMusicBase::GetDirectory(const CStdString &strDirectory, CFileItem
   // add in the "New Playlist" item if we're in the playlists folder
   if ((items.GetPath() == "special://musicplaylists/") && !items.Contains("newplaylist://"))
   {
-    CFileItemPtr newPlaylist(new CFileItem(g_settings.GetUserDataItem("PartyMode.xsp"),false));
+    CFileItemPtr newPlaylist(new CFileItem(CProfilesManager::Get().GetUserDataItem("PartyMode.xsp"),false));
     newPlaylist->SetLabel(g_localizeStrings.Get(16035));
     newPlaylist->SetLabelPreformated(true);
     newPlaylist->m_bIsFolder = true;

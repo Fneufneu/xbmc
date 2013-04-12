@@ -27,6 +27,7 @@
 #include "filesystem/File.h"
 #include "utils/LangCodeExpander.h"
 #include "LangInfo.h"
+#include "profiles/ProfilesManager.h"
 #include "settings/GUISettings.h"
 #include "settings/Settings.h"
 #include "utils/StringUtils.h"
@@ -41,6 +42,34 @@ using namespace XFILE;
 CAdvancedSettings::CAdvancedSettings()
 {
   m_initialized = false;
+}
+
+void CAdvancedSettings::OnSettingsLoaded()
+{
+  // load advanced settings
+  Load();
+
+  // Add the list of disc stub extensions (if any) to the list of video extensions
+  if (!g_settings.m_discStubExtensions.IsEmpty())
+    g_settings.m_videoExtensions += "|" + g_settings.m_discStubExtensions;
+
+  // default players?
+  CLog::Log(LOGNOTICE, "Default DVD Player: %s", m_videoDefaultDVDPlayer.c_str());
+  CLog::Log(LOGNOTICE, "Default Video Player: %s", m_videoDefaultPlayer.c_str());
+  CLog::Log(LOGNOTICE, "Default Audio Player: %s", m_audioDefaultPlayer.c_str());
+
+  // setup any logging...
+  if (g_guiSettings.GetBool("debug.showloginfo"))
+  {
+    m_logLevel = std::max(m_logLevelHint, LOG_LEVEL_DEBUG_FREEMEM);
+    CLog::Log(LOGNOTICE, "Enabled debug logging due to GUI setting (%d)", m_logLevel);
+  }
+  else
+  {
+    m_logLevel = std::min(m_logLevelHint, LOG_LEVEL_DEBUG/*LOG_LEVEL_NORMAL*/);
+    CLog::Log(LOGNOTICE, "Disabled debug logging due to GUI setting. Level %d.", m_logLevel);
+  }
+  CLog::SetLogLevel(m_logLevel);
 }
 
 void CAdvancedSettings::Initialize()
@@ -112,6 +141,7 @@ void CAdvancedSettings::Initialize()
   m_DXVANoDeintProcForProgressive = false;
   m_videoFpsDetect = 1;
   m_videoDefaultLatency = 0.0;
+  m_videoDisableHi10pMultithreading = false;
 
   m_musicUseTimeSeeking = true;
   m_musicTimeSeekForward = 10;
@@ -328,7 +358,7 @@ bool CAdvancedSettings::Load()
   ParseSettingsFile("special://xbmc/system/advancedsettings.xml");
   for (unsigned int i = 0; i < m_settingsFiles.size(); i++)
     ParseSettingsFile(m_settingsFiles[i]);
-  ParseSettingsFile(g_settings.GetUserDataItem("advancedsettings.xml"));
+  ParseSettingsFile(CProfilesManager::Get().GetUserDataItem("advancedsettings.xml"));
   return true;
 }
 
@@ -493,6 +523,7 @@ void CAdvancedSettings::ParseSettingsFile(const CStdString &file)
     XMLUtils::GetBoolean(pElement,"enablehighqualityhwscalers", m_videoEnableHighQualityHwScalers);
     XMLUtils::GetFloat(pElement,"autoscalemaxfps",m_videoAutoScaleMaxFps, 0.0f, 1000.0f);
     XMLUtils::GetBoolean(pElement,"allowmpeg4vdpau",m_videoAllowMpeg4VDPAU);
+    XMLUtils::GetBoolean(pElement,"disablehi10pmultithreading",m_videoDisableHi10pMultithreading);
     XMLUtils::GetBoolean(pElement,"allowmpeg4vaapi",m_videoAllowMpeg4VAAPI);    
     XMLUtils::GetBoolean(pElement, "disablebackgrounddeinterlace", m_videoDisableBackgroundDeinterlace);
     XMLUtils::GetInt(pElement, "useocclusionquery", m_videoCaptureUseOcclusionQuery, -1, 1);

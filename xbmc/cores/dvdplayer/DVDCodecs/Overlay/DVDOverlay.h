@@ -75,8 +75,8 @@ public:
   }
 
   /**
-   * decrease the reference counter by one.
-   */
+  * increase the reference counter by one.
+  */
   CDVDOverlay* Acquire()
   {
     AtomicIncrement(&m_references);
@@ -84,8 +84,8 @@ public:
   }
 
   /**
-   * increase the reference counter by one.
-   */
+  * decrease the reference counter by one.
+  */
   long Release()
   {
     long count = AtomicDecrement(&m_references);
@@ -102,6 +102,12 @@ public:
   }
 
   bool IsOverlayType(DVDOverlayType type) { return (m_type == type); }
+
+  /**
+   * return a copy to DVDPlayerSubtitle in order to have hw resources cleared
+   * after rendering
+   */
+  virtual CDVDOverlay* Clone() { return Acquire(); }
 
   double iPTSStartTime;
   double iPTSStopTime;
@@ -139,8 +145,8 @@ public:
   CDVDOverlayGroup(CDVDOverlayGroup& src)
     : CDVDOverlay(src)
   {
-    for(VecOverlaysIter it = m_overlays.begin(); it != m_overlays.end(); ++it)
-      m_overlays.push_back((*it)->Acquire());
+    for(VecOverlaysIter it = src.m_overlays.begin(); it != src.m_overlays.end(); ++it)
+      m_overlays.push_back((*it)->Clone());
   }
   VecOverlays m_overlays;
 };

@@ -42,12 +42,15 @@ class CDVDSubtitleParserCollection
   : public CDVDSubtitleParser
 {
 public:
-  CDVDSubtitleParserCollection(const std::string& strFile)
-  {
-    m_filename = strFile;
-  }
+  CDVDSubtitleParserCollection(const std::string& strFile) : m_filename(strFile) {}
   virtual ~CDVDSubtitleParserCollection() { }
-  virtual CDVDOverlay* Parse(double iPts) { return m_collection.Get(iPts); }
+  virtual CDVDOverlay* Parse(double iPts)
+  {
+    CDVDOverlay* o = m_collection.Get(iPts);
+    if(o == NULL)
+      return o;
+    return o->Clone();
+  }
   virtual void         Reset()            { m_collection.Reset(); }
   virtual void         Dispose()          { m_collection.Clear(); }
 

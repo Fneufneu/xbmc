@@ -84,6 +84,7 @@ class TiXmlElement;
 #define AUDIO_ANALOG      0
 #define AUDIO_IEC958      1
 #define AUDIO_HDMI        2
+#define AUDIO_COUNT       3
 #define AUDIO_IS_BITSTREAM(x) ((x) == AUDIO_IEC958 || (x) == AUDIO_HDMI)
 
 #define VIDEO_NORMAL 0
@@ -212,16 +213,6 @@ enum SubtitleAlign
   SUBTITLE_ALIGN_BOTTOM_OUTSIDE,
   SUBTITLE_ALIGN_TOP_INSIDE,
   SUBTITLE_ALIGN_TOP_OUTSIDE
-};
-
-// replay gain settings struct for quick access by the player multiple
-// times per second (saves doing settings lookup)
-struct ReplayGainSettings
-{
-  int iPreAmp;
-  int iNoGainPreAmp;
-  int iType;
-  bool bAvoidClipping;
 };
 
 // base class for all settings types
@@ -435,13 +426,7 @@ public:
     m_vecCategories.clear();
   };
 
-  CSettingsCategory* AddCategory(const char *strCategory, int labelID)
-  {
-    CSettingsCategory *pCategory = new CSettingsCategory(strCategory, labelID);
-    if (pCategory)
-      m_vecCategories.push_back(pCategory);
-    return pCategory;
-  }
+  CSettingsCategory* AddCategory(const char *strCategory, int labelID);
   void GetCategories(vecSettingsCategory &vecCategories);
   int GetLabelID() { return m_labelID; };
   int GetGroupID() { return m_groupID; };
@@ -500,15 +485,6 @@ public:
   void LoadXML(TiXmlElement *pRootElement, bool hideSettings = false);
   void SaveXML(TiXmlNode *pRootNode);
   void LoadMasterLock(TiXmlElement *pRootElement);
-
-  RESOLUTION GetResolution() const;
-  static RESOLUTION GetResFromString(const CStdString &res);
-  void SetResolution(RESOLUTION res);
-  bool SetLanguage(const CStdString &strLanguage);
-
-  //m_LookAndFeelResolution holds the real gui resolution
-  RESOLUTION m_LookAndFeelResolution;
-  ReplayGainSettings m_replayGain;
 
   void Clear();
 

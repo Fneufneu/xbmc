@@ -22,6 +22,7 @@
 #include "ApplicationMessenger.h"
 #include "TextureCache.h"
 #include "Util.h"
+#include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "video/VideoDatabase.h"
 
@@ -489,6 +490,8 @@ JSONRPC_STATUS CVideoLibrary::SetMovieDetails(const CStdString &method, ITranspo
     videodatabase.SetPlayCount(CFileItem(infos), newPlaycount, infos.m_lastPlayed.IsValid() ? infos.m_lastPlayed : CDateTime::GetCurrentDateTime());
   }
 
+  UpdateResumePoint(parameterObject, infos, videodatabase);
+
   CJSONRPCUtils::NotifyItemUpdated();
   return ACK;
 }
@@ -579,6 +582,8 @@ JSONRPC_STATUS CVideoLibrary::SetEpisodeDetails(const CStdString &method, ITrans
     videodatabase.SetPlayCount(CFileItem(infos), newPlaycount, infos.m_lastPlayed.IsValid() ? infos.m_lastPlayed : CDateTime::GetCurrentDateTime());
   }
 
+  UpdateResumePoint(parameterObject, infos, videodatabase);
+
   CJSONRPCUtils::NotifyItemUpdated();
   return ACK;
 }
@@ -623,6 +628,8 @@ JSONRPC_STATUS CVideoLibrary::SetMusicVideoDetails(const CStdString &method, ITr
     videodatabase.SetPlayCount(CFileItem(infos), newPlaycount, infos.m_lastPlayed.IsValid() ? infos.m_lastPlayed : CDateTime::GetCurrentDateTime());
   }
 
+  UpdateResumePoint(parameterObject, infos, videodatabase);
+
   CJSONRPCUtils::NotifyItemUpdated();
   return ACK;
 }
@@ -654,7 +661,7 @@ JSONRPC_STATUS CVideoLibrary::Scan(const CStdString &method, ITransportLayer *tr
   if (directory.empty())
     cmd = "updatelibrary(video)";
   else
-    cmd.Format("updatelibrary(video, %s)", directory.c_str());
+    cmd.Format("updatelibrary(video, %s)", StringUtils::Paramify(directory).c_str());
 
   CApplicationMessenger::Get().ExecBuiltIn(cmd);
   return ACK;
@@ -664,7 +671,7 @@ JSONRPC_STATUS CVideoLibrary::Export(const CStdString &method, ITransportLayer *
 {
   CStdString cmd;
   if (parameterObject["options"].isMember("path"))
-    cmd.Format("exportlibrary(video, false, %s)", parameterObject["options"]["path"].asString());
+    cmd.Format("exportlibrary(video, false, %s)", StringUtils::Paramify(parameterObject["options"]["path"].asString()));
   else
     cmd.Format("exportlibrary(video, true, %s, %s, %s)",
       parameterObject["options"]["images"].asBoolean() ? "true" : "false",
@@ -854,6 +861,26 @@ JSONRPC_STATUS CVideoLibrary::RemoveVideo(const CVariant &parameterObject)
 
   CJSONRPCUtils::NotifyItemUpdated();
   return ACK;
+}
+
+void CVideoLibrary::UpdateResumePoint(const CVariant &parameterObject, CVideoInfoTag &details, CVideoDatabase &videodatabase)
+{
+  if (!parameterObject["resume"].isNull())
+  {
+    CBookmark bookmark;
+    videodatabase.GetResumeBookMark(details.m_strFileNameAndPath, bookmark);
+    int position = (int)parameterObject["resume"]["position"].asInteger();
+    int total = (int)parameterObject["resume"]["total"].asInteger();
+    if (position == 0)
+      videodatabase.ClearBookMarksOfFile(details.m_strFileNameAndPath, CBookmark::RESUME);
+    else
+    {
+      bookmark.timeInSeconds = position;
+      if (total > 0)
+        bookmark.totalTimeInSeconds = total;
+      videodatabase.AddBookMarkToFile(details.m_strFileNameAndPath, bookmark, CBookmark::RESUME);
+    }
+  }
 }
 
 void CVideoLibrary::UpdateVideoTag(const CVariant &parameterObject, CVideoInfoTag& details, std::map<std::string, std::string> &artwork)

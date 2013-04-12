@@ -105,6 +105,11 @@ enum PixelFormat CDVDVideoCodecFFmpeg::GetFormat( struct AVCodecContext * avctx
     if(*cur == PIX_FMT_VAAPI_VLD && g_guiSettings.GetBool("videoplayer.usevaapi") 
     && (avctx->codec_id != CODEC_ID_MPEG4 || g_advancedSettings.m_videoAllowMpeg4VAAPI)) 
     {
+      if (ctx->GetHardware() != NULL)
+      {
+        ctx->SetHardware(NULL);
+      }
+
       VAAPI::CDecoder* dec = new VAAPI::CDecoder();
       if(dec->Open(avctx, *cur))
       {
@@ -138,6 +143,7 @@ CDVDVideoCodecFFmpeg::CDVDVideoCodecFFmpeg() : CDVDVideoCodec()
   m_iScreenHeight = 0;
   m_iOrientation = 0;
   m_bSoftware = false;
+  m_isHi10p = false;
   m_pHardware = NULL;
   m_iLastKeyframe = 0;
   m_dts = DVD_NOPTS_VALUE;
@@ -187,7 +193,10 @@ bool CDVDVideoCodecFFmpeg::Open(CDVDStreamInfo &hints, CDVDCodecOptions &options
       case FF_PROFILE_H264_HIGH_444_PREDICTIVE:
       case FF_PROFILE_H264_HIGH_444_INTRA:
       case FF_PROFILE_H264_CAVLC_444:
+      // this is needed to not open the decoders
       m_bSoftware = true;
+      // this we need to enable multithreading for hi10p via advancedsettings
+      m_isHi10p = true;
       break;
     }
   }
@@ -247,8 +256,18 @@ bool CDVDVideoCodecFFmpeg::Open(CDVDStreamInfo &hints, CDVDCodecOptions &options
   m_pCodecContext->codec_tag = hints.codec_tag;
   /* Only allow slice threading, since frame threading is more
    * sensitive to changes in frame sizes, and it causes crashes
-   * during HW accell */
-  m_pCodecContext->thread_type = FF_THREAD_SLICE;
+   * during HW accell - so we unset it in this case.
+   *
+   * When we detect Hi10p and user did not disable hi10pmultithreading
+   * via advancedsettings.xml we keep the ffmpeg default thread type.
+   * */
+  if(m_isHi10p && !g_advancedSettings.m_videoDisableHi10pMultithreading)
+  {
+    CLog::Log(LOGDEBUG,"CDVDVideoCodecFFmpeg::Open() Keep default threading for Hi10p: %d",
+                        m_pCodecContext->thread_type);
+  }
+  else
+    m_pCodecContext->thread_type = FF_THREAD_SLICE;
 
 #if defined(TARGET_DARWIN_IOS)
   // ffmpeg with enabled neon will crash and burn if this is enabled
@@ -280,7 +299,7 @@ bool CDVDVideoCodecFFmpeg::Open(CDVDStreamInfo &hints, CDVDCodecOptions &options
   }
 
   // set any special options
-  for(std::vector<CDVDCodecOption>::iterator it = options.m_keys.begin(); it != options.m_keys.end(); it++)
+  for(std::vector<CDVDCodecOption>::iterator it = options.m_keys.begin(); it != options.m_keys.end(); ++it)
   {
     if (it->m_name == "surfaces")
       m_uSurfacesCount = std::atoi(it->m_value.c_str());
@@ -825,7 +844,7 @@ int CDVDVideoCodecFFmpeg::FilterProcess(AVFrame* frame)
   {
 
     result = m_dllAvFilter.av_buffersink_get_buffer_ref(m_pFilterOut, &m_pBufferRef, 0);
-    if(!m_pBufferRef)
+    if(!m_pBufferRef || result < 0)
     {
       CLog::Log(LOGERROR, "CDVDVideoCodecFFmpeg::FilterProcess - cur_buf");
       return VC_ERROR;

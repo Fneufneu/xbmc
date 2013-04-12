@@ -222,6 +222,7 @@ void CDVDPlayerSubtitle::Process(double pts)
     while(pOverlay)
     {
       m_pOverlayContainer->Add(pOverlay);
+      pOverlay->Release();
       pOverlay = m_pSubtitleFileParser->Parse(pts);
     }
 
@@ -245,7 +246,7 @@ void CDVDPlayerSubtitle::GetCurrentSubtitle(CStdString& strSubtitle, double pts)
   VecOverlays* pOverlays = m_pOverlayContainer->GetOverlays();
   if (pOverlays)
   {
-    for(vector<CDVDOverlay*>::iterator it = pOverlays->begin();it != pOverlays->end();it++)
+    for(vector<CDVDOverlay*>::iterator it = pOverlays->begin();it != pOverlays->end();++it)
     {
       CDVDOverlay* pOverlay = *it;
 

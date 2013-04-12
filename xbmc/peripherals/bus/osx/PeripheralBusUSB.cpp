@@ -250,7 +250,7 @@ void CPeripheralBusUSB::DeviceAttachCallback(CPeripheralBusUSB* refCon, io_itera
             if (deviceFilePathAsCFString)
             {
               // Convert the path from a CFString to a std::string
-              if (!DarwinCFStringRefToString(deviceFilePathAsCFString, ttlDeviceFilePath))
+              if (!DarwinCFStringRefToUTF8String(deviceFilePathAsCFString, ttlDeviceFilePath))
                 CLog::Log(LOGWARNING, "CPeripheralBusUSB::DeviceAttachCallback failed to convert CFStringRef");
               CFRelease(deviceFilePathAsCFString);
             }
@@ -267,6 +267,7 @@ void CPeripheralBusUSB::DeviceAttachCallback(CPeripheralBusUSB* refCon, io_itera
         else
           privateDataRef->result.m_type = refCon->GetType(bDeviceClass);
 
+        privateDataRef->result.m_iSequence = refCon->GetNumberOfPeripheralsWithId(privateDataRef->result.m_iVendorId, privateDataRef->result.m_iProductId);
         if (!refCon->m_scan_results.ContainsResult(privateDataRef->result))
         {
           // register this usb device for an interest notification callback. 

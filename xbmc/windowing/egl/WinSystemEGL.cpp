@@ -23,6 +23,7 @@
 
 #include "WinSystemEGL.h"
 #include "filesystem/SpecialProtocol.h"
+#include "settings/DisplaySettings.h"
 #include "settings/Settings.h"
 #include "settings/GUISettings.h"
 #include "utils/log.h"
@@ -43,7 +44,7 @@ CWinSystemEGL::CWinSystemEGL() : CWinSystemBase()
   m_config            = NULL;
 
   m_egl               = NULL;
-  m_iVSyncMode        = false;
+  m_iVSyncMode        = 0;
 }
 
 CWinSystemEGL::~CWinSystemEGL()
@@ -319,15 +320,14 @@ void CWinSystemEGL::UpdateResolutions()
   {
     // if this is a new setting,
     // create a new empty setting to fill in.
-    if ((int)g_settings.m_ResInfo.size() <= res_index)
+    if ((int)CDisplaySettings::Get().ResolutionInfoSize() <= res_index)
     {
       RESOLUTION_INFO res;
-
-      g_settings.m_ResInfo.push_back(res);
+      CDisplaySettings::Get().AddResolutionInfo(res);
     }
 
     g_graphicsContext.ResetOverscan(resolutions[i]);
-    g_settings.m_ResInfo[res_index] = resolutions[i];
+    CDisplaySettings::Get().GetResolutionInfo(res_index) = resolutions[i];
 
     CLog::Log(LOGNOTICE, "Found resolution %d x %d for display %d with %d x %d%s @ %f Hz\n",
       resolutions[i].iWidth,
@@ -359,9 +359,9 @@ void CWinSystemEGL::UpdateResolutions()
       resDesktop.fRefreshRate,
       (int)ResDesktop, (int)RES_DESKTOP);
 
-    RESOLUTION_INFO desktop = g_settings.m_ResInfo[RES_DESKTOP];
-    g_settings.m_ResInfo[RES_DESKTOP] = g_settings.m_ResInfo[ResDesktop];
-    g_settings.m_ResInfo[ResDesktop] = desktop;
+    RESOLUTION_INFO desktop = CDisplaySettings::Get().GetResolutionInfo(RES_DESKTOP);
+    CDisplaySettings::Get().GetResolutionInfo(RES_DESKTOP) = CDisplaySettings::Get().GetResolutionInfo(ResDesktop);
+    CDisplaySettings::Get().GetResolutionInfo(ResDesktop) = desktop;
   }
 }
 
@@ -384,9 +384,12 @@ bool CWinSystemEGL::PresentRenderImpl(const CDirtyRegionList &dirty)
 
 void CWinSystemEGL::SetVSyncImpl(bool enable)
 {
-  m_iVSyncMode = enable;
-  if (!m_egl->SetVSync(m_display, m_iVSyncMode))
+  m_iVSyncMode = enable ? 10:0;
+  if (!m_egl->SetVSync(m_display, enable))
+  {
+    m_iVSyncMode = 0;
     CLog::Log(LOGERROR, "%s,Could not set egl vsync", __FUNCTION__);
+  }
 }
 
 void CWinSystemEGL::ShowOSMouse(bool show)
@@ -441,7 +444,7 @@ EGLContext CWinSystemEGL::GetEGLContext()
 // the logic in this function should match whether CBaseRenderer::FindClosestResolution picks a 3D mode
 bool CWinSystemEGL::Support3D(int width, int height, uint32_t mode) const
 {
-  RESOLUTION_INFO &curr = g_settings.m_ResInfo[g_graphicsContext.GetVideoResolution()];
+  RESOLUTION_INFO &curr = CDisplaySettings::Get().GetResolutionInfo(g_graphicsContext.GetVideoResolution());
 
   // if we are using automatic hdmi mode switching
   if (g_guiSettings.GetInt("videoplayer.adjustrefreshrate") != ADJUST_REFRESHRATE_OFF)
@@ -468,9 +471,9 @@ bool CWinSystemEGL::Support3D(int width, int height, uint32_t mode) const
       searchHeight /= 2;
     }
     // only search the custom resolutions
-    for (unsigned int i = (int)RES_DESKTOP; i < g_settings.m_ResInfo.size(); i++)
+    for (unsigned int i = (int)RES_DESKTOP; i < CDisplaySettings::Get().ResolutionInfoSize(); i++)
     {
-      RESOLUTION_INFO res = g_settings.m_ResInfo[i];
+      RESOLUTION_INFO res = CDisplaySettings::Get().GetResolutionInfo(i);
       if(res.iScreenWidth == searchWidth && res.iScreenHeight == searchHeight && (res.dwFlags & mode))
         return true;
     }

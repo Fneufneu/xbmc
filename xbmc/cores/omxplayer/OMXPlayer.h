@@ -74,6 +74,7 @@ public:
   int              source;
   double           dts;    // last dts from demuxer, used to find disncontinuities
   double           dur;    // last frame expected duration
+  double           dts_state; // when did we last send a playback state update
   CDVDStreamInfo   hint;   // stream hints, used to notice stream changes
   void*            stream; // pointer or integer, identifying stream playing. if it changes stream changed
   int              changes; // remembered counter from stream to track codec changes
@@ -96,6 +97,7 @@ public:
     id     = -1;
     source = STREAM_SOURCE_NONE;
     dts    = DVD_NOPTS_VALUE;
+    dts_state = DVD_NOPTS_VALUE;
     dur    = DVD_NOPTS_VALUE;
     hint.Clear();
     stream = NULL;
@@ -235,8 +237,6 @@ public:
   virtual void  GetVideoInfo(CStdString &strVideoInfo);
   virtual void  GetGeneralInfo(CStdString &strVideoInfo);
   virtual void  Update(bool bPauseDrawing);
-  virtual void  GetVideoRect(CRect& SrcRect, CRect& DestRect);
-  virtual void  GetVideoAspectRatio(float &fAR);
   virtual void  UpdateApplication(double timeout);
   virtual bool  CanRecord();
   virtual bool  IsRecording();
@@ -249,19 +249,15 @@ public:
   virtual float GetSubTitleDelay();
   virtual int   GetSubtitleCount();
   virtual int   GetSubtitle();
-  virtual void  GetSubtitleName(int iStream, CStdString &strStreamName);
-  virtual void  GetSubtitleLanguage(int iStream, CStdString &strStreamLang);
+  virtual void  GetSubtitleStreamInfo(int index, SPlayerSubtitleStreamInfo &info);
   virtual void  SetSubtitle(int iStream);
   virtual bool  GetSubtitleVisible();
   virtual void  SetSubtitleVisible(bool bVisible);
-  virtual bool  GetSubtitleExtension(CStdString &strSubtitleExtension) { return false; }
   virtual int   AddSubtitle(const CStdString& strSubPath);
 
   virtual int   GetAudioStreamCount();
   virtual int   GetAudioStream();
-  virtual void  GetAudioStreamName(int iStream, CStdString &strStreamName);
   virtual void  SetAudioStream(int iStream);
-  virtual void  GetAudioStreamLanguage(int iStream, CStdString &strLanguage);
 
   virtual TextCacheStruct_t* GetTeletextCache();
   virtual void  LoadPage(int p, int sp, unsigned char* buffer);
@@ -276,12 +272,9 @@ public:
   virtual int64_t GetTime();
   virtual int64_t GetTotalTime();
   virtual void  ToFFRW(int iSpeed = 0);
-  virtual int   GetAudioBitrate();
-  virtual int   GetVideoBitrate();
+  virtual void  GetAudioStreamInfo(int index, SPlayerAudioStreamInfo &info);
+  virtual void  GetVideoStreamInfo(SPlayerVideoStreamInfo &info);
   virtual int   GetSourceBitrate();
-  virtual int   GetChannels();
-  virtual CStdString GetAudioCodecName();
-  virtual CStdString GetVideoCodecName();
   virtual int   GetPictureWidth();
   virtual int   GetPictureHeight();
   virtual bool  GetStreamDetails(CStreamDetails &details);
@@ -375,15 +368,27 @@ protected:
     int iSelectedAudioStream; // mpeg stream id, or -1 if disabled
   } m_dvd;
 
+  enum ETimeSource
+  {
+    ETIMESOURCE_CLOCK,
+    ETIMESOURCE_INPUT,
+    ETIMESOURCE_MENU,
+  };
+
+  friend class OMXPlayerVideo;
+  friend class OMXPlayerAudio;
+
   struct SPlayerState
   {
     SPlayerState() { Clear(); }
     void Clear()
     {
+      player        = 0;
       timestamp     = 0;
       time          = 0;
       time_total    = 0;
       time_offset   = 0;
+      time_src      = ETIMESOURCE_CLOCK;
       dts           = DVD_NOPTS_VALUE;
       player_state  = "";
       chapter       = 0;
@@ -401,11 +406,14 @@ protected:
       cache_offset  = 0.0;
     }
 
+    int    player;            // source of this data
+
     double timestamp;         // last time of update
     double time_offset;       // difference between time and pts
 
     double time;              // current playback time
     double time_total;        // total playback time
+    ETimeSource time_src;     // current time source
     double dts;               // last known dts
 
     std::string player_state;  // full player state
@@ -427,7 +435,7 @@ protected:
     double  cache_level;   // current estimated required cache level
     double  cache_delay;   // time until cache is expected to reach estimated level
     double  cache_offset;  // percentage of file ahead of current position
-  } m_State;
+  } m_State, m_StateInput;
   CCriticalSection m_StateSection;
 
   CEdl m_Edl;
@@ -490,4 +498,7 @@ private:
   bool                    m_change_volume;
   CDVDOverlayContainer    m_overlayContainer;
   ECacheState             m_caching;
+
+  bool m_HasVideo;
+  bool m_HasAudio;
 };

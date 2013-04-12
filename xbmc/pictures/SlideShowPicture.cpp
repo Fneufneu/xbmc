@@ -22,6 +22,7 @@
 #include "system.h"
 #include "guilib/Texture.h"
 #include "settings/AdvancedSettings.h"
+#include "settings/DisplaySettings.h"
 #include "settings/Settings.h"
 #include "settings/GUISettings.h"
 #include "windowing/WindowingFactory.h"
@@ -52,6 +53,9 @@ CSlideShowPic::CSlideShowPic()
   m_bIsFinished = false;
   m_bDrawNextImage = false;
   m_bTransistionImmediately = false;
+
+  m_bCanMoveHorizontally = false;
+  m_bCanMoveVertically = false;
 }
 
 CSlideShowPic::~CSlideShowPic()
@@ -133,8 +137,8 @@ void CSlideShowPic::SetTexture(int iSlideNumber, CBaseTexture* pTexture, DISPLAY
   if (m_displayEffect == EFFECT_PANORAMA)
   {
     RESOLUTION iRes = g_graphicsContext.GetVideoResolution();
-	  float fScreenWidth = (float)g_settings.m_ResInfo[iRes].Overscan.right - g_settings.m_ResInfo[iRes].Overscan.left;
-    float fScreenHeight = (float)g_settings.m_ResInfo[iRes].Overscan.bottom - g_settings.m_ResInfo[iRes].Overscan.top;
+	  float fScreenWidth = (float)CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.right - CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.left;
+    float fScreenHeight = (float)CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.bottom - CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.top;
 
     if (m_fWidth > m_fHeight)
     {
@@ -392,12 +396,12 @@ void CSlideShowPic::Process(unsigned int currentTime, CDirtyRegionList &dirtyreg
   // calculate where we should render (and how large it should be)
   // calculate aspect ratio correction factor
   RESOLUTION iRes = g_graphicsContext.GetVideoResolution();
-  float fOffsetX = (float)g_settings.m_ResInfo[iRes].Overscan.left;
-  float fOffsetY = (float)g_settings.m_ResInfo[iRes].Overscan.top;
-  float fScreenWidth = (float)g_settings.m_ResInfo[iRes].Overscan.right - g_settings.m_ResInfo[iRes].Overscan.left;
-  float fScreenHeight = (float)g_settings.m_ResInfo[iRes].Overscan.bottom - g_settings.m_ResInfo[iRes].Overscan.top;
+  float fOffsetX = (float)CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.left;
+  float fOffsetY = (float)CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.top;
+  float fScreenWidth = (float)CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.right - CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.left;
+  float fScreenHeight = (float)CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.bottom - CDisplaySettings::Get().GetResolutionInfo(iRes).Overscan.top;
 
-  float fPixelRatio = g_settings.m_ResInfo[iRes].fPixelRatio;
+  float fPixelRatio = CDisplaySettings::Get().GetResolutionInfo(iRes).fPixelRatio;
 
   // Rotate the image as needed
   float x[4];
@@ -481,6 +485,7 @@ void CSlideShowPic::Process(unsigned int currentTime, CDirtyRegionList &dirtyreg
     float w = maxx - minx;
     float h = maxy - miny;
     m_bCanMoveHorizontally = (w >= fScreenWidth);
+    m_bCanMoveVertically   = (h >= fScreenHeight);
     if (w >= fScreenWidth)
     { // must have no black bars
       if (minx + m_fZoomLeft*w > fOffsetX)

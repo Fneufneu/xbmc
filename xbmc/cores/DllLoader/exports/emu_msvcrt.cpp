@@ -104,12 +104,6 @@ bool bVecDirsInited = false;
 extern void update_cache_dialog(const char* tmp);
 #endif
 
-struct _env
-{
-  const char* name;
-  char* value;
-};
-
 #define EMU_MAX_ENVIRONMENT_ITEMS 100
 static char *dll__environ_imp[EMU_MAX_ENVIRONMENT_ITEMS + 1];
 extern "C" char **dll__environ;
@@ -971,7 +965,7 @@ extern "C"
 
     // locate next free directory
     int iDirSlot=0;
-    while ((vecDirsOpen[iDirSlot].curr_index != -1) && (iDirSlot<MAX_OPEN_DIRS)) iDirSlot++;
+    while ((iDirSlot<MAX_OPEN_DIRS) && (vecDirsOpen[iDirSlot].curr_index != -1)) iDirSlot++;
     if (iDirSlot >= MAX_OPEN_DIRS)
     {
       CLog::Log(LOGDEBUG, "Dll: Max open dirs reached");

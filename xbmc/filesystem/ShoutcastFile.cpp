@@ -25,7 +25,6 @@
 
 #include "threads/SystemClock.h"
 #include "system.h"
-#include "Application.h"
 #include "ShoutcastFile.h"
 #include "settings/GUISettings.h"
 #include "guilib/GUIWindowManager.h"
@@ -134,6 +133,7 @@ void CShoutcastFile::Close()
 {
   StopThread();
   delete[] m_buffer;
+  m_buffer = NULL;
   m_file.Close();
 }
 

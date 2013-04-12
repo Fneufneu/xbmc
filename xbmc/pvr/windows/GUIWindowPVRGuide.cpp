@@ -23,13 +23,13 @@
 #include "Application.h"
 #include "dialogs/GUIDialogOK.h"
 #include "guilib/GUIWindowManager.h"
+#include "guilib/Key.h"
 #include "pvr/PVRManager.h"
 #include "pvr/channels/PVRChannelGroupsContainer.h"
 #include "epg/EpgContainer.h"
 #include "pvr/windows/GUIWindowPVR.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/GUISettings.h"
-#include "settings/Settings.h"
 #include "threads/SingleLock.h"
 #include "utils/log.h"
 #include "pvr/addons/PVRClients.h"
@@ -429,7 +429,11 @@ bool CGUIWindowPVRGuide::PlayEpgItem(CFileItem *item)
   CLog::Log(LOGDEBUG, "play channel '%s'", channel->ChannelName().c_str());
   bool bReturn = g_application.PlayFile(CFileItem(*channel));
   if (!bReturn)
-    CGUIDialogOK::ShowAndGetInput(19033,0,19035,0);
+  {
+    CStdString msg;
+    msg.Format(g_localizeStrings.Get(19035).c_str(), channel->ChannelName().c_str()); // CHANNELNAME could not be played. Check the log for details.
+    CGUIDialogOK::ShowAndGetInput(19033, 0, msg, 0);
+  }
 
   return bReturn;
 }

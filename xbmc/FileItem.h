@@ -111,7 +111,6 @@ public:
   bool IsAudio() const;
   bool IsKaraoke() const;
   bool IsCUESheet() const;
-  bool IsLastFM() const;
   bool IsInternetStream(const bool bStrictCheck = false) const;
   bool IsPlayList() const;
   bool IsSmartPlayList() const;
@@ -469,13 +468,14 @@ public:
   void Remove(int iItem);
   CFileItemPtr Get(int iItem);
   const CFileItemPtr Get(int iItem) const;
+  const VECFILEITEMS GetList() const { return m_items; }
   CFileItemPtr Get(const CStdString& strPath);
   const CFileItemPtr Get(const CStdString& strPath) const;
   int Size() const;
   bool IsEmpty() const;
   void Append(const CFileItemList& itemlist);
   void Assign(const CFileItemList& itemlist, bool append = false);
-  bool Copy  (const CFileItemList& item);
+  bool Copy  (const CFileItemList& item, bool copyItems = true);
   void Reserve(int iCount);
   void Sort(SORT_METHOD sortMethod, SortOrder sortOrder);
   /* \brief Sorts the items based on the given sorting options

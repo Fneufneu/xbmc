@@ -52,10 +52,13 @@
 #include "guilib/GUIKeyboardFactory.h"
 #include "filesystem/Directory.h"
 #include "playlists/PlayList.h"
+#include "profiles/ProfilesManager.h"
 #include "settings/Settings.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/GUISettings.h"
-#include "settings/GUIDialogContentSettings.h"
+#include "settings/MediaSettings.h"
+#include "settings/dialogs/GUIDialogContentSettings.h"
+#include "guilib/Key.h"
 #include "guilib/LocalizeStrings.h"
 #include "utils/StringUtils.h"
 #include "utils/log.h"
@@ -216,7 +219,7 @@ bool CGUIWindowVideoBase::OnMessage(CGUIMessage& message)
         else if (iAction == ACTION_DELETE_ITEM)
         {
           // is delete allowed?
-          if (g_settings.GetCurrentProfile().canWriteDatabases())
+          if (CProfilesManager::Get().GetCurrentProfile().canWriteDatabases())
           {
             // must be at the title window
             if (GetID() == WINDOW_VIDEO_NAV)
@@ -456,10 +459,18 @@ bool CGUIWindowVideoBase::ShowIMDB(CFileItem *item, const ScraperPtr &info2)
     needsRefresh = pDlgInfo->NeedRefresh();
     if (!needsRefresh)
       return pDlgInfo->HasUpdatedThumb();
+    // check if the item in the video info dialog has changed and if so, get the new item
+    else if (pDlgInfo->GetCurrentListItem() != NULL)
+    {
+      item = pDlgInfo->GetCurrentListItem().get();
+
+      if (item->IsVideoDb() && item->HasVideoInfoTag())
+        item->SetPath(item->GetVideoInfoTag()->GetPath());
+    }
   }
 
   // quietly return if Internet lookups are disabled
-  if (!g_settings.GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
+  if (!CProfilesManager::Get().GetCurrentProfile().canWriteDatabases() && !g_passwordManager.bMasterUser)
     return false;
 
   if(!info)
@@ -502,7 +513,7 @@ bool CGUIWindowVideoBase::ShowIMDB(CFileItem *item, const ScraperPtr &info2)
       if (needsRefresh)
       {
         bHasInfo = true;
-        if (nfoResult == CNfoFile::URL_NFO || nfoResult == CNfoFile::COMBINED_NFO || nfoResult == CNfoFile::FULL_NFO)
+        if (!info->IsNoop() && (nfoResult == CNfoFile::URL_NFO || nfoResult == CNfoFile::COMBINED_NFO || nfoResult == CNfoFile::FULL_NFO))
         {
           if (CGUIDialogYesNo::ShowAndGetInput(13346,20446,20447,20022))
           {
@@ -773,9 +784,9 @@ void CGUIWindowVideoBase::AddItemToPlayList(const CFileItemPtr &pItem, CFileItem
     GetDirectory(pItem->GetPath(), items);
     FormatAndSort(items);
 
-    int watchedMode = g_settings.GetWatchMode(items.GetContent());
-    bool unwatchedOnly = watchedMode == VIDEO_SHOW_UNWATCHED;
-    bool watchedOnly = watchedMode == VIDEO_SHOW_WATCHED;
+    int watchedMode = CMediaSettings::Get().GetWatchedMode(items.GetContent());
+    bool unwatchedOnly = watchedMode == WatchedModeUnwatched;
+    bool watchedOnly = watchedMode == WatchedModeWatched;
     for (int i = 0; i < items.Size(); ++i)
     {
       if (items[i]->m_bIsFolder)
@@ -1241,10 +1252,10 @@ void CGUIWindowVideoBase::GetContextButtons(int itemNumber, CContextButtons &but
         if (item->IsVideoDb())
         {
           CFileItem item2(item->GetVideoInfoTag()->m_strFileNameAndPath, false);
-          CPlayerCoreFactory::GetPlayers(item2, vecCores);
+          CPlayerCoreFactory::Get().GetPlayers(item2, vecCores);
         }
         else
-          CPlayerCoreFactory::GetPlayers(*item, vecCores);
+          CPlayerCoreFactory::Get().GetPlayers(*item, vecCores);
         if (vecCores.size() > 1)
           buttons.Add(CONTEXT_BUTTON_PLAY_WITH, 15213);
       }
@@ -1379,11 +1390,11 @@ bool CGUIWindowVideoBase::OnContextButton(int itemNumber, CONTEXT_BUTTON button)
       if (item->IsVideoDb())
       {
         CFileItem item2(*item->GetVideoInfoTag());
-        CPlayerCoreFactory::GetPlayers(item2, vecCores);
+        CPlayerCoreFactory::Get().GetPlayers(item2, vecCores);
       }
       else
-        CPlayerCoreFactory::GetPlayers(*item, vecCores);
-      g_application.m_eForcedNextPlayer = CPlayerCoreFactory::SelectPlayerDialog(vecCores);
+        CPlayerCoreFactory::Get().GetPlayers(*item, vecCores);
+      g_application.m_eForcedNextPlayer = CPlayerCoreFactory::Get().SelectPlayerDialog(vecCores);
       if (g_application.m_eForcedNextPlayer != EPC_NONE)
         OnClick(itemNumber);
       return true;
@@ -1627,8 +1638,8 @@ void CGUIWindowVideoBase::OnDeleteItem(CFileItemPtr item)
   // HACK: stacked files need to be treated as folders in order to be deleted
   if (item->IsStack())
     item->m_bIsFolder = true;
-  if (g_settings.GetCurrentProfile().getLockMode() != LOCK_MODE_EVERYONE &&
-      g_settings.GetCurrentProfile().filesLocked())
+  if (CProfilesManager::Get().GetCurrentProfile().getLockMode() != LOCK_MODE_EVERYONE &&
+      CProfilesManager::Get().GetCurrentProfile().filesLocked())
   {
     if (!g_passwordManager.IsMasterLockUnlocked(true))
       return;
@@ -1642,7 +1653,7 @@ void CGUIWindowVideoBase::OnDeleteItem(CFileItemPtr item)
 
 void CGUIWindowVideoBase::MarkWatched(const CFileItemPtr &item, bool bMark)
 {
-  if (!g_settings.GetCurrentProfile().canWriteDatabases())
+  if (!CProfilesManager::Get().GetCurrentProfile().canWriteDatabases())
     return;
   // dont allow update while scanning
   if (g_application.IsVideoScanning())
@@ -1831,7 +1842,7 @@ bool CGUIWindowVideoBase::GetDirectory(const CStdString &strDirectory, CFileItem
   // add in the "New Playlist" item if we're in the playlists folder
   if ((items.GetPath() == "special://videoplaylists/") && !items.Contains("newplaylist://"))
   {
-    CFileItemPtr newPlaylist(new CFileItem(g_settings.GetUserDataItem("PartyMode-Video.xsp"),false));
+    CFileItemPtr newPlaylist(new CFileItem(CProfilesManager::Get().GetUserDataItem("PartyMode-Video.xsp"),false));
     newPlaylist->SetLabel(g_localizeStrings.Get(16035));
     newPlaylist->SetLabelPreformated(true);
     newPlaylist->m_bIsFolder = true;
@@ -2077,7 +2088,10 @@ void CGUIWindowVideoBase::OnSearchItemFound(const CFileItem* pSelItem)
     for (int i = 0; i < (int)m_vecItems->Size(); i++)
     {
       CFileItemPtr pItem = m_vecItems->Get(i);
-      if (pItem->GetPath() == pSelItem->GetPath())
+      CURL url(pItem->GetPath());
+      if (pSelItem->IsVideoDb())
+        url.SetOptions("");
+      if (url.Get() == pSelItem->GetPath())
       {
         m_viewControl.SetSelectedItem(i);
         break;

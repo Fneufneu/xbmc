@@ -6,6 +6,7 @@
 #include "FileItem.h"
 #include "pvr/PVRManager.h"
 #include "pvr/recordings/PVRRecordings.h"
+#include "settings/MediaSettings.h"
 
 class CSaveFileStateJob : public CJob
 {
@@ -91,19 +92,24 @@ bool CSaveFileStateJob::DoWork()
           }
         }
 
-        if (g_settings.m_currentVideoSettings != g_settings.m_defaultVideoSettings)
+        if (CMediaSettings::Get().GetCurrentVideoSettings() != CMediaSettings::Get().GetDefaultVideoSettings())
         {
-          videodatabase.SetVideoSettings(progressTrackingFile, g_settings.m_currentVideoSettings);
+          videodatabase.SetVideoSettings(progressTrackingFile, CMediaSettings::Get().GetCurrentVideoSettings());
         }
 
-        if ((m_item.IsDVDImage() ||
-             m_item.IsDVDFile()    ) &&
-             m_item.HasVideoInfoTag() &&
-             m_item.GetVideoInfoTag()->HasStreamDetails())
+        if (m_item.HasVideoInfoTag() && m_item.GetVideoInfoTag()->HasStreamDetails())
         {
-          videodatabase.SetStreamDetailsForFile(m_item.GetVideoInfoTag()->m_streamDetails,progressTrackingFile);
-          updateListing = true;
+          CFileItem dbItem(m_item);
+          videodatabase.GetStreamDetails(dbItem); // Fetch stream details from the db (if any)
+
+          // Check whether the item's db streamdetails need updating
+          if (!dbItem.GetVideoInfoTag()->HasStreamDetails() || dbItem.GetVideoInfoTag()->m_streamDetails != m_item.GetVideoInfoTag()->m_streamDetails)
+          {
+            videodatabase.SetStreamDetailsForFile(m_item.GetVideoInfoTag()->m_streamDetails, progressTrackingFile);
+            updateListing = true;
+          }
         }
+
         // in order to properly update the the list, we need to update the stack item which is held in g_application.m_stackFileItemToUpdate
         if (m_item.HasProperty("stackFileItemToUpdate"))
         {

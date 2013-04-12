@@ -25,13 +25,14 @@
 #include "Application.h"
 #include "PlayListPlayer.h"
 #include "PartyModeManager.h"
-#include "music/LastFmManager.h"
 #include "utils/LabelFormatter.h"
 #include "music/tags/MusicInfoTag.h"
 #include "guilib/GUIWindowManager.h"
 #include "guilib/GUIKeyboardFactory.h"
+#include "guilib/Key.h"
 #include "GUIUserMessages.h"
 #include "Favourites.h"
+#include "profiles/ProfilesManager.h"
 #include "settings/Settings.h"
 #include "settings/GUISettings.h"
 #include "guilib/LocalizeStrings.h"
@@ -365,7 +366,7 @@ void CGUIWindowMusicPlayList::UpdateButtons()
   CGUIWindowMusicBase::UpdateButtons();
 
   // Update playlist buttons
-  if (m_vecItems->Size() && !g_partyModeManager.IsEnabled() && !CLastFmManager::GetInstance()->IsRadioEnabled())
+  if (m_vecItems->Size() && !g_partyModeManager.IsEnabled())
   {
     CONTROL_ENABLE(CONTROL_BTNSHUFFLE);
     CONTROL_ENABLE(CONTROL_BTNSAVE);
@@ -516,12 +517,11 @@ void CGUIWindowMusicPlayList::GetContextButtons(int itemNumber, CContextButtons 
     { // aren't in a move
       // check what players we have, if we have multiple display play with option
       VECPLAYERCORES vecCores;
-      CPlayerCoreFactory::GetPlayers(*item, vecCores);
+      CPlayerCoreFactory::Get().GetPlayers(*item, vecCores);
       if (vecCores.size() > 1)
         buttons.Add(CONTEXT_BUTTON_PLAY_WITH, 15213); // Play With...
 
-      if (!item->IsLastFM())
-        buttons.Add(CONTEXT_BUTTON_SONG_INFO, 658); // Song Info
+      buttons.Add(CONTEXT_BUTTON_SONG_INFO, 658); // Song Info
       if (CFavourites::IsFavourite(item.get(), GetID()))
         buttons.Add(CONTEXT_BUTTON_ADD_FAVOURITE, 14077);     // Remove Favourite
       else
@@ -557,8 +557,8 @@ bool CGUIWindowMusicPlayList::OnContextButton(int itemNumber, CONTEXT_BUTTON but
         break;
 
       VECPLAYERCORES vecCores;  
-      CPlayerCoreFactory::GetPlayers(*item, vecCores);
-      g_application.m_eForcedNextPlayer = CPlayerCoreFactory::SelectPlayerDialog(vecCores);
+      CPlayerCoreFactory::Get().GetPlayers(*item, vecCores);
+      g_application.m_eForcedNextPlayer = CPlayerCoreFactory::Get().SelectPlayerDialog(vecCores);
       if( g_application.m_eForcedNextPlayer != EPC_NONE )
         OnClick(itemNumber);
       return true;
@@ -601,7 +601,7 @@ bool CGUIWindowMusicPlayList::OnContextButton(int itemNumber, CONTEXT_BUTTON but
 
   case CONTEXT_BUTTON_EDIT_PARTYMODE:
   {
-    CStdString playlist = g_settings.GetUserDataItem("PartyMode.xsp");
+    CStdString playlist = CProfilesManager::Get().GetUserDataItem("PartyMode.xsp");
     if (CGUIDialogSmartPlaylistEditor::EditPlaylist(playlist))
     {
       // apply new rules

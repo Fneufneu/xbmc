@@ -544,7 +544,8 @@
       { "name": "directory", "type": "string", "required": true },
       { "name": "media", "$ref": "Files.Media", "default": "files" },
       { "name": "properties", "$ref": "List.Fields.Files" },
-      { "name": "sort", "$ref": "List.Sort" }
+      { "name": "sort", "$ref": "List.Sort" },
+      { "name": "limits", "$ref": "List.Limits", "description": "Limits are applied after getting the directory content thus retrieval is not faster when they are applied." }
     ],
     "returns": {
       "type": "object",
@@ -1275,7 +1276,8 @@
       { "name": "thumbnail", "$ref": "Optional.String" },
       { "name": "fanart", "$ref": "Optional.String" },
       { "name": "tag", "type": [ "null", { "$ref": "Array.String", "required": true } ], "default": null },
-      { "name": "art", "type": [ "null", { "$ref": "Media.Artwork", "required": true } ], "default": null }
+      { "name": "art", "type": [ "null", { "$ref": "Media.Artwork", "required": true } ], "default": null },
+      { "name": "resume", "type": [ "null", { "$ref": "Video.Resume", "required": true } ], "default": null }
     ],
     "returns": "string"
   },
@@ -1330,7 +1332,8 @@
       { "name": "originaltitle", "$ref": "Optional.String" },
       { "name": "thumbnail", "$ref": "Optional.String" },
       { "name": "fanart", "$ref": "Optional.String" },
-      { "name": "art", "type": [ "null", { "$ref": "Media.Artwork", "required": true } ], "default": null }
+      { "name": "art", "type": [ "null", { "$ref": "Media.Artwork", "required": true } ], "default": null },
+      { "name": "resume", "type": [ "null", { "$ref": "Video.Resume", "required": true } ], "default": null }	  
     ],
     "returns": "string"
   },
@@ -1356,7 +1359,8 @@
       { "name": "thumbnail", "$ref": "Optional.String" },
       { "name": "fanart", "$ref": "Optional.String" },
       { "name": "tag", "type": [ "null", { "$ref": "Array.String", "required": true } ], "default": null },
-      { "name": "art", "type": [ "null", { "$ref": "Media.Artwork", "required": true } ], "default": null }
+      { "name": "art", "type": [ "null", { "$ref": "Media.Artwork", "required": true } ], "default": null },
+      { "name": "resume", "type": [ "null", { "$ref": "Video.Resume", "required": true } ], "default": null }	  
     ],
     "returns": "string"
   },

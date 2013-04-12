@@ -169,6 +169,7 @@ namespace INFO
 #define SYSTEM_ISINHIBIT            184
 #define SYSTEM_HAS_SHUTDOWN         185
 #define SYSTEM_HAS_PVR              186
+#define SYSTEM_STARTUP_WINDOW       187
 
 #define NETWORK_IP_ADDRESS          190
 #define NETWORK_MAC_ADDRESS         191
@@ -268,15 +269,7 @@ namespace INFO
 #define VIDEOPLAYER_CHANNEL_GROUP     306
 #define VIDEOPLAYER_PARENTAL_RATING   307
 #define VIDEOPLAYER_HAS_EPG           308
-
-#define AUDIOSCROBBLER_ENABLED      325
-#define AUDIOSCROBBLER_CONN_STATE   326
-#define AUDIOSCROBBLER_SUBMIT_INT   327
-#define AUDIOSCROBBLER_FILES_CACHED 328
-#define AUDIOSCROBBLER_SUBMIT_STATE 329
-#define LASTFM_RADIOPLAYING         330
-#define LASTFM_CANLOVE              331
-#define LASTFM_CANBAN               332
+#define VIDEOPLAYER_VOTES             309
 
 #define CONTAINER_CAN_FILTER         342
 #define CONTAINER_CAN_FILTERADVANCED 343
@@ -489,7 +482,7 @@ namespace INFO
 
 #define VERSION_MAJOR 13
 #define VERSION_MINOR 0
-#define VERSION_TAG "-ALPHA1"
+#define VERSION_TAG "-ALPHA3"
 
 #define LISTITEM_START              35000
 #define LISTITEM_THUMB              (LISTITEM_START)
@@ -600,6 +593,7 @@ namespace INFO
 #define LISTITEM_PARENTALRATING     (LISTITEM_START + 101)
 #define LISTITEM_PROGRESS           (LISTITEM_START + 102)
 #define LISTITEM_HAS_EPG            (LISTITEM_START + 103)
+#define LISTITEM_VOTES              (LISTITEM_START + 104)
 
 #define LISTITEM_PROPERTY_START     (LISTITEM_START + 200)
 #define LISTITEM_PROPERTY_END       (LISTITEM_PROPERTY_START + 1000)
@@ -846,8 +840,6 @@ protected:
   int ConditionalStringParameter(const CStdString &strParameter, bool caseSensitive = false);
   int AddMultiInfo(const GUIInfo &info);
   int AddListItemProp(const CStdString &str, int offset=0);
-
-  CStdString GetAudioScrobblerLabel(int item);
 
   /*!
    * @brief Get the EPG tag that is currently active

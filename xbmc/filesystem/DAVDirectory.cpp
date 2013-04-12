@@ -27,7 +27,6 @@
 #include "FileItem.h"
 #include "utils/RegExp.h"
 #include "utils/StringUtils.h"
-#include "utils/CharsetConverter.h"
 #include "utils/log.h"
 #include "utils/URIUtils.h"
 
@@ -219,6 +218,7 @@ bool CDAVDirectory::Exists(const char* strPath)
   // on the server's configuration
   CStdString strRequest = "PROPFIND";
   dav.SetCustomRequest(strRequest);
+  dav.SetRequestHeader("depth", 0);
 
   CURL url(strPath);
   return dav.Exists(url);

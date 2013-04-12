@@ -840,11 +840,6 @@ bool URIUtils::IsVideoDb(const CStdString& strFile)
   return strFile.Left(8).Equals("videodb:");
 }
 
-bool URIUtils::IsLastFM(const CStdString& strFile)
-{
-  return strFile.Left(7).Equals("lastfm:");
-}
-
 bool URIUtils::IsBluray(const CStdString& strFile)
 {
   return strFile.Left(7).Equals("bluray:");
@@ -891,9 +886,15 @@ void URIUtils::AddSlashAtEnd(CStdString& strFolder)
   }
 }
 
-bool URIUtils::HasSlashAtEnd(const CStdString& strFile)
+bool URIUtils::HasSlashAtEnd(const CStdString& strFile, bool checkURL /* = false */)
 {
   if (strFile.size() == 0) return false;
+  if (checkURL && IsURL(strFile))
+  {
+    CURL url(strFile);
+    CStdString file = url.GetFileName();
+    return file.IsEmpty() || HasSlashAtEnd(file, false);
+  }
   char kar = strFile.c_str()[strFile.size() - 1];
 
   if (kar == '/' || kar == '\\')

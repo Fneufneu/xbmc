@@ -483,6 +483,7 @@ public:
   void AddBookMarkForEpisode(const CVideoInfoTag& tag, const CBookmark& bookmark);
   void DeleteBookMarkForEpisode(const CVideoInfoTag& tag);
   bool GetResumePoint(CVideoInfoTag& tag);
+  bool GetStreamDetails(CFileItem& item);
   bool GetStreamDetails(CVideoInfoTag& tag) const;
 
   // scraper settings
@@ -681,6 +682,7 @@ public:
   bool GetArtForItem(int mediaId, const std::string &mediaType, std::map<std::string, std::string> &art);
   std::string GetArtForItem(int mediaId, const std::string &mediaType, const std::string &artType);
   bool GetTvShowSeasonArt(int mediaId, std::map<int, std::map<std::string, std::string> > &seasonArt);
+  bool GetArtTypes(const std::string &mediaType, std::vector<std::string> &artTypes);
 
   int AddTag(const std::string &tag);
   void AddTagToItem(int idItem, int idTag, const std::string &type);
@@ -688,6 +690,10 @@ public:
   void RemoveTagsFromItem(int idItem, const std::string &type);
 
   virtual bool GetFilter(CDbUrl &videoUrl, Filter &filter, SortDescription &sorting);
+
+  int AddSet(const CStdString& strSet);
+  void ClearMovieSet(int idMovie);
+  void SetMovieSet(int idMovie, int idSet);
 
 protected:
   friend class CEdenVideoArtUpdater;
@@ -711,7 +717,6 @@ protected:
   int AddGenre(const CStdString& strGenre1);
   int AddActor(const CStdString& strActor, const CStdString& thumbURL, const CStdString &thumb = "");
   int AddCountry(const CStdString& strCountry);
-  int AddSet(const CStdString& strSet);
   int AddStudio(const CStdString& strStudio1);
 
   int AddTvShow(const CStdString& strPath);
