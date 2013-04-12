@@ -24,7 +24,6 @@
 #include "settings/GUISettings.h"
 #include "settings/AdvancedSettings.h"
 #include "settings/MediaSourceSettings.h"
-#include "settings/Settings.h"
 #include "FileItem.h"
 #include "guilib/WindowIDs.h"
 #include "Util.h"
@@ -58,7 +57,7 @@ CStdString CGUIViewStateWindowMusic::GetLockType()
 
 CStdString CGUIViewStateWindowMusic::GetExtensions()
 {
-  return g_settings.m_musicExtensions;
+  return g_advancedSettings.m_musicExtensions;
 }
 
 VECSOURCES& CGUIViewStateWindowMusic::GetSources()
@@ -601,7 +600,7 @@ VECSOURCES& CGUIViewStateWindowMusicNav::GetSources()
   if (database.HasContent(VIDEODB_CONTENT_MUSICVIDEOS))
   {
     share.strName = g_localizeStrings.Get(20389);
-    share.strPath = "videodb://3/";
+    share.strPath = "videodb://musicvideos/";
     share.m_strThumbnailImage = CUtil::GetDefaultFolderThumb("DefaultMusicVideos.png");
     share.m_iDriveType = CMediaSource::SOURCE_TYPE_LOCAL;
     m_sources.push_back(share);

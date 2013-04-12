@@ -9283,7 +9283,10 @@ msgctxt "#20417"
 msgid "Writer"
 msgstr ""
 
-#empty string with id 20418
+#: xbmc/playlists/SmartPlayList.cpp
+msgctxt "#20418"
+msgid "Writers"
+msgstr ""
 
 #: xbmc/settings/GUISettings.cpp
 msgctxt "#20419"
@@ -9943,7 +9946,13 @@ msgctxt "#21457"
 msgid "Watched episode count"
 msgstr ""
 
-#empty strings from id 21458 to 21459
+msgctxt "#21458"
+msgid "Group by"
+msgstr ""
+
+msgctxt "#21459"
+msgid "mixed"
+msgstr ""
 
 #: xbmc/settings/GUISettings.cpp
 msgctxt "#21460"
@@ -10131,7 +10140,19 @@ msgctxt "#21843"
 msgid "Orientation"
 msgstr ""
 
-#empty strings from id 21844 to 21859
+#empty strings from id 21844 to 21856
+
+msgctxt "#21857"
+msgid "Sub-location"
+msgstr ""
+
+msgctxt "#21858"
+msgid "Image type"
+msgstr ""
+
+msgctxt "#21859"
+msgid "Time created"
+msgstr ""
 
 msgctxt "#21860"
 msgid "Supplemental categories"
@@ -10206,7 +10227,7 @@ msgid "Date created"
 msgstr ""
 
 msgctxt "#21878"
-msgid "Copyright flag"
+msgid "Urgency"
 msgstr ""
 
 msgctxt "#21879"
@@ -11312,7 +11333,12 @@ msgctxt "#33083"
 msgid "Enable custom script button"
 msgstr ""
 
-#empty strings from id 33084 to 33099
+#: addons/skin.confluence/720p/SettingsProfile.xml
+msgctxt "#33084"
+msgid "Auto login"
+msgstr ""
+
+#empty strings from id 33085 to 33099
 
 #: xbmc/network/network.cpp
 msgctxt "#33100"
@@ -11677,7 +11703,9 @@ msgctxt "#36009"
 msgid "Put devices in standby mode when activating screensaver"
 msgstr ""
 
-#empty string with id 36010
+msgctxt "#36010"
+msgid "Wake devices when deactivating screensaver"
+msgstr ""
 
 #: xbmc/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36011"
@@ -11865,4 +11893,9 @@ msgstr ""
 #: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37013"
 msgid "(Directors Comments)"
+msgstr ""
+
+#: xbmc/GUIInfoManager.cpp
+msgctxt "#37014"
+msgid "Last used profile"
 msgstr ""
