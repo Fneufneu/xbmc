@@ -14,7 +14,7 @@
 #include "guilib/WindowIDs.h"
 #include "music/tags/MusicInfoTag.h"
 #include "settings/AdvancedSettings.h"
-#include "settings/GUISettings.h"
+#include "settings/Settings.h"
 #include "utils/log.h"
 #include "utils/md5.h"
 #include "utils/StringUtils.h"
@@ -137,7 +137,7 @@ CUPnPServer::PropagateUpdates()
     string buffer;
     map<string,pair<bool, unsigned long> >::iterator itr;
 
-    if (m_scanning || !g_guiSettings.GetBool("services.upnpannounce"))
+    if (m_scanning || !CSettings::Get().GetBool("services.upnpannounce"))
         return;
 
     NPT_CHECK_LABEL(FindServiceById("urn:upnp-org:serviceId:ContentDirectory", service), failed);
@@ -272,7 +272,7 @@ CUPnPServer::Build(CFileItemPtr                  item,
 
                     if (params.GetSongId() >= 0 ) {
                         CSong song;
-                        if (db.GetSongById(params.GetSongId(), song))
+                        if (db.GetSong(params.GetSongId(), song))
                             item->GetMusicInfoTag()->SetSong(song);
                     }
                     else if (params.GetAlbumId() >= 0 ) {
@@ -505,6 +505,7 @@ CUPnPServer::OnBrowseMetadata(PLT_ActionReference&          action,
             item->SetLabel("Root");
             item->SetLabelPreformated(true);
             object = Build(item, true, context, thumb_loader);
+            object->m_ParentID = "-1";
         } else {
             return NPT_FAILURE;
         }
@@ -634,7 +635,7 @@ CUPnPServer::OnBrowseDirectChildren(PLT_ActionReference&          action,
       CVideoDatabase database;
       database.Open();
       if (database.HasContent(VIDEODB_CONTENT_MUSICVIDEOS)) {
-          CFileItemPtr mvideos(new CFileItem("videodb://3/", true));
+          CFileItemPtr mvideos(new CFileItem("library://video/musicvideos/", true));
           mvideos->SetLabel(g_localizeStrings.Get(20389));
           items.Add(mvideos);
       }

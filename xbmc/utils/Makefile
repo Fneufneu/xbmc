@@ -6,6 +6,7 @@ SRCS=AlarmClock.cpp \
      Base64.cpp \
      BitstreamConverter.cpp \
      BitstreamStats.cpp \
+     BooleanLogic.cpp \
      CharsetConverter.cpp \
      CPUInfo.cpp \
      Crc32.cpp \
@@ -37,8 +38,8 @@ SRCS=AlarmClock.cpp \
      LangCodeExpander.cpp \
      log.cpp \
      md5.cpp \
-     Observer.cpp \
      Mime.cpp \
+     Observer.cpp \
      PerformanceSample.cpp \
      PerformanceStats.cpp \
      POUtils.cpp \
