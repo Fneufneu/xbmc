@@ -67,9 +67,7 @@ CCDDARipper::~CCDDARipper()
 bool CCDDARipper::RipTrack(CFileItem* pItem)
 {
   // don't rip non cdda items
-  CStdString strExt;
-  URIUtils::GetExtension(pItem->GetPath(), strExt);
-  if (strExt.CompareNoCase(".cdda") != 0) 
+  if (URIUtils::GetExtension(pItem->GetPath()).CompareNoCase(".cdda") != 0)
   {
     CLog::Log(LOGDEBUG, "cddaripper: file is not a cdda track");
     return false;
@@ -193,7 +191,7 @@ bool CCDDARipper::CreateAlbumDir(const MUSIC_INFO::CMusicInfoTag& infoTag, CStdS
 
   if (!strAlbumDir.IsEmpty())
   {
-    URIUtils::AddFileToFolder(strDirectory, strAlbumDir, strDirectory);
+    strDirectory = URIUtils::AddFileToFolder(strDirectory, strAlbumDir);
     URIUtils::AddSlashAtEnd(strDirectory);
   }
 

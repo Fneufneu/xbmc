@@ -345,6 +345,10 @@
 #include "linux/LinuxTimezone.h"
 #endif
 
+#ifdef TARGET_WINDOWS
+#include "utils/Environment.h"
+#endif
+
 using namespace std;
 using namespace ADDON;
 using namespace XFILE;
@@ -375,7 +379,7 @@ using namespace XbmcThreads;
 
 //extern IDirectSoundRenderer* m_pAudioDecoder;
 CApplication::CApplication(void)
-  : m_pPlayer(NULL)
+  : m_pPlayer()
   , m_itemCurrentFile(new CFileItem)
   , m_stackFileItemToUpdate(new CFileItem)
   , m_progressTrackingVideoResumeBookmark(*new CBookmark)
@@ -398,7 +402,9 @@ CApplication::CApplication(void)
   m_eForcedNextPlayer = EPC_NONE;
   m_strPlayListFile = "";
   m_nextPlaylistItem = -1;
+  m_iPlayerOPSeq = 0;
   m_bPlaybackStarting = false;
+  m_ePlayState = PLAY_STATE_NONE;
   m_skinReloading = false;
 
 #ifdef HAS_GLX
@@ -499,10 +505,7 @@ bool CApplication::OnEvent(XBMC_Event& newEvent)
         // when fullscreen, remain fullscreen and resize to the dimensions of the new screen
         RESOLUTION newRes = (RESOLUTION) g_Windowing.DesktopResolution(g_Windowing.GetCurrentScreen());
         if (newRes != g_graphicsContext.GetVideoResolution())
-        {
           CDisplaySettings::Get().SetCurrentResolution(newRes, true);
-          g_graphicsContext.SetVideoResolution(newRes);
-        }
       }
       else
 #endif
@@ -642,7 +645,6 @@ bool CApplication::Create()
   init_emu_environ();
 
   CProfilesManager::Get().Load();
-  CSpecialProtocol::SetProfilePath(CProfilesManager::Get().GetProfileUserDataFolder());
 
   CLog::Log(LOGNOTICE, "-----------------------------------------------------------------------");
 #if defined(TARGET_DARWIN_OSX)
@@ -701,7 +703,7 @@ bool CApplication::Create()
 #elif defined(_LINUX)
   setenv("OS","Linux",true);
 #elif defined(_WIN32)
-  SetEnvironmentVariable("OS","win32");
+  CEnvironment::setenv("OS", "win32");
 #endif
 
   g_powerManager.Initialize();
@@ -771,6 +773,12 @@ bool CApplication::Create()
   SetHardwareVolume(m_volumeLevel);
   CAEFactory::SetMute     (m_muted);
   CAEFactory::SetSoundMode(CSettings::Get().GetInt("audiooutput.guisoundmode"));
+
+  // initialize m_replayGainSettings
+  m_replayGainSettings.iType = CSettings::Get().GetInt("musicplayer.replaygaintype");
+  m_replayGainSettings.iPreAmp = CSettings::Get().GetInt("musicplayer.replaygainpreamp");
+  m_replayGainSettings.iNoGainPreAmp = CSettings::Get().GetInt("musicplayer.replaygainnogainpreamp");
+  m_replayGainSettings.bAvoidClipping = CSettings::Get().GetBool("musicplayer.replaygainavoidclipping");
 
   // initialize the addon database (must be before the addon manager is init'd)
   CDatabaseManager::Get().Initialize(true);
@@ -1166,7 +1174,7 @@ bool CApplication::InitDirectoriesWin32()
   CStdString xbmcPath;
 
   CUtil::GetHomePath(xbmcPath);
-  SetEnvironmentVariable("XBMC_HOME", xbmcPath.c_str());
+  CEnvironment::setenv("XBMC_HOME", xbmcPath);
   CSpecialProtocol::SetXBMCBinPath(xbmcPath);
   CSpecialProtocol::SetXBMCPath(xbmcPath);
 
@@ -1177,7 +1185,7 @@ bool CApplication::InitDirectoriesWin32()
   CSpecialProtocol::SetMasterProfilePath(URIUtils::AddFileToFolder(strWin32UserFolder, "userdata"));
   CSpecialProtocol::SetTempPath(URIUtils::AddFileToFolder(strWin32UserFolder,"cache"));
 
-  SetEnvironmentVariable("XBMC_PROFILE_USERDATA",CSpecialProtocol::TranslatePath("special://masterprofile/").c_str());
+  CEnvironment::setenv("XBMC_PROFILE_USERDATA", CSpecialProtocol::TranslatePath("special://masterprofile/"));
 
   CreateUserDirs();
 
@@ -1808,8 +1816,7 @@ void CApplication::LoadSkin(const SkinPtr& skin)
   g_fontManager.LoadFonts(CSettings::Get().GetString("lookandfeel.font"));
 
   // load in the skin strings
-  CStdString langPath;
-  URIUtils::AddFileToFolder(skin->Path(), "language", langPath);
+  CStdString langPath = URIUtils::AddFileToFolder(skin->Path(), "language");
   URIUtils::AddSlashAtEnd(langPath);
 
   g_localizeStrings.LoadSkinStrings(langPath, CSettings::Get().GetString("locale.language"));
@@ -2087,7 +2094,7 @@ void CApplication::Render()
     bool extPlayerActive = m_eCurrentPlayer == EPC_EXTPLAYER && IsPlaying() && !m_AppFocused;
 
     m_bPresentFrame = false;
-    if (!extPlayerActive && g_graphicsContext.IsFullScreenVideo() && !IsPaused())
+    if (!extPlayerActive && g_graphicsContext.IsFullScreenVideo() && !IsPaused() && g_renderManager.RendererHandlesPresent())
     {
       CSingleLock lock(m_frameMutex);
 
@@ -3380,8 +3387,9 @@ void CApplication::Stop(int exitCode)
     if (m_pPlayer)
     {
       CLog::Log(LOGNOTICE, "stop player");
-      delete m_pPlayer;
-      m_pPlayer = NULL;
+      ++m_iPlayerOPSeq;
+      m_pPlayer->CloseFile();
+      m_pPlayer.reset();
     }
 
 #if HAS_FILESYTEM_DAAP
@@ -3509,13 +3517,13 @@ bool CApplication::PlayMedia(const CFileItem& item, int iPlaylist)
       {
         CLog::Log(LOGWARNING, "CApplication::PlayMedia called to play a playlist %s but no idea which playlist to use, playing first item", item.GetPath().c_str());
         if(pPlayList->size())
-          return PlayFile(*(*pPlayList)[0], false);
+          return PlayFile(*(*pPlayList)[0], false) == PLAYBACK_OK;
       }
     }
   }
 
   //nothing special just play
-  return PlayFile(item, false);
+  return PlayFile(item, false) == PLAYBACK_OK;
 }
 
 // PlayStack()
@@ -3524,10 +3532,11 @@ bool CApplication::PlayMedia(const CFileItem& item, int iPlaylist)
 // of each video, so we open + close each one in turn.
 // A faster calculation of video time would improve this
 // substantially.
-bool CApplication::PlayStack(const CFileItem& item, bool bRestart)
+// return value: same with PlayFile()
+PlayBackRet CApplication::PlayStack(const CFileItem& item, bool bRestart)
 {
   if (!item.IsStack())
-    return false;
+    return PLAYBACK_FAIL;
 
   CVideoDatabase dbs;
 
@@ -3611,7 +3620,7 @@ bool CApplication::PlayStack(const CFileItem& item, bool bRestart)
         if (!CDVDFileInfo::GetFileDuration((*m_currentStack)[i]->GetPath(), duration))
         {
           m_currentStack->Clear();
-          return false;
+          return PLAYBACK_FAIL;
         }
         totalTime += duration / 1000;
         (*m_currentStack)[i]->m_lEndOffset = totalTime;
@@ -3663,10 +3672,10 @@ bool CApplication::PlayStack(const CFileItem& item, bool bRestart)
 
     return PlayFile(*(*m_currentStack)[0], true);
   }
-  return false;
+  return PLAYBACK_FAIL;
 }
 
-bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
+PlayBackRet CApplication::PlayFile(const CFileItem& item, bool bRestart)
 {
   if (!bRestart)
   {
@@ -3698,24 +3707,24 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
       if (CGUIDialogPlayEject::ShowAndGetInput(item))
         // PlayDiscAskResume takes path to disc. No parameter means default DVD drive.
         // Can't do better as CGUIDialogPlayEject calls CMediaManager::IsDiscInDrive, which assumes default DVD drive anyway
-        return MEDIA_DETECT::CAutorun::PlayDiscAskResume();
+        return MEDIA_DETECT::CAutorun::PlayDiscAskResume() ? PLAYBACK_OK : PLAYBACK_FAIL;
     }
     else
 #endif
       CGUIDialogOK::ShowAndGetInput(435, 0, 436, 0);
 
-    return true;
+    return PLAYBACK_OK;
   }
 
   if (item.IsPlayList())
-    return false;
+    return PLAYBACK_FAIL;
 
   if (item.IsPlugin())
   { // we modify the item so that it becomes a real URL
     CFileItem item_new(item);
     if (XFILE::CPluginDirectory::GetPluginResult(item.GetPath(), item_new))
       return PlayFile(item_new, false);
-    return false;
+    return PLAYBACK_FAIL;
   }
 
 #ifdef HAS_UPNP
@@ -3724,7 +3733,7 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     CFileItem item_new(item);
     if (XFILE::CUPnPDirectory::GetResource(item.GetPath(), item_new))
       return PlayFile(item_new, false);
-    return false;
+    return PLAYBACK_FAIL;
   }
 #endif
 
@@ -3742,6 +3751,7 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     if(g_tuxboxService.IsRunning())
       g_tuxboxService.Stop();
 
+    PlayBackRet ret = PLAYBACK_FAIL;
     CFileItem item_new;
     if(g_tuxbox.CreateNewItem(item, item_new))
     {
@@ -3752,14 +3762,14 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
 
       // keep the tuxbox:// url as playing url
       // and give the new url to the player
-      if(PlayFile(item_new, true))
+      ret = PlayFile(item_new, true);
+      if(ret == PLAYBACK_OK)
       {
         if(!g_tuxboxService.IsRunning())
           g_tuxboxService.Start();
-        return true;
       }
     }
-    return false;
+    return ret;
   }
 
   CPlayerOptions options;
@@ -3874,8 +3884,30 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     m_pKaraokeMgr->Stop();
 #endif
 
-  // tell system we are starting a file
-  m_bPlaybackStarting = true;
+  {
+    CSingleLock lock(m_playStateMutex);
+    // tell system we are starting a file
+    m_bPlaybackStarting = true;
+    
+    // for playing a new item, previous playing item's callback may already
+    // pushed some delay message into the threadmessage list, they are not
+    // expected be processed after or during the new item playback starting.
+    // so we clean up previous playing item's playback callback delay messages here.
+    int previousMsgsIgnoredByNewPlaying[] = {
+      GUI_MSG_PLAYBACK_STARTED,
+      GUI_MSG_PLAYBACK_ENDED,
+      GUI_MSG_PLAYBACK_STOPPED,
+      GUI_MSG_PLAYLIST_CHANGED,
+      GUI_MSG_PLAYLISTPLAYER_STOPPED,
+      GUI_MSG_PLAYLISTPLAYER_STARTED,
+      GUI_MSG_PLAYLISTPLAYER_CHANGED,
+      GUI_MSG_QUEUE_NEXT_ITEM,
+      0
+    };
+    int dMsgCount = g_windowManager.RemoveThreadMessageByMessageIds(&previousMsgsIgnoredByNewPlaying[0]);
+    if (dMsgCount > 0)
+      CLog::Log(LOGDEBUG,"%s : Ignored %d playback thread messages", __FUNCTION__, dMsgCount);
+  }
 
   // We should restart the player, unless the previous and next tracks are using
   // one of the players that allows gapless playback (paplayer, dvdplayer)
@@ -3887,18 +3919,33 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
 #endif            
             )) )
     {
-      delete m_pPlayer;
-      m_pPlayer = NULL;
+      ++m_iPlayerOPSeq;
+      m_pPlayer->CloseFile();
+      m_pPlayer.reset();
+    }
+    else
+    {
+      // XXX: we had to stop the previous playing item, it was done in dvdplayer::OpenFile.
+      // but in paplayer::OpenFile, it sometimes just fade in without call CloseFile.
+      // but if we do not stop it, we can not distingush callbacks from previous
+      // item and current item, it will confused us then we can not make correct delay
+      // callback after the starting state.
+      ++m_iPlayerOPSeq;
+      m_pPlayer->CloseFile();
     }
   }
+
+  // now reset play state to starting, since we already stopped the previous playing item if there is.
+  // and from now there should be no playback callback from previous playing item be called.
+  m_ePlayState = PLAY_STATE_STARTING;
 
   if (!m_pPlayer)
   {
     m_eCurrentPlayer = eNewCore;
-    m_pPlayer = CPlayerCoreFactory::Get().CreatePlayer(eNewCore, *this);
+    m_pPlayer.reset(CPlayerCoreFactory::Get().CreatePlayer(eNewCore, *this));
   }
 
-  bool bResult;
+  PlayBackRet iResult;
   if (m_pPlayer)
   {
     /* When playing video pause any low priority jobs, they will be unpaused  when playback stops.
@@ -3913,15 +3960,25 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     // don't hold graphicscontext here since player
     // may wait on another thread, that requires gfx
     CSingleExit ex(g_graphicsContext);
-    bResult = m_pPlayer->OpenFile(item, options);
+    // In busy dialog of OpenFile there's a chance to call another place delete the player
+    // e.g. another PlayFile call switch player.
+    // Here we use a holdPlace to keep the player not be deleted during OpenFile call
+    boost::shared_ptr<IPlayer> holdPlace(m_pPlayer);
+    // op seq for detect cancel (CloseFile be called or OpenFile be called again) during OpenFile.
+    unsigned int startingSeq = ++m_iPlayerOPSeq;
+
+    iResult = m_pPlayer->OpenFile(item, options) ? PLAYBACK_OK : PLAYBACK_FAIL;
+    // check whether the OpenFile was canceled by either CloseFile or another OpenFile.
+    if (m_iPlayerOPSeq != startingSeq)
+      iResult = PLAYBACK_CANCELED;
   }
   else
   {
     CLog::Log(LOGERROR, "Error creating player for item %s (File doesn't exist?)", item.GetPath().c_str());
-    bResult = false;
+    iResult = PLAYBACK_FAIL;
   }
 
-  if(bResult)
+  if(iResult == PLAYBACK_OK)
   {
     if (m_iPlaySpeed != 1)
     {
@@ -3970,17 +4027,41 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     if (item.HasPVRChannelInfoTag())
       g_playlistPlayer.SetCurrentPlaylist(PLAYLIST_NONE);
   }
+
+  CSingleLock lock(m_playStateMutex);
   m_bPlaybackStarting = false;
 
-  if (bResult)
+  if (iResult == PLAYBACK_OK)
   {
-    // we must have started, otherwise player might send this later
-    if(IsPlaying())
-      OnPlayBackStarted();
-    else
-      OnPlayBackEnded();
+    // play state: none, starting; playing; stopped; ended.
+    // last 3 states are set by playback callback, they are all ignored during starting,
+    // but we recorded the state, here we can make up the callback for the state.
+    CLog::Log(LOGDEBUG,"%s : OpenFile succeed, play state %d", __FUNCTION__, m_ePlayState);
+    switch (m_ePlayState)
+    {
+      case PLAY_STATE_PLAYING:
+        OnPlayBackStarted();
+        break;
+      // FIXME: it seems no meaning to callback started here if there was an started callback
+      //        before this stopped/ended callback we recorded. if we callback started here
+      //        first, it will delay send OnPlay announce, but then we callback stopped/ended
+      //        which will send OnStop announce at once, so currently, just call stopped/ended.
+      case PLAY_STATE_ENDED:
+        OnPlayBackEnded();
+        break;
+      case PLAY_STATE_STOPPED:
+        OnPlayBackStopped();
+        break;
+      case PLAY_STATE_STARTING:
+        // neither started nor stopped/ended callback be called, that means the item still
+        // not started, we need not make up any callback, just leave this and
+        // let the player callback do its work.
+        break;
+      default:
+        break;
+    }
   }
-  else
+  else if (iResult == PLAYBACK_FAIL)
   {
     // we send this if it isn't playlistplayer that is doing this
     int next = g_playlistPlayer.GetNextSong();
@@ -3988,13 +4069,17 @@ bool CApplication::PlayFile(const CFileItem& item, bool bRestart)
     if(next < 0
     || next >= size)
       OnPlayBackStopped();
+    m_ePlayState = PLAY_STATE_NONE;
   }
 
-  return bResult;
+  return iResult;
 }
 
 void CApplication::OnPlayBackEnded()
 {
+  CSingleLock lock(m_playStateMutex);
+  CLog::Log(LOGDEBUG,"%s : play state was %d, starting %d", __FUNCTION__, m_ePlayState, m_bPlaybackStarting);
+  m_ePlayState = PLAY_STATE_ENDED;
   if(m_bPlaybackStarting)
     return;
 
@@ -4014,6 +4099,9 @@ void CApplication::OnPlayBackEnded()
 
 void CApplication::OnPlayBackStarted()
 {
+  CSingleLock lock(m_playStateMutex);
+  CLog::Log(LOGDEBUG,"%s : play state was %d, starting %d", __FUNCTION__, m_ePlayState, m_bPlaybackStarting);
+  m_ePlayState = PLAY_STATE_PLAYING;
   if(m_bPlaybackStarting)
     return;
 
@@ -4029,6 +4117,10 @@ void CApplication::OnPlayBackStarted()
 
 void CApplication::OnQueueNextItem()
 {
+  CSingleLock lock(m_playStateMutex);
+  CLog::Log(LOGDEBUG,"%s : play state was %d, starting %d", __FUNCTION__, m_ePlayState, m_bPlaybackStarting);
+  if(m_bPlaybackStarting)
+    return;
   // informs python script currently running that we are requesting the next track
   // (does nothing if python is not loaded)
 #ifdef HAS_PYTHON
@@ -4041,6 +4133,9 @@ void CApplication::OnQueueNextItem()
 
 void CApplication::OnPlayBackStopped()
 {
+  CSingleLock lock(m_playStateMutex);
+  CLog::Log(LOGDEBUG,"%s : play state was %d, starting %d", __FUNCTION__, m_ePlayState, m_bPlaybackStarting);
+  m_ePlayState = PLAY_STATE_STOPPED;
   if(m_bPlaybackStarting)
     return;
 
@@ -4280,7 +4375,10 @@ void CApplication::StopPlaying()
       g_PVRManager.SaveCurrentChannelSettings();
 
     if (m_pPlayer)
+    {
+      ++m_iPlayerOPSeq;
       m_pPlayer->CloseFile();
+    }
 
     // turn off visualisation window when stopping
     if ((iWin == WINDOW_VISUALISATION
@@ -4747,8 +4845,12 @@ bool CApplication::OnMessage(CGUIMessage& message)
         // reset any forced player
         m_eForcedNextPlayer = EPC_NONE;
 
-        delete m_pPlayer;
-        m_pPlayer = 0;
+        if (m_pPlayer)
+        {
+          ++m_iPlayerOPSeq;
+          m_pPlayer->CloseFile();
+          m_pPlayer.reset();
+        }
 
         // Reset playspeed
         m_iPlaySpeed = 1;
@@ -4954,7 +5056,7 @@ void CApplication::ProcessSlow()
   if (!IsPlayingVideo())
     g_largeTextureManager.CleanupUnusedImages();
 
-  g_TextureManager.FreeUnusedTextures();
+  g_TextureManager.FreeUnusedTextures(5000);
 
 #ifdef HAS_DVD_DRIVE
   // checks whats in the DVD drive and tries to autostart the content (xbox games, dvd, cdda, avi files...)
@@ -5067,7 +5169,7 @@ void CApplication::Restart(bool bSamePosition)
   m_itemCurrentFile->m_lStartOffset = (long)(time * 75.0);
 
   // reopen the file
-  if ( PlayFile(*m_itemCurrentFile, true) && m_pPlayer )
+  if ( PlayFile(*m_itemCurrentFile, true) == PLAYBACK_OK && m_pPlayer )
     m_pPlayer->SetPlayerState(state);
 }
 

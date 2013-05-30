@@ -261,6 +261,9 @@ bool CXBMCRenderManager::Configure(unsigned int width, unsigned int height, unsi
       CApplicationMessenger::Get().SwitchToFullscreen();
       lock.Enter();
     }
+    if( format & RENDER_FMT_BYPASS )
+      m_presentmethod = PRESENT_METHOD_BYPASS;
+
     m_pRenderer->Update(false);
     m_bIsStarted = true;
     m_bReconfigured = true;
@@ -271,7 +274,12 @@ bool CXBMCRenderManager::Configure(unsigned int width, unsigned int height, unsi
   return result;
 }
 
-bool CXBMCRenderManager::IsConfigured()
+bool CXBMCRenderManager::RendererHandlesPresent() const
+{
+  return IsConfigured() && m_presentmethod != PRESENT_METHOD_BYPASS;
+}
+
+bool CXBMCRenderManager::IsConfigured() const
 {
   if (!m_pRenderer)
     return false;
@@ -655,6 +663,12 @@ void CXBMCRenderManager::RegisterRenderUpdateCallBack(const void *ctx, RenderUpd
 {
   if (m_pRenderer)
     m_pRenderer->RegisterRenderUpdateCallBack(ctx, fn);
+}
+
+void CXBMCRenderManager::RegisterRenderFeaturesCallBack(const void *ctx, RenderFeaturesCallBackFn fn)
+{
+  if (m_pRenderer)
+    m_pRenderer->RegisterRenderFeaturesCallBack(ctx, fn);
 }
 
 void CXBMCRenderManager::Render(bool clear, DWORD flags, DWORD alpha)

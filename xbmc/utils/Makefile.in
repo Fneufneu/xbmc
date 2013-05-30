@@ -16,6 +16,7 @@ SRCS += DownloadQueue.cpp
 SRCS += DownloadQueueManager.cpp
 SRCS += EndianSwap.cpp
 SRCS += EdenVideoArtUpdater.cpp
+SRCS += Environment.cpp
 SRCS += Fanart.cpp
 SRCS += fastmemcpy.c
 SRCS += fastmemcpy-arm.S
@@ -36,6 +37,7 @@ SRCS += JSONVariantParser.cpp
 SRCS += JSONVariantWriter.cpp
 SRCS += LabelFormatter.cpp
 SRCS += LangCodeExpander.cpp
+SRCS += LegacyPathTranslation.cpp
 SRCS += log.cpp
 SRCS += md5.cpp
 SRCS += Mime.cpp
@@ -70,6 +72,10 @@ SRCS += Vector.cpp
 SRCS += Weather.cpp
 SRCS += XBMCTinyXML.cpp
 SRCS += XMLUtils.cpp
+
+ifeq (@USE_OPENGLES@,1)
+SRCS += AMLUtils.cpp
+endif
 
 LIB   = utils.a
 

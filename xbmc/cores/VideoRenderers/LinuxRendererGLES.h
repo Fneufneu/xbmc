@@ -29,6 +29,7 @@
 #include "xbmc/guilib/Shader.h"
 #include "settings/VideoSettings.h"
 #include "RenderFlags.h"
+#include "RenderFormats.h"
 #include "guilib/GraphicContext.h"
 #include "BaseRenderer.h"
 #include "xbmc/cores/dvdplayer/DVDCodecs/Video/DVDVideoCodec.h"
@@ -260,7 +261,7 @@ protected:
 
   void LoadPlane( YUVPLANE& plane, int type, unsigned flipindex
                 , unsigned width,  unsigned height
-                , int stride, void* data );
+                , unsigned int stride, void* data );
 
   Shaders::BaseYUV2RGBShader     *m_pYUVShader;
   Shaders::BaseVideoFilterShader *m_pVideoFilterShader;

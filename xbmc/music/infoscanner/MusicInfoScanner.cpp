@@ -1152,8 +1152,7 @@ INFO_RET CMusicInfoScanner::DownloadAlbumInfo(const CAlbum& album, ADDON::Scrape
   }
 
   // handle nfo files
-  CStdString strNfo;
-  URIUtils::AddFileToFolder(album.strPath, "album.nfo", strNfo);
+  CStdString strNfo = URIUtils::AddFileToFolder(album.strPath, "album.nfo");
   CNfoFile::NFOResult result = CNfoFile::NO_NFO;
   CNfoFile nfoReader;
   if (XFILE::CFile::Exists(strNfo))
@@ -1366,8 +1365,7 @@ INFO_RET CMusicInfoScanner::DownloadArtistInfo(const CArtist& artist, ADDON::Scr
   }
 
   // handle nfo files
-  CStdString strNfo;
-  URIUtils::AddFileToFolder(artist.strPath, "artist.nfo", strNfo);
+  CStdString strNfo = URIUtils::AddFileToFolder(artist.strPath, "artist.nfo");
   CNfoFile::NFOResult result=CNfoFile::NO_NFO;
   CNfoFile nfoReader;
   if (XFILE::CFile::Exists(strNfo))
@@ -1553,6 +1551,10 @@ bool CMusicInfoScanner::ResolveMusicBrainz(const CStdString strMusicBrainzID, Sc
     }
     if (!musicBrainzURL.m_url.empty())
     {
+      Sleep(2000); // MusicBrainz rate-limits queries to 1 p.s - once we hit the rate-limiter
+                   // they start serving up the 'you hit the rate-limiter' page fast - meaning
+                   // we will never get below the rate-limit threshold again in a specific run. 
+                   // This helps us to avoidthe rate-limiter as far as possible.
       CLog::Log(LOGDEBUG,"-- nfo-scraper: %s",vecScrapers[i]->Name().c_str());
       CLog::Log(LOGDEBUG,"-- nfo url: %s", musicBrainzURL.m_url[0].m_url.c_str());
       musicInfoScraper.SetScraperInfo(vecScrapers[i]);

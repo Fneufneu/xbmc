@@ -50,10 +50,14 @@
 #endif // defined(TARGET_LINUX)
 #include "network/NetworkServices.h"
 #include "network/upnp/UPnPSettings.h"
+#include "network/WakeOnAccess.h"
 #if defined(TARGET_DARWIN_OSX)
 #include "osx/XBMCHelper.h"
 #include "cores/AudioEngine/Engines/CoreAudio/CoreAudioHardware.h"
 #endif // defined(TARGET_DARWIN_OSX)
+#if defined(TARGET_DARWIN)
+#include "osx/DarwinUtils.h"
+#endif
 #include "peripherals/Peripherals.h"
 #include "powermanagement/PowerManager.h"
 #include "profiles/ProfilesManager.h"
@@ -408,6 +412,7 @@ void CSettings::Uninitialize()
   m_settingsManager->UnregisterSubSettings(&CViewStateSettings::Get());
 
   // unregister ISettingsHandler implementations
+  m_settingsManager->UnregisterSettingsHandler(&CWakeOnAccess::Get());
   m_settingsManager->UnregisterSettingsHandler(&g_advancedSettings);
   m_settingsManager->UnregisterSettingsHandler(&CMediaSourceSettings::Get());
   m_settingsManager->UnregisterSettingsHandler(&CPlayerCoreFactory::Get());
@@ -450,21 +455,6 @@ CSettingSection* CSettings::GetSection(const std::string &section) const
     return NULL;
 
   return m_settingsManager->GetSection(section);
-}
-
-SettingDependencyMap CSettings::GetDependencies(const std::string &id) const
-{
-  return m_settingsManager->GetDependencies(id);
-}
-
-SettingDependencyMap CSettings::GetDependencies(const CSetting *setting) const
-{
-  return m_settingsManager->GetDependencies(setting);
-}
-
-void* CSettings::GetSettingOptionsFiller(const CSetting *setting)
-{
-  return m_settingsManager->GetSettingOptionsFiller(setting);
 }
 
 bool CSettings::GetBool(const std::string &id) const
@@ -526,6 +516,8 @@ bool CSettings::Initialize(const std::string &file)
     return false;
   }
 
+  CLog::Log(LOGDEBUG, "CSettings: loaded settings definition from %s", file.c_str());
+  
   TiXmlElement *root = xmlDoc.RootElement();
   if (root == NULL)
     return false;
@@ -546,7 +538,16 @@ bool CSettings::InitializeDefinitions()
 #elif defined(TARGET_LINUX)
   if (CFile::Exists(SETTINGS_XML_FOLDER "linux.xml") && !Initialize(SETTINGS_XML_FOLDER "linux.xml"))
     CLog::Log(LOGFATAL, "Unable to load linux-specific settings definitions");
-#if defined(TARGET_DARWIN)
+#elif defined(TARGET_ANDROID)
+  if (CFile::Exists(SETTINGS_XML_FOLDER "android.xml") && !Initialize(SETTINGS_XML_FOLDER "android.xml"))
+    CLog::Log(LOGFATAL, "Unable to load android-specific settings definitions");
+#elif defined(TARGET_RASPBERRY_PI)
+  if (CFile::Exists(SETTINGS_XML_FOLDER "rbp.xml") && !Initialize(SETTINGS_XML_FOLDER "rbp.xml"))
+    CLog::Log(LOGFATAL, "Unable to load rbp-specific settings definitions");
+#elif defined(TARGET_FREEBSD)
+  if (CFile::Exists(SETTINGS_XML_FOLDER "freebsd.xml") && !Initialize(SETTINGS_XML_FOLDER "freebsd.xml"))
+    CLog::Log(LOGFATAL, "Unable to load freebsd-specific settings definitions");
+#elif defined(TARGET_DARWIN)
   if (CFile::Exists(SETTINGS_XML_FOLDER "darwin.xml") && !Initialize(SETTINGS_XML_FOLDER "darwin.xml"))
     CLog::Log(LOGFATAL, "Unable to load darwin-specific settings definitions");
 #if defined(TARGET_DARWIN_OSX)
@@ -559,16 +560,6 @@ bool CSettings::InitializeDefinitions()
   if (CFile::Exists(SETTINGS_XML_FOLDER "darwin_ios_atv2.xml") && !Initialize(SETTINGS_XML_FOLDER "darwin_ios_atv2.xml"))
     CLog::Log(LOGFATAL, "Unable to load atv2-specific settings definitions");
 #endif
-#endif
-#elif defined(TARGET_ANDROID)
-  if (CFile::Exists(SETTINGS_XML_FOLDER "android.xml") && !Initialize(SETTINGS_XML_FOLDER "android.xml"))
-    CLog::Log(LOGFATAL, "Unable to load android-specific settings definitions");
-#elif defined(TARGET_RASPBERRY_PI)
-  if (CFile::Exists(SETTINGS_XML_FOLDER "rbp.xml") && !Initialize(SETTINGS_XML_FOLDER "rbp.xml"))
-    CLog::Log(LOGFATAL, "Unable to load rbp-specific settings definitions");
-#elif defined(TARGET_FREEBSD)
-  if (CFile::Exists(SETTINGS_XML_FOLDER "freebsd.xml") && !Initialize(SETTINGS_XML_FOLDER "freebsd.xml"))
-    CLog::Log(LOGFATAL, "Unable to load freebsd-specific settings definitions");
 #endif
 #endif
   if (CFile::Exists(SETTINGS_XML_FOLDER "appliance.xml") && !Initialize(SETTINGS_XML_FOLDER "appliance.xml"))
@@ -587,21 +578,24 @@ void CSettings::InitializeSettingTypes()
 void CSettings::InitializeVisibility()
 {
   // hide some settings if necessary
-#if defined(TARGET_LINUX)
+#if defined(TARGET_LINUX) || defined(TARGET_DARWIN)
   CSettingString* timezonecountry = (CSettingString*)m_settingsManager->GetSetting("locale.timezonecountry");
   CSettingString* timezone = (CSettingString*)m_settingsManager->GetSetting("locale.timezone");
-  #if defined(TARGET_DARWIN)
+
+#if defined(TARGET_DARWIN)
   if (!g_sysinfo.IsAppleTV2() || GetIOSVersion() >= 4.3)
   {
     timezonecountry->SetVisible(false);
     timezone->SetVisible(false);
   }
-  #endif
-
+#endif
+ 
+#if defined(TARGET_LINUX)
   if (timezonecountry->IsVisible())
     timezonecountry->SetDefault(g_timezone.GetCountryByTimezone(g_timezone.GetOSConfiguredTimezone()));
   if (timezone->IsVisible())
     timezone->SetDefault(g_timezone.GetOSConfiguredTimezone());
+#endif
 #endif
 }
 
@@ -744,13 +738,13 @@ void CSettings::InitializeConditions()
   if (g_sysinfo.HasVideoToolBoxDecoder())
     m_settingsManager->AddCondition("hasvideotoolboxdecoder");
 #endif
-#ifdef TARGET_DARWIN_IOS_ATV
+#ifdef TARGET_DARWIN_IOS_ATV2
   if (g_sysinfo.IsAppleTV2())
     m_settingsManager->AddCondition("isappletv2");
 #endif
 #if defined(TARGET_WINDOWS) && defined(HAS_DX)
   m_settingsManager->AddCondition("has_dx");
-  if (g_sysinfo.IsVistaOrHigher())
+  if (g_sysinfo.IsWindowsVersionAtLeast(CSysInfo::WindowsVersionVista))
     m_settingsManager->AddCondition("hasdxva2");
 #endif
 
@@ -792,6 +786,7 @@ void CSettings::InitializeISettingsHandlers()
 #ifdef HAS_UPNP
   m_settingsManager->RegisterSettingsHandler(&CUPnPSettings::Get());
 #endif
+  m_settingsManager->RegisterSettingsHandler(&CWakeOnAccess::Get());
 }
 
 void CSettings::InitializeISubSettings()

@@ -18,17 +18,13 @@
  *  <http://www.gnu.org/licenses/>.
  *
  */
-#include <jni.h>
-#include "JNIManager.h"
-
-class CBroadcastReceiver : public CAndroidJNIBase
+#include "JNIBase.h"
+class CJNIEnum : public CJNIBase
 {
-friend class CAndroidJNIManager;
 public:
-  void ReceiveIntent(JNIEnv *env, jobject thiz, jobject intent);
-
-private:
-  CBroadcastReceiver();
+  CJNIEnum(jni::jhobject const& object) : CJNIBase(object){};
+  virtual std::string name();
+  virtual std::string toString();
+  virtual bool equals(const CJNIEnum &object);
+  ~CJNIEnum(){};
 };
-
-extern "C" void jni_ReceiveIntent(JNIEnv *env, jobject thiz, jobject intent);

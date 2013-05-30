@@ -473,7 +473,6 @@ int CBuiltins::Execute(const CStdString& execString)
     if (g_graphicsContext.IsValidResolution(res))
     {
       CDisplaySettings::Get().SetCurrentResolution(res, true);
-      g_graphicsContext.SetVideoResolution(res);
       g_application.ReloadSkin();
     }
   }
@@ -1421,7 +1420,7 @@ int CBuiltins::Execute(const CStdString& execString)
       else
       {
         if (URIUtils::HasSlashAtEnd(path))
-          URIUtils::AddFileToFolder(path, "musicdb.xml", path);
+          path = URIUtils::AddFileToFolder(path, "musicdb.xml");
         CMusicDatabase musicdatabase;
         musicdatabase.Open();
         musicdatabase.ExportToXML(path, singleFile, thumbs, overwrite);

@@ -1,6 +1,6 @@
 #pragma once
 /*
- *      Copyright (C) 2011-2013 Team XBMC
+ *      Copyright (C) 2013 Team XBMC
  *      http://www.xbmc.org
  *
  *  This Program is free software; you can redistribute it and/or modify
@@ -18,12 +18,16 @@
  *  <http://www.gnu.org/licenses/>.
  *
  */
+#include "JNIBase.h"
 
-int aml_set_sysfs_str(const char *path, const char *val);
-int aml_get_sysfs_str(const char *path, char *valstr, const int size);
-int aml_set_sysfs_int(const char *path, const int val);
-int aml_get_sysfs_int(const char *path);
-
-bool aml_present();
-void aml_cpufreq_limit(bool limit);
-void aml_set_audio_passthrough(bool passthrough);
+class CJNIFile;
+class CJNIEnvironment : public CJNIBase
+{
+public:
+  static std::string getExternalStorageState();
+  static CJNIFile getExternalStorageDirectory();
+  static CJNIFile getExternalStoragePublicDirectory(const std::string &type);
+protected:
+  CJNIEnvironment();
+  ~CJNIEnvironment(){};
+};

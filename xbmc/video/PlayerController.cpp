@@ -35,6 +35,7 @@
 #include "cores/VideoRenderers/RenderManager.h"
 #endif
 #include "Application.h"
+#include "utils/LangCodeExpander.h"
 
 CPlayerController::CPlayerController()
 {
@@ -64,9 +65,13 @@ bool CPlayerController::OnAction(const CAction &action)
       {
         SPlayerSubtitleStreamInfo info;
         g_application.m_pPlayer->GetSubtitleStreamInfo(g_application.m_pPlayer->GetSubtitle(), info);
-        sub = info.name;
-        if (sub != info.language)
-          sub.Format("%s [%s]", sub.c_str(), info.language.c_str());
+        if (!g_LangCodeExpander.Lookup(lang, info.language))
+          lang = g_localizeStrings.Get(13205); // Unknown
+
+        if (info.name.length() == 0)
+          sub = lang;
+        else
+          sub.Format("%s - %s", lang.c_str(), info.name.c_str());
       }
       else
         sub = g_localizeStrings.Get(1223);
@@ -104,10 +109,14 @@ bool CPlayerController::OnAction(const CAction &action)
       if (CMediaSettings::Get().GetCurrentVideoSettings().m_SubtitleOn)
       {
         SPlayerSubtitleStreamInfo info;
-        g_application.m_pPlayer->GetSubtitleStreamInfo(g_application.m_pPlayer->GetSubtitle(), info);
-        sub = info.name;
-        if (sub != info.language)
-          sub.Format("%s [%s]", sub.c_str(), info.language.c_str());
+        g_application.m_pPlayer->GetSubtitleStreamInfo(CMediaSettings::Get().GetCurrentVideoSettings().m_SubtitleStream, info);
+        if (!g_LangCodeExpander.Lookup(lang, info.language))
+          lang = g_localizeStrings.Get(13205); // Unknown
+
+        if (info.name.length() == 0)
+          sub = lang;
+        else
+          sub.Format("%s - %s", lang.c_str(), info.name.c_str());
       }
       else
         sub = g_localizeStrings.Get(1223);

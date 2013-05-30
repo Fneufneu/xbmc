@@ -64,15 +64,8 @@ TEST_F(TestURIUtils, GetDirectory)
 
 TEST_F(TestURIUtils, GetExtension)
 {
-  CStdString ref, var;
-
-  ref = ".avi";
-  EXPECT_STREQ(ref.c_str(),
+  EXPECT_STREQ(".avi",
                URIUtils::GetExtension("/path/to/movie.avi").c_str());
-
-  var.clear();
-  URIUtils::GetExtension("/path/to/movie.avi", var);
-  EXPECT_STREQ(ref.c_str(), var.c_str());
 }
 
 TEST_F(TestURIUtils, GetFileName)
@@ -450,14 +443,8 @@ TEST_F(TestURIUtils, CreateArchivePath)
 
 TEST_F(TestURIUtils, AddFileToFolder)
 {
-  CStdString ref, var;
-
-  ref = "/path/to/file";
-  URIUtils::AddFileToFolder("/path/to", "file", var);
-  EXPECT_STREQ(ref.c_str(), var.c_str());
-
-  var.clear();
-  var = URIUtils::AddFileToFolder("/path/to", "file");
+  CStdString ref = "/path/to/file";
+  CStdString var = URIUtils::AddFileToFolder("/path/to", "file");
   EXPECT_STREQ(ref.c_str(), var.c_str());
 }
 

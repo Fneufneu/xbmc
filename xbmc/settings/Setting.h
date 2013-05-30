@@ -31,6 +31,10 @@
 #include "SettingUpdate.h"
 #include "threads/CriticalSection.h"
 
+/*!
+ \ingroup settings
+ \brief Basic setting types available in the settings system.
+ */
 typedef enum {
   SettingTypeNone = 0,
   SettingTypeBool,
@@ -40,6 +44,10 @@ typedef enum {
   SettingTypeAction
 } SettingType;
 
+/*!
+ \ingroup settings
+ \brief Levels which every setting is assigned to.
+ */
 typedef enum {
   SettingLevelBasic  = 0,
   SettingLevelStandard,
@@ -48,9 +56,24 @@ typedef enum {
   SettingLevelInternal
 } SettingLevel;
 
-typedef std::pair<int, int> SettingOption;
-typedef std::vector<SettingOption> SettingOptions;
+typedef enum {
+  SettingOptionsTypeNone = 0,
+  SettingOptionsTypeStatic,
+  SettingOptionsTypeDynamic
+} SettingOptionsType;
 
+typedef std::pair<int, int> StaticIntegerSettingOption;
+typedef std::vector<StaticIntegerSettingOption> StaticIntegerSettingOptions;
+typedef std::pair<std::string, int> DynamicIntegerSettingOption;
+typedef std::vector<DynamicIntegerSettingOption> DynamicIntegerSettingOptions;
+typedef std::pair<std::string, std::string> DynamicStringSettingOption;
+typedef std::vector<DynamicStringSettingOption> DynamicStringSettingOptions;
+
+/*!
+ \ingroup settings
+ \brief Setting base class containing all the properties which are common to
+ all settings independent of the setting type.
+ */
 class CSetting : public ISetting,
                  protected ISettingCallback
 {
@@ -70,6 +93,7 @@ public:
 
   int GetLabel() const { return m_label; }
   int GetHelp() const { return m_help; }
+  bool IsEnabled() const;
   SettingLevel GetLevel() const { return m_level; }
   const CSettingControl& GetControl() const { return m_control; }
   const SettingDependencies& GetDependencies() const { return m_dependencies; }
@@ -77,11 +101,12 @@ public:
 
 protected:
   friend class CSettingsManager;
-    
+
   virtual bool OnSettingChanging(const CSetting *setting);
   virtual void OnSettingChanged(const CSetting *setting);
   virtual void OnSettingAction(const CSetting *setting);
   virtual bool OnSettingUpdate(CSetting* &setting, const char *oldSettingId, const TiXmlNode *oldSettingNode);
+  virtual void OnSettingPropertyChanged(const CSetting *setting, const char *propertyName);
 
   void Copy(const CSetting &setting);
 
@@ -98,6 +123,11 @@ protected:
 
 typedef std::vector<CSetting *> SettingList;
 
+/*!
+ \ingroup settings
+ \brief Boolean setting implementation.
+ \sa CSetting
+ */
 class CSettingBool : public CSetting
 {
 public:
@@ -128,6 +158,11 @@ private:
   bool m_default;
 };
 
+/*!
+ \ingroup settings
+ \brief Integer setting implementation
+ \sa CSetting
+ */
 class CSettingInt : public CSetting
 {
 public:
@@ -135,7 +170,7 @@ public:
   CSettingInt(const std::string &id, const CSettingInt &setting);
   CSettingInt(const std::string &id, int label, int value, int minimum, int step, int maximum, int format, int minimumLabel, CSettingsManager *settingsManager = NULL);
   CSettingInt(const std::string &id, int label, int value, int minimum, int step, int maximum, const std::string &format, CSettingsManager *settingsManager = NULL);
-  CSettingInt(const std::string &id, int label, int value, const SettingOptions &options, CSettingsManager *settingsManager = NULL);
+  CSettingInt(const std::string &id, int label, int value, const StaticIntegerSettingOptions &options, CSettingsManager *settingsManager = NULL);
   virtual ~CSettingInt() { }
 
   virtual bool Deserialize(const TiXmlNode *node, bool update = false);
@@ -156,12 +191,14 @@ public:
   int GetMinimum() const { return m_min; }
   int GetStep() const { return m_step; }
   int GetMaximum() const { return m_max; }
-    
+
   int GetFormat() const { return m_format; }
   int GetMinimumLabel() const { return m_labelMin; }
   const std::string& GetFormatString() const { return m_strFormat; }
-  const SettingOptions& GetOptions() const { return m_options; }
+  SettingOptionsType GetOptionsType() const;
+  const StaticIntegerSettingOptions& GetOptions() const { return m_options; }
   const std::string& GetOptionsFiller() const { return m_optionsFiller; }
+  DynamicIntegerSettingOptions UpdateDynamicOptions();
 
 private:
   void copy(const CSettingInt &setting);
@@ -175,10 +212,16 @@ private:
   int m_format;
   int m_labelMin;
   std::string m_strFormat;
-  SettingOptions m_options;
+  StaticIntegerSettingOptions m_options;
   std::string m_optionsFiller;
+  DynamicIntegerSettingOptions m_dynamicOptions;
 };
 
+/*!
+ \ingroup settings
+ \brief Real number setting implementation.
+ \sa CSetting
+ */
 class CSettingNumber : public CSetting
 {
 public:
@@ -201,7 +244,7 @@ public:
   bool SetValue(double value);
   double GetDefault() const { return m_default; }
   void SetDefault(double value);
-    
+
   double GetMinimum() const { return m_min; }
   double GetStep() const { return m_step; }
   double GetMaximum() const { return m_max; }
@@ -217,6 +260,11 @@ private:
   double m_max;
 };
 
+/*!
+ \ingroup settings
+ \brief String setting implementation.
+ \sa CSetting
+ */
 class CSettingString : public CSetting
 {
 public:
@@ -241,8 +289,10 @@ public:
 
   virtual bool AllowEmpty() const { return m_allowEmpty; }
   virtual int GetHeading() const { return m_heading; }
-  
+
+  SettingOptionsType GetOptionsType() const;
   const std::string& GetOptionsFiller() const { return m_optionsFiller; }
+  DynamicStringSettingOptions UpdateDynamicOptions();
 
 protected:
   virtual void copy(const CSettingString &setting);
@@ -252,15 +302,25 @@ protected:
   bool m_allowEmpty;
   int m_heading;
   std::string m_optionsFiller;
+  DynamicStringSettingOptions m_dynamicOptions;
 };
 
+/*!
+ \ingroup settings
+ \brief Action setting implementation.
+
+ A setting action will trigger a call to the OnSettingAction() callback method
+ when activated.
+
+ \sa CSetting
+ */
 class CSettingAction : public CSetting
 {
 public:
   CSettingAction(const std::string &id, CSettingsManager *settingsManager = NULL);
   CSettingAction(const std::string &id, const CSettingAction &setting);
   virtual ~CSettingAction() { }
-    
+
   virtual bool Deserialize(const TiXmlNode *node, bool update = false);
 
   virtual int GetType() const { return SettingTypeAction; }
