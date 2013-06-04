@@ -35,6 +35,7 @@
 #include "settings/DisplaySettings.h"
 #include "settings/Settings.h"
 #include "utils/log.h"
+#include "utils/StringUtils.h"
 #include "view/ViewStateSettings.h"
 
 using namespace std;
@@ -59,6 +60,7 @@ using namespace std;
 #define CONTROL_SETTINGS_LABEL          2
 #define CATEGORY_GROUP_ID               3
 #define SETTINGS_GROUP_ID               5
+#define CONTROL_DESCRIPTION             6
 #define CONTROL_DEFAULT_BUTTON          7
 #define CONTROL_DEFAULT_RADIOBUTTON     8
 #define CONTROL_DEFAULT_SPIN            9
@@ -171,18 +173,27 @@ bool CGUIWindowSettingsCategory::OnMessage(CGUIMessage &message)
         }
 
         // check if we have changed the category and need to create new setting controls
-        if (focusedControl >= CONTROL_START_BUTTONS && focusedControl < (int)(CONTROL_START_BUTTONS + m_categories.size()) &&
-            focusedControl - CONTROL_START_BUTTONS != m_iCategory)
+        if (focusedControl >= CONTROL_START_BUTTONS && focusedControl < (int)(CONTROL_START_BUTTONS + m_categories.size()))
         {
-          if (!m_categories[focusedControl - CONTROL_START_BUTTONS]->CanAccess())
+          int categoryIndex = focusedControl - CONTROL_START_BUTTONS;
+          if (categoryIndex != m_iCategory)
           {
-            // unable to go to this category - focus the previous one
-            SET_CONTROL_FOCUS(CONTROL_START_BUTTONS + m_iCategory, 0);
-            return false;
-          }
+            if (!m_categories[categoryIndex]->CanAccess())
+            {
+              // unable to go to this category - focus the previous one
+              SET_CONTROL_FOCUS(CONTROL_START_BUTTONS + m_iCategory, 0);
+              return false;
+            }
 
-          m_iCategory = focusedControl - CONTROL_START_BUTTONS;
-          CreateSettings();
+            m_iCategory = categoryIndex;
+            CreateSettings();
+          }
+        }
+        else if (focusedControl >= CONTROL_START_CONTROL && focusedControl < (int)(CONTROL_START_CONTROL + m_settingControls.size()))
+        {
+          CSetting *setting = GetSettingControl(focusedControl)->GetSetting();
+          if (setting != NULL)
+            SetDescription(setting->GetHelp());
         }
       }
       return true;
@@ -300,47 +311,6 @@ bool CGUIWindowSettingsCategory::OnAction(const CAction &action)
       }
 
       CreateSettings();
-      return true;
-    }
-
-    case ACTION_SHOW_INFO:
-    {
-      int label = -1;
-      int help = -1;
-      int focusedControl = GetFocusedControlID();
-      // check if we are focusing a category
-      if (focusedControl >= CONTROL_START_BUTTONS && focusedControl < (int)(CONTROL_START_BUTTONS + m_categories.size()))
-      {
-        CSettingCategory *category = m_categories[focusedControl - CONTROL_START_BUTTONS];
-        label = category->GetLabel();
-        help = category->GetHelp();
-      }
-      else if (focusedControl >= CONTROL_START_CONTROL && focusedControl < (int)(CONTROL_START_CONTROL + m_settingControls.size()))
-      {
-        CSetting *setting = GetSettingControl(focusedControl)->GetSetting();
-        if (setting != NULL)
-        {
-          label = setting->GetLabel();
-          help = setting->GetHelp();
-        }
-      }
-      else
-        break;
-
-      if (help >= 0)
-      {
-        CGUIDialogTextViewer *dialog = (CGUIDialogTextViewer*)g_windowManager.GetWindow(WINDOW_DIALOG_TEXT_VIEWER);
-        if (dialog != NULL)
-        {
-          if (label < 0)
-            label = 10043; // "Help"
-          dialog->SetHeading(g_localizeStrings.Get(label));
-          dialog->SetText(g_localizeStrings.Get(help));
-          dialog->DoModal();
-        }
-      }
-      else
-        CGUIDialogKaiToast::QueueNotification(CGUIDialogKaiToast::Info, g_localizeStrings.Get(10043), g_localizeStrings.Get(10044), 2000U);
       return true;
     }
 
@@ -552,6 +522,9 @@ void CGUIWindowSettingsCategory::CreateSettings()
   if (category == NULL)
     return;
 
+  // set the description of the current category
+  SetDescription(category->GetHelp());
+
   std::set<std::string> settingMap;
 
   const SettingGroupList& groups = category->GetGroups(CViewStateSettings::Get().GetSettingLevel());
@@ -600,6 +573,19 @@ void CGUIWindowSettingsCategory::UpdateSettings()
   }
 }
 
+void CGUIWindowSettingsCategory::SetDescription(const CVariant &label)
+{
+  if (GetControl(CONTROL_DESCRIPTION) == NULL)
+    return;
+
+  if (label.isString())
+    SET_CONTROL_LABEL(CONTROL_DESCRIPTION, label.asString());
+  else if (label.isInteger() && label.asInteger() >= 0)
+    SET_CONTROL_LABEL(CONTROL_DESCRIPTION, (int)label.asInteger());
+  else
+    SET_CONTROL_LABEL(CONTROL_DESCRIPTION, "");
+}
+
 CGUIControl* CGUIWindowSettingsCategory::AddSetting(CSetting *pSetting, float width, int &iControlID)
 {
   if (pSetting == NULL)
@@ -608,6 +594,26 @@ CGUIControl* CGUIWindowSettingsCategory::AddSetting(CSetting *pSetting, float wi
   BaseSettingControlPtr pSettingControl;
   CGUIControl *pControl = NULL;
 
+  // determine the label and any possible indentation in case of sub settings
+  string label = g_localizeStrings.Get(pSetting->GetLabel());
+  int parentLevels = 0;
+  CSetting *parentSetting = m_settings.GetSetting(pSetting->GetParent());
+  while (parentSetting != NULL)
+  {
+    parentLevels++;
+    parentSetting = m_settings.GetSetting(parentSetting->GetParent());
+  }
+
+  if (parentLevels > 0)
+  {
+    // add additional 2 spaces indentation for anything past one level
+    string indentation;
+    for (int index = 1; index < parentLevels; index++)
+      indentation.append("  ");
+    label = StringUtils::Format(g_localizeStrings.Get(168).c_str(), indentation.c_str(), label.c_str());
+  }
+
+  // create the proper controls
   switch (pSetting->GetControl().GetType())
   {
     case SettingControlTypeCheckmark:
@@ -616,7 +622,7 @@ CGUIControl* CGUIWindowSettingsCategory::AddSetting(CSetting *pSetting, float wi
       if (pControl == NULL)
         return NULL;
 
-      ((CGUIRadioButtonControl *)pControl)->SetLabel(g_localizeStrings.Get(pSetting->GetLabel()));
+      ((CGUIRadioButtonControl *)pControl)->SetLabel(label);
       pSettingControl.reset(new CGUIControlRadioButtonSetting((CGUIRadioButtonControl *)pControl, iControlID, pSetting));
       break;
     }
@@ -627,7 +633,7 @@ CGUIControl* CGUIWindowSettingsCategory::AddSetting(CSetting *pSetting, float wi
       if (pControl == NULL)
         return NULL;
 
-      ((CGUISpinControlEx *)pControl)->SetText(g_localizeStrings.Get(pSetting->GetLabel()));
+      ((CGUISpinControlEx *)pControl)->SetText(label);
       pSettingControl.reset(new CGUIControlSpinExSetting((CGUISpinControlEx *)pControl, iControlID, pSetting));
       break;
     }
@@ -638,8 +644,19 @@ CGUIControl* CGUIWindowSettingsCategory::AddSetting(CSetting *pSetting, float wi
       if (pControl == NULL)
         return NULL;
       
-      ((CGUIEditControl *)pControl)->SetLabel(g_localizeStrings.Get(pSetting->GetLabel()));
+      ((CGUIEditControl *)pControl)->SetLabel(label);
       pSettingControl.reset(new CGUIControlEditSetting((CGUIEditControl *)pControl, iControlID, pSetting));
+      break;
+    }
+    
+    case SettingControlTypeList:
+    {
+      pControl = new CGUIButtonControl(*m_pOriginalButton);
+      if (pControl == NULL)
+        return NULL;
+      
+      ((CGUIButtonControl *)pControl)->SetLabel(g_localizeStrings.Get(pSetting->GetLabel()));
+      pSettingControl.reset(new CGUIControlListSetting((CGUIButtonControl *)pControl, iControlID, pSetting));
       break;
     }
     
@@ -649,7 +666,7 @@ CGUIControl* CGUIWindowSettingsCategory::AddSetting(CSetting *pSetting, float wi
       if (pControl == NULL)
         return NULL;
       
-      ((CGUIButtonControl *)pControl)->SetLabel(g_localizeStrings.Get(pSetting->GetLabel()));
+      ((CGUIButtonControl *)pControl)->SetLabel(label);
       pSettingControl.reset(new CGUIControlButtonSetting((CGUIButtonControl *)pControl, iControlID, pSetting));
       break;
     }

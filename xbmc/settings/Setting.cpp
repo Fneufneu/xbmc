@@ -79,6 +79,9 @@ bool CSetting::Deserialize(const TiXmlNode *node, bool update /* = false */)
     m_label = tmp;
   if (element->QueryIntAttribute(XML_ATTR_HELP, &m_help) == TIXML_SUCCESS && tmp > 0)
     m_help = tmp;
+  const char *parentSetting = element->Attribute("parent");
+  if (parentSetting != NULL)
+    m_parentSetting = parentSetting;
 
   // get the <level>
   int level = -1;
@@ -705,7 +708,8 @@ bool CSettingNumber::Deserialize(const TiXmlNode *node, bool update /* = false *
   if (!CSetting::Deserialize(node, update))
     return false;
     
-  if (m_control.GetType() == SettingControlTypeCheckmark)
+  if (m_control.GetType() == SettingControlTypeCheckmark ||
+      m_control.GetType() == SettingControlTypeList)
   {
     CLog::Log(LOGERROR, "CSettingInt: invalid <control> of \"%s\"", m_id.c_str());
     return false;
@@ -977,10 +981,6 @@ DynamicStringSettingOptions CSettingString::UpdateDynamicOptions()
 
   std::string bestMatchingValue = m_value;
   filler(this, options, bestMatchingValue);
-
-  bool updated = false;
-  if (bestMatchingValue != m_value)
-    updated = SetValue(bestMatchingValue);
 
   // check if the list of items has changed
   bool changed = m_dynamicOptions.size() != options.size();
