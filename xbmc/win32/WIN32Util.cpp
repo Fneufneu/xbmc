@@ -28,9 +28,7 @@
 #include <shlobj.h>
 #include "filesystem/SpecialProtocol.h"
 #include "my_ntddscsi.h"
-#if _MSC_VER > 1400
 #include "Setupapi.h"
-#endif
 #include "storage/MediaManager.h"
 #include "windowing/WindowingFactory.h"
 #include "guilib/LocalizeStrings.h"
@@ -245,8 +243,6 @@ char CWIN32Util::FirstDriveFromMask (ULONG unitmask)
 
 bool CWIN32Util::PowerManagement(PowerState State)
 {
-// SetSuspendState not available in vs2003
-#if _MSC_VER > 1400
   HANDLE hToken;
   TOKEN_PRIVILEGES tkp;
   // Get a token for this process.
@@ -296,9 +292,6 @@ bool CWIN32Util::PowerManagement(PowerState State)
     return false;
     break;
   }
-#else
-  return false;
-#endif
 }
 
 int CWIN32Util::BatteryLevel()
@@ -602,7 +595,6 @@ HRESULT CWIN32Util::CloseTray(const char cDriveLetter)
 // http://www.codeproject.com/KB/system/RemoveDriveByLetter.aspx
 // http://www.techtalkz.com/microsoft-device-drivers/250734-remove-usb-device-c-3.html
 
-#if _MSC_VER > 1400
 DEVINST CWIN32Util::GetDrivesDevInstByDiskNumber(long DiskNumber)
 {
 
@@ -678,11 +670,9 @@ DEVINST CWIN32Util::GetDrivesDevInstByDiskNumber(long DiskNumber)
   SetupDiDestroyDeviceInfoList(hDevInfo);
   return 0;
 }
-#endif
 
 bool CWIN32Util::EjectDrive(const char cDriveLetter)
 {
-#if _MSC_VER > 1400
   if( !cDriveLetter )
     return false;
 
@@ -727,9 +717,6 @@ bool CWIN32Util::EjectDrive(const char cDriveLetter)
   }
 
   return bSuccess;
-#else
-  return false;
-#endif
 }
 
 #ifdef HAS_GL
@@ -990,7 +977,7 @@ extern "C" {
    * POSSIBILITY OF SUCH DAMAGE.
    */
 
-  #if !defined(_WIN32)
+  #if !defined(TARGET_WINDOWS)
   #include <sys/cdefs.h>
   #endif
 
@@ -998,7 +985,7 @@ extern "C" {
   __RCSID("$NetBSD: strptime.c,v 1.25 2005/11/29 03:12:00 christos Exp $");
   #endif
 
-  #if !defined(_WIN32)
+  #if !defined(TARGET_WINDOWS)
   #include "namespace.h"
   #include <sys/localedef.h>
   #else
@@ -1009,7 +996,7 @@ extern "C" {
   #include <locale.h>
   #include <string.h>
   #include <time.h>
-  #if !defined(_WIN32)
+  #if !defined(TARGET_WINDOWS)
   #include <tzfile.h>
   #endif
 
@@ -1017,7 +1004,7 @@ extern "C" {
   __weak_alias(strptime,_strptime)
   #endif
 
-  #if !defined(_WIN32)
+  #if !defined(TARGET_WINDOWS)
   #define  _ctloc(x)    (_CurrentTimeLocale->x)
   #else
   #define _ctloc(x)   (x)

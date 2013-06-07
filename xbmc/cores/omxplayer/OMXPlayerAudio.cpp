@@ -18,9 +18,9 @@
  *
  */
 
-#if (defined HAVE_CONFIG_H) && (!defined WIN32)
+#if (defined HAVE_CONFIG_H) && (!defined TARGET_WINDOWS)
   #include "config.h"
-#elif defined(_WIN32)
+#elif defined(TARGET_WINDOWS)
 #include "system.h"
 #endif
 
@@ -78,8 +78,6 @@ OMXPlayerAudio::OMXPlayerAudio(OMXClock *av_clock, CDVDMessageQueue& parent)
   m_freq          = CurrentHostFrequency();
   m_bad_state     = false;
   m_hints_current.Clear();
-
-  m_av_clock->SetMasterClock(false);
 
   m_messageQueue.SetMaxDataSize(3 * 1024 * 1024);
   m_messageQueue.SetMaxTimeSize(8.0);
@@ -815,6 +813,11 @@ double OMXPlayerAudio::GetDelay()
 double OMXPlayerAudio::GetCacheTime()
 {
   return m_omxAudio.GetCacheTime();
+}
+
+double OMXPlayerAudio::GetCacheTotal()
+{
+  return m_omxAudio.GetCacheTotal();
 }
 
 void OMXPlayerAudio::SubmitEOS()
