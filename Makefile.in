@@ -122,6 +122,10 @@ DIRECTORY_ARCHIVES += lib/libUPnP/libupnp.a \
                       xbmc/network/upnp/upnp.a
 endif
 
+ifeq (@USE_MDNSEMBEDDED@,1)
+DIRECTORY_ARCHIVES += xbmc/network/mdns/mdns.a
+endif
+
 ifeq ($(findstring osx,@ARCH@),osx)
 DIRECTORY_ARCHIVES += xbmc/osx/osx.a
 DIRECTORY_ARCHIVES += xbmc/network/osx/network.a
@@ -437,6 +441,7 @@ ifneq (@USE_LIBXBMC@,1)
 MAINOBJS+=xbmc/main/main.o
 endif
 
+# sync with tools/depends/target/xbmc-addon-bindings
 BINDINGS =xbmc/addons/include/xbmc_addon_cpp_dll.h
 BINDINGS+=xbmc/addons/include/xbmc_addon_dll.h
 BINDINGS+=xbmc/addons/include/xbmc_addon_types.h

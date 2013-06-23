@@ -57,6 +57,9 @@
 #ifdef HAVE_LIBVA
 #include "VAAPI.h"
 #endif
+#ifdef TARGET_DARWIN_OSX
+#include "VDA.h"
+#endif
 
 using namespace boost;
 
@@ -109,6 +112,20 @@ enum PixelFormat CDVDVideoCodecFFmpeg::GetFormat( struct AVCodecContext * avctx
       }
 
       VAAPI::CDecoder* dec = new VAAPI::CDecoder();
+      if(dec->Open(avctx, *cur, ctx->m_uSurfacesCount))
+      {
+        ctx->SetHardware(dec);
+        return *cur;
+      }
+      else
+        dec->Release();
+    }
+#endif
+
+#ifdef TARGET_DARWIN_OSX
+    if (*cur == AV_PIX_FMT_VDA_VLD && CSettings::Get().GetBool("videoplayer.usevda"))
+    {
+      VDA::CDecoder* dec = new VDA::CDecoder();
       if(dec->Open(avctx, *cur, ctx->m_uSurfacesCount))
       {
         ctx->SetHardware(dec);
@@ -559,7 +576,11 @@ bool CDVDVideoCodecFFmpeg::GetPictureCommon(DVDVideoPicture* pDvdVideoPicture)
   /* use variable in the frame */
   AVRational pixel_aspect = m_pCodecContext->sample_aspect_ratio;
   if (m_pBufferRef)
+#if defined(LIBAVFILTER_FROM_FFMPEG)
     pixel_aspect = m_pBufferRef->video->sample_aspect_ratio;
+#else
+    pixel_aspect = m_pBufferRef->video->pixel_aspect;
+#endif
 
   if (pixel_aspect.num == 0)
     aspect_ratio = 0;

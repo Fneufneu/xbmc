@@ -672,7 +672,7 @@ bool COMXPlayer::OpenInputStream()
     for(unsigned int i=0;i<filenames.size();i++)
     {
       // if vobsub subtitle:
-      if (URIUtils::GetExtension(filenames[i]) == ".idx")
+      if (URIUtils::HasExtension(filenames[i], ".idx"))
       {
         CStdString strSubFile;
         if ( CUtil::FindVobSubPair( filenames, filenames[i], strSubFile ) )
@@ -3884,7 +3884,7 @@ bool COMXPlayer::HasMenu()
 
 bool COMXPlayer::GetCurrentSubtitle(CStdString& strSubtitle)
 {
-  double pts = m_av_clock.GetClock();
+  double pts = m_av_clock.OMXMediaTime(false);
 
   if (m_pInputStream && m_pInputStream->IsStreamType(DVDSTREAM_TYPE_DVD))
     return false;
