@@ -35,7 +35,7 @@ file(COPY ${XBMCROOT}/project/cmake/scripts/common/xbmc-addon-helpers.cmake ${XB
 
 ### copy all the addon binding header files to include/xbmc
 # parse addon-bindings.mk to get the list of header files to copy
-file(STRINGS ${XBMCROOT}/xbmc/addons/addon-bindings.mk bindings)
+file(STRINGS ${XBMCROOT}/src/addons/addon-bindings.mk bindings)
 string(REPLACE "\n" ";" bindings "${bindings}")
 foreach(binding ${bindings})
   string(REPLACE " =" ";" binding "${binding}")
