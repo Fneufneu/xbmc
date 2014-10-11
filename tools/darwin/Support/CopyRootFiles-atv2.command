@@ -33,7 +33,7 @@ mkdir -p "$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/XBMCHome/media"
 mkdir -p "$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/XBMCHome/tools/darwin/runtime"
 
 ${SYNC} "$SRCROOT/LICENSE.GPL" 	"$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/"
-${SYNC} "$SRCROOT/xbmc/osx/Credits.html" 	"$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/"
+${SYNC} "$SRCROOT/src/osx/Credits.html" 	"$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/"
 ${ADDONSYNC} "$SRCROOT/addons"		"$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/XBMCHome"
 ${SYNC} "$SRCROOT/addons/visualization.glspectrum"   	"$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/XBMCHome/addons"
 ${SYNC} "$SRCROOT/addons/visualization.waveform"    	"$TARGET_BUILD_DIR/$TARGET_NAME/XBMCData/XBMCHome/addons"
