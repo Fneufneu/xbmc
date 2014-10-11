@@ -13,7 +13,7 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 #: system/settings/settings.xml
 msgctxt "#0"
 msgid "Programs"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: Used in Confluence
 #: system/settings/settings.xml
-#: xbmc/media/MediaTypes.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#3"
 msgid "Videos"
 msgstr ""
@@ -42,13 +42,13 @@ msgid "TV-Guide"
 msgstr ""
 
 #: Used in Confluence
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#5"
 msgid "Settings"
 msgstr ""
 
 #: Unknown
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#6"
 msgid "Kodi SVN"
 msgstr ""
@@ -382,12 +382,12 @@ msgctxt "#105"
 msgid "Sort by: Size"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogYesNo.cpp
+#: src/dialogs/GUIDialogYesNo.cpp
 msgctxt "#106"
 msgid "No"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogYesNo.cpp
+#: src/dialogs/GUIDialogYesNo.cpp
 msgctxt "#107"
 msgid "Yes"
 msgstr ""
@@ -412,86 +412,86 @@ msgctxt "#112"
 msgid "Paused"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#113"
 msgid "Update failed"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#114"
 msgid "Installation failed"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#115"
 msgid "Copy"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#116"
 msgid "Move"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#117"
 msgid "Delete"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFavourites.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#118"
 msgid "Rename"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#119"
 msgid "New folder"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#120"
 msgid "Confirm file copy"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#121"
 msgid "Confirm file move"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#122"
 msgid "Confirm delete"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#123"
 msgid "Copy these files?"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#124"
 msgid "Move these files?"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#125"
 msgid "Delete these files? - Deleting files cannot be undone!"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#126"
 msgid "Status"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSelect.cpp
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogSelect.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#127"
 msgid "Objects"
 msgstr ""
 
-#: xbmc/addons/guidialogaddonsettings.cpp
+#: src/addons/guidialogaddonsettings.cpp
 #: system/settings/settings.xml
 msgctxt "#128"
 msgid "General"
@@ -510,38 +510,38 @@ msgctxt "#131"
 msgid "Display"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#132"
 msgid "Albums"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#133"
 msgid "Artists"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#134"
 msgid "Songs"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
 msgctxt "#135"
 msgid "Genres"
 msgstr ""
@@ -550,7 +550,7 @@ msgctxt "#136"
 msgid "Playlists"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#137"
 msgid "Search"
 msgstr ""
@@ -599,12 +599,12 @@ msgctxt "#148"
 msgid "DHCP"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#149"
 msgid "MAC address"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#150"
 msgid "IP address"
 msgstr ""
@@ -637,7 +637,7 @@ msgctxt "#157"
 msgid "Video"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#158"
 msgid "Free memory"
 msgstr ""
@@ -670,19 +670,19 @@ msgctxt "#165"
 msgid "Disc present"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 #: system/settings/settings.xml
 msgctxt "#166"
 msgid "Skin"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#167"
 msgid "Cancel file operations"
 msgstr ""
 
-#: xbmc/settings/windows/GUIWindowSettingsCategory.cpp
+#: src/settings/windows/GUIWindowSettingsCategory.cpp
 msgctxt "#168"
 msgid "%s- %s"
 msgstr ""
@@ -697,8 +697,8 @@ msgctxt "#170"
 msgid "Adjust display refresh rate to match video"
 msgstr ""
 
-#: xbmc/playlists/SmartPlayList.cpp
-#: xbmc/utils/SortUtils.cpp
+#: src/playlists/SmartPlayList.cpp
+#: src/utils/SortUtils.cpp
 msgctxt "#171"
 msgid "Sort title"
 msgstr ""
@@ -714,26 +714,26 @@ msgstr ""
 
 #empty string with id 174
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#175"
 msgid "Moods"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#176"
 msgid "Styles"
 msgstr ""
 
 #empty strings from id 177 to 178
 
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/music/karaoke/GUIDialogKaraokeSongSelector.cpp
+#: src/media/MediaTypes.cpp
+#: src/music/karaoke/GUIDialogKaraokeSongSelector.cpp
 msgctxt "#179"
 msgid "Song"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#180"
 msgid "Duration"
 msgstr ""
@@ -742,13 +742,13 @@ msgctxt "#181"
 msgid "Select album"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#182"
 msgid "Tracks"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#183"
 msgid "Review"
 msgstr ""
@@ -761,8 +761,8 @@ msgctxt "#185"
 msgid "Searching album"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/dialogs/GUIDialogSelect.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/dialogs/GUIDialogSelect.cpp
 msgctxt "#186"
 msgid "OK"
 msgstr ""
@@ -771,7 +771,7 @@ msgctxt "#187"
 msgid "No albums found!"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#188"
 msgid "Select all"
 msgstr ""
@@ -800,7 +800,7 @@ msgctxt "#194"
 msgid "Searching..."
 msgstr ""
 
-#: xbmc/addons/guidialogaddoninfo.cpp
+#: src/addons/guidialogaddoninfo.cpp
 msgctxt "#195"
 msgid "No info found!"
 msgstr ""
@@ -817,7 +817,7 @@ msgctxt "#198"
 msgid "Loading movie details"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 #: system/settings/settings.xml
 msgctxt "#199"
 msgid "Web interface"
@@ -829,19 +829,19 @@ msgstr ""
 
 #empty string with id 201
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#202"
 msgid "Tagline"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#203"
 msgid "Plot outline"
 msgstr ""
 
 #empty string with id 204
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#205"
 msgid "Votes"
 msgstr ""
@@ -850,12 +850,12 @@ msgctxt "#206"
 msgid "Cast"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#207"
 msgid "Plot"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogPlayEject.cpp
+#: src/dialogs/GUIDialogPlayEject.cpp
 #: system/settings/settings.xml
 msgctxt "#208"
 msgid "Play"
@@ -878,7 +878,7 @@ msgid "Calibrate user interface..."
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#214"
 msgid "Video calibration..."
 msgstr ""
@@ -887,41 +887,41 @@ msgctxt "#215"
 msgid "Soften"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#216"
 msgid "Zoom amount"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#217"
 msgid "Pixel ratio"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#218"
 msgid "DVD drive"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
-#: xbmc/dialogs/GUIDialogPlayEject.cpp
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogPlayEject.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#219"
 msgid "Please insert disc"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#220"
 msgid "Remote share"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#221"
 msgid "Network is not connected"
 msgstr ""
@@ -936,7 +936,7 @@ msgctxt "#224"
 msgid "Speed"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#225"
 msgid "Vertical Shift"
 msgstr ""
@@ -964,9 +964,9 @@ msgid "Video filters"
 msgstr ""
 
 #: system/peripherals.xml
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
+#: src/playlists/SmartPlaylist.cpp
 #: system/settings/settings.xml
 msgctxt "#231"
 msgid "None"
@@ -1043,8 +1043,8 @@ msgctxt "#248"
 msgid "Language"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#249"
 msgid "Music"
 msgstr ""
@@ -1080,7 +1080,7 @@ msgctxt "#256"
 msgid "Fetching CD information"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#257"
 msgid "Error"
 msgstr ""
@@ -1139,7 +1139,7 @@ msgctxt "#270"
 msgid "Sort by: Album"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#271"
 msgid "Top 100"
 msgstr ""
@@ -1188,7 +1188,7 @@ msgctxt "#282"
 msgid "Found %i items"
 msgstr ""
 
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#283"
 msgid "Search results"
 msgstr ""
@@ -1225,8 +1225,8 @@ msgctxt "#290"
 msgid "Dynamic range compression"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#291"
 msgid "Video"
 msgstr ""
@@ -1280,7 +1280,7 @@ msgid "Language"
 msgstr ""
 
 #: system/peripherals.xml
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 #: system/settings/settings.xml
 msgctxt "#305"
 msgid "Enabled"
@@ -1428,12 +1428,12 @@ msgctxt "#340"
 msgid "Various artists"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#341"
 msgid "Play disc"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#342"
 msgid "Movies"
 msgstr ""
@@ -1442,9 +1442,9 @@ msgctxt "#343"
 msgid "Adjust framerate"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#344"
 msgid "Actors"
 msgstr ""
@@ -1473,7 +1473,7 @@ msgctxt "#349"
 msgid "TrueHD capable receiver"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#350"
 msgid "Programs"
 msgstr ""
@@ -1514,7 +1514,7 @@ msgctxt "#358"
 msgid "All albums"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#359"
 msgid "Recently added albums"
 msgstr ""
@@ -1557,9 +1557,9 @@ msgctxt "#368"
 msgid "IMDb"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
 msgctxt "#369"
 msgid "Title"
 msgstr ""
@@ -1712,37 +1712,37 @@ msgctxt "#399"
 msgid "Speed units"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#400"
 msgid "Weather"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#401"
 msgid "Temp"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#402"
 msgid "Feels like"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#403"
 msgid "UV index"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#404"
 msgid "Wind"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#405"
 msgid "Dew point"
 msgstr ""
 
-#: xbmc/windows/GUIWindowWeather.cpp
+#: src/windows/GUIWindowWeather.cpp
 msgctxt "#406"
 msgid "Humidity"
 msgstr ""
@@ -1769,7 +1769,7 @@ msgctxt "#413"
 msgid "Manual"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#414"
 msgid "No review for this album"
 msgstr ""
@@ -1778,7 +1778,7 @@ msgctxt "#415"
 msgid "Downloading thumbnail..."
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#416"
 msgid "Not available"
 msgstr ""
@@ -1834,7 +1834,7 @@ msgctxt "#428"
 msgid "Insert correct CD/DVD"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogPlayEject.cpp
+#: src/dialogs/GUIDialogPlayEject.cpp
 msgctxt "#429"
 msgid "Please insert the following disc:"
 msgstr ""
@@ -1980,17 +1980,17 @@ msgctxt "#463"
 msgid "Backlight"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#464"
 msgid "Brightness"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#465"
 msgid "Contrast"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#466"
 msgid "Gamma"
 msgstr ""
@@ -2025,7 +2025,7 @@ msgctxt "#476"
 msgid "Music & video"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#477"
 msgid "Unable to load playlist"
 msgstr ""
@@ -2166,16 +2166,16 @@ msgctxt "#514"
 msgid "Manual settings"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#515"
 msgid "Genre"
 msgstr ""
 
 #empty string with id 516
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#517"
 msgid "Recently played albums"
 msgstr ""
@@ -2190,17 +2190,17 @@ msgstr ""
 
 #empty string with id 520
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#521"
 msgid "Compilations"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#522"
 msgid "Remove source"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#523"
 msgid "Switch media"
 msgstr ""
@@ -2299,7 +2299,7 @@ msgctxt "#546"
 msgid "Passthrough output device"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#547"
 msgid "No biography for this artist"
 msgstr ""
@@ -2308,18 +2308,18 @@ msgctxt "#548"
 msgid "Downmix multichannel audio to stereo"
 msgstr ""
 
-#: /xbmc/xbmc/pvr/windows/GUIViewStatePVR.cpp
-#: /xbmc/xbmc/utils/SortUtils.cpp
+#: /src/pvr/windows/GUIViewStatePVR.cpp
+#: /src/utils/SortUtils.cpp
 msgctxt "#549"
 msgid "Number"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#550"
 msgid "Sort by: %s"
 msgstr ""
 
-#: xbmc/view/GUIViewState.cpp
+#: src/view/GUIViewState.cpp
 msgctxt "#551"
 msgid "Name"
 msgstr ""
@@ -2328,13 +2328,13 @@ msgctxt "#552"
 msgid "Date"
 msgstr ""
 
-#: xbmc/filesystem/BlurayDirectory.cpp
+#: src/filesystem/BlurayDirectory.cpp
 msgctxt "#553"
 msgid "Size"
 msgstr ""
 
-#: xbmc/filesystem/BlurayDirectory.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/filesystem/BlurayDirectory.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#554"
 msgid "Track"
 msgstr ""
@@ -2343,30 +2343,30 @@ msgctxt "#555"
 msgid "Time"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#556"
 msgid "Title"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#557"
 msgid "Artist"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#558"
 msgid "Album"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#559"
 msgid "Playlist"
 msgstr ""
@@ -2375,29 +2375,29 @@ msgctxt "#560"
 msgid "ID"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#561"
 msgid "File"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#562"
 msgid "Year"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#563"
 msgid "Rating"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#564"
 msgid "Type"
 msgstr ""
@@ -2406,57 +2406,57 @@ msgctxt "#565"
 msgid "Usage"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#566"
 msgid "Album artist"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#567"
 msgid "Play count"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#568"
 msgid "Last played"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#569"
 msgid "Comment"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#570"
 msgid "Date added"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#571"
 msgid "Default"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#572"
 msgid "Studio"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#573"
 msgid "Path"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#574"
 msgid "Country"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#575"
 msgid "In progress"
 msgstr ""
@@ -2511,7 +2511,7 @@ msgctxt "#589"
 msgid "Party mode"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#590"
 msgid "Random"
 msgstr ""
@@ -2603,7 +2603,7 @@ msgctxt "#613"
 msgid "Sample rate"
 msgstr ""
 
-#: xbmc/playlists/SmartPlayList.cpp
+#: src/playlists/SmartPlayList.cpp
 msgctxt "#614"
 msgid "Virtual folder"
 msgstr ""
@@ -2649,40 +2649,40 @@ msgid "View mode"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#630"
 msgid "Normal"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#631"
 msgid "Zoom"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#632"
 msgid "Stretch 4:3"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#633"
 msgid "Wide Zoom"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#634"
 msgid "Stretch 16:9"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#635"
 msgid "Original Size"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#636"
 msgid "Custom"
 msgstr ""
@@ -2755,8 +2755,8 @@ msgctxt "#651"
 msgid "Browse for library"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#652"
 msgid "Years"
 msgstr ""
@@ -2777,7 +2777,7 @@ msgctxt "#656"
 msgid "Browse for playlist"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
 msgctxt "#657"
 msgid "Browse for folder"
 msgstr ""
@@ -2786,7 +2786,7 @@ msgctxt "#658"
 msgid "Song information"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#659"
 msgid "Non-linear stretch"
 msgstr ""
@@ -2831,57 +2831,57 @@ msgctxt "#668"
 msgid "Specify component-specific logging..."
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#669"
 msgid "Verbose logging for SMB library"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#670"
 msgid "Verbose logging for CURL library (http, dav)"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#671"
 msgid "Verbose logging for CMYTH library"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#672"
 msgid "Verbose logging for FFMPEG libraries"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#673"
 msgid "Verbose logging for RTMP library"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#674"
 msgid "Verbose logging for DBUS calls"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#675"
 msgid "Verbose logging for JSON-RPC requests"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#676"
 msgid "Verbose logging for AUDIO component"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#677"
 msgid "Verbose logging for AirTunes library"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#678"
 msgid "Verbose logging for UPnP components"
 msgstr ""
 
-#: xbmc/settings/AdvancedSettings.cpp
+#: src/settings/AdvancedSettings.cpp
 msgctxt "#679"
 msgid "Verbose logging for CEC library"
 msgstr ""
@@ -3060,7 +3060,7 @@ msgctxt "#743"
 msgid "Yellow"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#744"
 msgid "Files"
 msgstr ""
@@ -3085,13 +3085,13 @@ msgctxt "#749"
 msgid "Mirror image"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#750"
 msgid "Are you sure?"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#751"
 msgid "Removing source"
 msgstr ""
@@ -3240,7 +3240,7 @@ msgctxt "#788"
 msgid "Network interface disabled successfully."
 msgstr ""
 
-#: xbmc/network/GUIDialogAccessPoints.cpp
+#: src/network/GUIDialogAccessPoints.cpp
 msgctxt "#789"
 msgid "Wireless network name (ESSID)"
 msgstr ""
@@ -3293,18 +3293,18 @@ msgctxt "#799"
 msgid "Library Update"
 msgstr ""
 
-#: xbmc/music/windows/GUIWindowMusicBase.cpp
+#: src/music/windows/GUIWindowMusicBase.cpp
 msgctxt "#800"
 msgid "Music library needs to rescan tags from files."
 msgstr ""
 
-#: xbmc/music/windows/GUIWindowMusicBase.cpp
+#: src/music/windows/GUIWindowMusicBase.cpp
 msgctxt "#801"
 msgid "Would you like to scan now?"
 msgstr ""
 
 #. Label of progess bar which shows the available/total space of pvr backend
-#: xbmc/pvr/PVRGUIInfo.cpp
+#: src/pvr/PVRGUIInfo.cpp
 msgctxt "#802"
 msgid "%s of %s available"
 msgstr ""
@@ -3325,17 +3325,17 @@ msgstr ""
 
 #empty strings from id 853 to 996
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#997"
 msgid "Add Pictures..."
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#998"
 msgid "Add Music..."
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#999"
 msgid "Add Videos..."
 msgstr ""
@@ -3345,7 +3345,7 @@ msgctxt "#1000"
 msgid "Preview"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1001"
 msgid "Unable to connect"
 msgstr ""
@@ -3354,12 +3354,12 @@ msgctxt "#1002"
 msgid "Kodi was unable to connect to the network location."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1003"
 msgid "This could be due to the network not being connected."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1004"
 msgid "Would you like to add it anyway?"
 msgstr ""
@@ -3378,22 +3378,22 @@ msgctxt "#1008"
 msgid "Protocol"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1009"
 msgid "Server address"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1010"
 msgid "Server name"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1011"
 msgid "Remote path"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1012"
 msgid "Shared folder"
 msgstr ""
@@ -3406,47 +3406,47 @@ msgctxt "#1014"
 msgid "Username"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1015"
 msgid "Browse for network server"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1016"
 msgid "Enter the network address of the server"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1017"
 msgid "Enter the path on the server"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1018"
 msgid "Enter the port number"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#1019"
 msgid "Enter the username"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1020"
 msgid "Add %s source"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1021"
 msgid "Enter the paths or browse for the media locations."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1022"
 msgid "Enter a name for this media Source."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#1023"
 msgid "Browse for new share"
 msgstr ""
@@ -3455,24 +3455,24 @@ msgctxt "#1024"
 msgid "Browse"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1025"
 msgid "Could not retrieve directory information."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#1026"
 msgid "Add source"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#1027"
 msgid "Edit source"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1028"
 msgid "Edit %s source"
 msgstr ""
@@ -3481,9 +3481,9 @@ msgctxt "#1029"
 msgid "Enter the new label"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFavourites.cpp
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
-#: xbmc/music/dialogs/GUIDialogSongInfo.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogSongInfo.cpp
 msgctxt "#1030"
 msgid "Browse for image"
 msgstr ""
@@ -3492,7 +3492,7 @@ msgctxt "#1031"
 msgid "Browse for image folder"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#1032"
 msgid "Add network location..."
 msgstr ""
@@ -3513,22 +3513,22 @@ msgctxt "#1036"
 msgid "Favourites"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#1037"
 msgid "Video Add-ons"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#1038"
 msgid "Music Add-ons"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#1039"
 msgid "Picture Add-ons"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#1040"
 msgid "Loading directory"
 msgstr ""
@@ -3541,7 +3541,7 @@ msgctxt "#1042"
 msgid "Retrieved %i of %i items"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#1043"
 msgid "Program Add-ons"
 msgstr ""
@@ -3550,7 +3550,7 @@ msgctxt "#1044"
 msgid "Set plug-in thumb"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#1045"
 msgid "Add-on settings"
 msgstr ""
@@ -3559,7 +3559,7 @@ msgctxt "#1046"
 msgid "Access points"
 msgstr ""
 
-#: xbmc/network/GUIDialogAccessPoints.cpp
+#: src/network/GUIDialogAccessPoints.cpp
 msgctxt "#1047"
 msgid "Other..."
 msgstr ""
@@ -3573,7 +3573,7 @@ msgctxt "#1049"
 msgid "Script settings"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#1050"
 msgid "Singles"
 msgstr ""
@@ -3617,7 +3617,7 @@ msgstr ""
 #empty strings from id 1186 to 1199
 #strings 1186 to 1189 reserved for more proxy types
 
-#: xbmc/settings/win32.xml
+#: src/settings/win32.xml
 msgctxt "#1200"
 msgid "SMB client"
 msgstr ""
@@ -3662,7 +3662,7 @@ msgctxt "#1212"
 msgid "Video"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#1213"
 msgid "Pictures"
 msgstr ""
@@ -3792,7 +3792,7 @@ msgid "AirTunes"
 msgstr ""
 
 #. Filter movies/tvshows/music/episodes/artists/musicvideos/albums/songs
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
 msgctxt "#1275"
 msgid "Filter %s"
 msgstr ""
@@ -4096,12 +4096,12 @@ msgstr ""
 
 #empty strings from id 2051 to 2079
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#2080"
 msgid "Empty list"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
+#: src/windows/GUIMediaWindow.cpp
 msgctxt "#2081"
 msgid "Went back to parent list because the active list has been emptied"
 msgstr ""
@@ -4118,48 +4118,48 @@ msgstr ""
 
 #empty strings from id 2102 to 9999
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10000"
 msgid "Home"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10001"
 msgid "Programs"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10002"
 msgid "Pictures"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10003"
 msgid "File manager"
 msgstr ""
 
-#: xbmc/addons/GUIDialogAddonSettings.cpp
-#: xbmc/guilib/WindowIDs.h
+#: src/addons/GUIDialogAddonSettings.cpp
+#: src/guilib/WindowIDs.h
 msgctxt "#10004"
 msgid "Settings"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10005"
 msgid "Music"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10006"
 msgid "Videos"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10007"
 msgid "System information"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10008"
 msgid "Settings - General"
 msgstr ""
@@ -4172,52 +4172,52 @@ msgctxt "#10010"
 msgid "Settings - Appearance - GUI Calibration"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10011"
 msgid "Settings - Videos - Screen Calibration"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10012"
 msgid "Settings - Pictures"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10013"
 msgid "Settings - Programs"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10014"
 msgid "Settings - Weather"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10015"
 msgid "Settings - Music"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10016"
 msgid "Settings - System"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10017"
 msgid "Settings - Videos"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10018"
 msgid "Settings - Network"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10019"
 msgid "Settings - Appearance"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10020"
 msgid "Scripts"
 msgstr ""
@@ -4228,26 +4228,26 @@ msgstr ""
 
 #empty strings from id 10022 to 10024
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10025"
 msgid "Videos"
 msgstr ""
 
 #empty strings from id 10026 to 10027
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10028"
 msgid "Videos/Playlist"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10029"
 msgid "Login screen"
 msgstr ""
 
 #empty strings from id 10030 to 10033
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10034"
 msgid "Settings - Profiles"
 msgstr ""
@@ -4272,17 +4272,17 @@ msgctxt "#10039"
 msgid "Expert"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10040"
 msgid "Add-on browser"
 msgstr ""
 
-#: xbmc/settings/windows/GUIWindowSettingsCategory.cpp
+#: src/settings/windows/GUIWindowSettingsCategory.cpp
 msgctxt "#10041"
 msgid "Reset above settings to default"
 msgstr ""
 
-#: xbmc/settings/windows/GUIWindowSettingsCategory.cpp
+#: src/settings/windows/GUIWindowSettingsCategory.cpp
 msgctxt "#10042"
 msgid "Are you sure you want to reset the settings in this category?"
 msgstr ""
@@ -4299,99 +4299,99 @@ msgctxt "#10045"
 msgid "Resets all the visible settings to their default values."
 msgstr ""
 
-#: xbmc/settings/windows/GUIWindowSettingsCategory.cpp
+#: src/settings/windows/GUIWindowSettingsCategory.cpp
 msgctxt "#10046"
 msgid "No categories available"
 msgstr ""
 
-#: xbmc/settings/windows/GUIWindowSettingsCategory.cpp
+#: src/settings/windows/GUIWindowSettingsCategory.cpp
 msgctxt "#10047"
 msgid "Try changing the setting level to see additional categories and settings."
 msgstr ""
 
 #empty strings from id 10048 to 10099
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10100"
 msgid "Yes/No dialogue"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10101"
 msgid "Progress dialogue"
 msgstr ""
 
 #empty strings from id 10102 to 10125
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10126"
 msgid "File browser"
 msgstr ""
 
 #empty string with id 10127
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10128"
 msgid "Network setup"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10129"
 msgid "Media source"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10130"
 msgid "Profile settings"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10131"
 msgid "Lock settings"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10132"
 msgid "Content settings"
 msgstr ""
 
 #empty string with id 10133
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10134"
 msgid "Favourites"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10135"
 msgid "Songs/Info"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10136"
 msgid "Smart playlist editor"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10137"
 msgid "Smart playlist rule editor"
 msgstr ""
 
 #empty string with id 10138
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10139"
 msgid "Pictures/Info"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10140"
 msgid "Add-on settings"
 msgstr ""
 
 #empty strings from id 10141 to 10145
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10146"
 msgid "Add-ons/Info"
 msgstr ""
@@ -4420,32 +4420,32 @@ msgstr ""
 
 #empty strings from id 10215 to 10499
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10500"
 msgid "Music/Playlist"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10501"
 msgid "Music/Files"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10502"
 msgid "Music/Library"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#10503"
 msgid "Playlist editor"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeTop100.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeTop100.cpp
 msgctxt "#10504"
 msgid "Top 100 songs"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeTop100.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeTop100.cpp
 msgctxt "#10505"
 msgid "Top 100 albums"
 msgstr ""
@@ -4500,22 +4500,22 @@ msgstr ""
 
 #empty strings from id 10525 to 11999
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12000"
 msgid "Select dialogue"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12001"
 msgid "Music/Info"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12002"
 msgid "Dialogue OK"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12003"
 msgid "Videos/Info"
 msgstr ""
@@ -4524,25 +4524,25 @@ msgctxt "#12004"
 msgid "Scripts/Info"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12005"
 msgid "Fullscreen video"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12006"
 msgid "Audio visualisation"
 msgstr ""
 
 #empty string with id 12007
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12008"
 msgid "File stacking dialogue"
 msgstr ""
 
 #. Does not match window ID description
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12009"
 msgid "Rebuild index..."
 msgstr ""
@@ -4644,7 +4644,7 @@ msgctxt "#12321"
 msgid "Ok"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
 msgctxt "#12322"
 msgid "*"
 msgstr ""
@@ -4656,7 +4656,7 @@ msgctxt "#12325"
 msgid "Locked! Enter code..."
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#12326"
 msgid "Enter password"
 msgstr ""
@@ -4676,17 +4676,17 @@ msgctxt "#12329"
 msgid "or press C to cancel"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
 msgctxt "#12330"
 msgid "Enter gamepad button combo and"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
 msgctxt "#12331"
 msgid "press OK, or Back to cancel"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#12332"
 msgid "Set lock"
 msgstr ""
@@ -4695,13 +4695,13 @@ msgctxt "#12333"
 msgid "Unlock"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#12334"
 msgid "Reset lock"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#12335"
 msgid "Remove lock"
 msgstr ""
@@ -4723,30 +4723,30 @@ msgctxt "#12339"
 msgid "Full-text password"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12340"
 msgid "Enter new password"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12341"
 msgid "Re-Enter new password"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12342"
 msgid "Incorrect password,"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12343"
 msgid "retries left "
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12344"
 msgid "Passwords entered did not match."
 msgstr ""
@@ -4771,51 +4771,51 @@ msgctxt "#12348"
 msgid "Item locked"
 msgstr ""
 
-#: xbmc/utils/EdenVideoArtUpdater.cpp
+#: src/utils/EdenVideoArtUpdater.cpp
 msgctxt "#12349"
 msgid "Updating video library art"
 msgstr ""
 
-#: xbmc/utils/EdenVideoArtUpdater.cpp
+#: src/utils/EdenVideoArtUpdater.cpp
 msgctxt "#12350"
 msgid "Processing %s"
 msgstr ""
 
-#: xbmc/video/windows/GUIWindowVideoBase.cpp
+#: src/video/windows/GUIWindowVideoBase.cpp
 msgctxt "#12351"
 msgid "The art cache in your video library needs updating."
 msgstr ""
 
-#: xbmc/video/windows/GUIWindowVideoBase.cpp
+#: src/video/windows/GUIWindowVideoBase.cpp
 msgctxt "#12352"
 msgid "No downloading is needed."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#12353"
 msgid "Reactivate lock"
 msgstr ""
 
-#: xbmc/video/windows/GUIWindowVideoBase.cpp
+#: src/video/windows/GUIWindowVideoBase.cpp
 msgctxt "#12354"
 msgid "Would you like to update it now?"
 msgstr ""
 
 #empty string with id 12355
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#12356"
 msgid "Change lock"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12357"
 msgid "Source lock"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogGamepad.cpp
-#: xbmc/dialogs/GUIDialogNumeric.cpp
+#: src/dialogs/GUIDialogGamepad.cpp
+#: src/dialogs/GUIDialogNumeric.cpp
 msgctxt "#12358"
 msgid "Password entry was blank. Try again."
 msgstr ""
@@ -4902,7 +4902,7 @@ msgstr ""
 
 #empty strings from id 12387 to 12389
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#12390"
 msgid "System uptime"
 msgstr ""
@@ -4925,49 +4925,49 @@ msgctxt "#12393"
 msgid "Days"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#12394"
 msgid "Total uptime"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#12395"
 msgid "Battery level"
 msgstr ""
 
 #. Used on the button to toggle add-on update mode in the Add-on Manager.
-#: xbmc/addons/GUIWindowAddonBrowser.cpp
+#: src/addons/GUIWindowAddonBrowser.cpp
 msgctxt "#12396"
 msgid "Auto updates: On"
 msgstr ""
 
 #. Used on the button to toggle add-on update mode in the Add-on Manager.
-#: xbmc/addons/GUIWindowAddonBrowser.cpp
+#: src/addons/GUIWindowAddonBrowser.cpp
 msgctxt "#12397"
 msgid "Auto updates: Notify"
 msgstr ""
 
 #. Used on the button to toggle add-on update mode in the Add-on Manager.
-#: xbmc/addons/GUIWindowAddonBrowser.cpp
+#: src/addons/GUIWindowAddonBrowser.cpp
 msgctxt "#12398"
 msgid "Auto updates: Never"
 msgstr ""
 
 #empty strings from id 12399 to 12599
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12600"
 msgid "Weather"
 msgstr ""
 
 #empty strings from id 12601 to 12899
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12900"
 msgid "Screensaver"
 msgstr ""
 
-#: xbmc/guilib/WindowIDs.h
+#: src/guilib/WindowIDs.h
 msgctxt "#12901"
 msgid "Fullscreen OSD"
 msgstr ""
@@ -5102,52 +5102,52 @@ msgctxt "#13026"
 msgid "Try to wake remote servers on access"
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13027"
 msgid "Wake on Lan (%s)"
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13028"
 msgid "Waiting for network to connect..."
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13029"
 msgid "Failed to execute Wake on Lan!"
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13030"
 msgid "Waiting for server to wake up..."
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13031"
 msgid "Extended wait for server to wake up..."
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13032"
 msgid "Waiting for services to launch..."
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13033"
 msgid "MAC Discovery"
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13034"
 msgid "Updated for %s"
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13035"
 msgid "Found for %s"
 msgstr ""
 
-#: xbmc/network/WakeOnAccess.cpp
+#: src/network/WakeOnAccess.cpp
 msgctxt "#13036"
 msgid "Failed for %s"
 msgstr ""
@@ -5321,17 +5321,17 @@ msgstr ""
 
 #empty strings from id 13148 to 13158
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13159"
 msgid "Subnet mask"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13160"
 msgid "Gateway"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13161"
 msgid "Primary DNS"
 msgstr ""
@@ -5373,7 +5373,7 @@ msgstr ""
 #: skin.confluence
 #: skin.retouched
 #: xbmc\profiles\ProfilesManager.cpp
-#: xbmc/profiles/dialogs/GUIDialogProfileSettings.cpp
+#: src/profiles/dialogs/GUIDialogProfileSettings.cpp
 msgctxt "#13200"
 msgid "Profiles"
 msgstr ""
@@ -5390,7 +5390,7 @@ msgctxt "#13204"
 msgid "Last loaded profile:"
 msgstr ""
 
-#: xbmc/music/karaoke/GUIDialogKaraokeSongSelector.cpp
+#: src/music/karaoke/GUIDialogKaraokeSongSelector.cpp
 msgctxt "#13205"
 msgid "Unknown"
 msgstr ""
@@ -5459,7 +5459,7 @@ msgctxt "#13270"
 msgid "Hardware:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13271"
 msgid "CPU Usage:"
 msgstr ""
@@ -5500,12 +5500,12 @@ msgstr ""
 
 #empty string with id 13282
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13283"
 msgid "Operating system:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13284"
 msgid "CPU speed:"
 msgstr ""
@@ -5516,7 +5516,7 @@ msgctxt "#13286"
 msgid "Video encoder:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13287"
 msgid "Screen resolution:"
 msgstr ""
@@ -5533,7 +5533,7 @@ msgctxt "#13294"
 msgid "DVD region:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#13295"
 msgid "Internet:"
 msgstr ""
@@ -5688,12 +5688,12 @@ msgctxt "#13331"
 msgid "Error: Out of memory"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFavourites.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
 msgctxt "#13332"
 msgid "Move up"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFavourites.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
 msgctxt "#13333"
 msgid "Move down"
 msgstr ""
@@ -5702,7 +5702,7 @@ msgctxt "#13334"
 msgid "Edit label"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#13335"
 msgid "Make default"
 msgstr ""
@@ -5869,8 +5869,8 @@ msgctxt "#13390"
 msgid "There are no settings available\nfor this visualisation"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/dialogs/GUIDialogPlayEject.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogPlayEject.cpp
 msgctxt "#13391"
 msgid "Eject/Load"
 msgstr ""
@@ -5880,12 +5880,12 @@ msgctxt "#13392"
 msgid "Use visualisation if playing audio"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#13393"
 msgid "Calculate size"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#13394"
 msgid "Calculating folder size"
 msgstr ""
@@ -5916,8 +5916,8 @@ msgctxt "#13400"
 msgid "Crossfade between songs on the same album"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
 msgctxt "#13401"
 msgid "Browse for %s"
 msgstr ""
@@ -5926,7 +5926,7 @@ msgctxt "#13402"
 msgid "Show track position"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#13403"
 msgid "Clear default"
 msgstr ""
@@ -5952,7 +5952,7 @@ msgctxt "#13408"
 msgid "(IMDb user rating)"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#13409"
 msgid "Top 250"
 msgstr ""
@@ -5969,7 +5969,7 @@ msgctxt "#13412"
 msgid "Play from here"
 msgstr ""
 
-#: xbmc/addons/guidialogaddoninfo.cpp
+#: src/addons/guidialogaddoninfo.cpp
 msgctxt "#13413"
 msgid "Downloading"
 msgstr ""
@@ -5985,28 +5985,28 @@ msgid "Render method"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#13416"
 msgid "Auto detect"
 msgstr ""
 
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#13417"
 msgid "Basic shaders (ARB)"
 msgstr ""
 
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#13418"
 msgid "Advanced shaders (GLSL)"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#13419"
 msgid "Software"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
 msgctxt "#13420"
 msgid "Remove safely"
 msgstr ""
@@ -6059,7 +6059,7 @@ msgid "Allow hardware acceleration (OpenMax)"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#13431"
 msgid "Pixel Shaders"
 msgstr ""
@@ -6075,7 +6075,7 @@ msgid "Play the next video automatically"
 msgstr ""
 
 #. If autoplay next video is set true
-#: xbmc/video/windows/GUIWindowVideoBase.cpp
+#: src/video/windows/GUIWindowVideoBase.cpp
 msgctxt "#13434"
 msgid "Play only this"
 msgstr ""
@@ -6085,7 +6085,7 @@ msgctxt "#13435"
 msgid "Enable HQ Scalers for scalings above"
 msgstr ""
 
-#: xbmc/settings/GUISettings.cpp
+#: src/settings/GUISettings.cpp
 msgctxt "#13436"
 msgid "Allow hardware acceleration (libstagefright)"
 msgstr ""
@@ -6266,32 +6266,32 @@ msgctxt "#13510"
 msgid "Sync playback to display"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoInfo.cpp
+#: src/video/dialogs/GUIDialogVideoInfo.cpp
 msgctxt "#13511"
 msgid "Choose art"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoInfo.cpp
+#: src/video/dialogs/GUIDialogVideoInfo.cpp
 msgctxt "#13512"
 msgid "Current art"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoInfo.cpp
+#: src/video/dialogs/GUIDialogVideoInfo.cpp
 msgctxt "#13513"
 msgid "Remote art"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoInfo.cpp
+#: src/video/dialogs/GUIDialogVideoInfo.cpp
 msgctxt "#13514"
 msgid "Local art"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoInfo.cpp
+#: src/video/dialogs/GUIDialogVideoInfo.cpp
 msgctxt "#13515"
 msgid "No art"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoInfo.cpp
+#: src/video/dialogs/GUIDialogVideoInfo.cpp
 msgctxt "#13516"
 msgid "Add art"
 msgstr ""
@@ -6572,7 +6572,7 @@ msgid "%i ms"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#14047"
 msgid "%i %%"
 msgstr ""
@@ -6604,7 +6604,7 @@ msgctxt "#14053"
 msgid "GUI filters"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogAudioSubtitleSettings.cpp
+#: src/video/dialogs/GUIDialogAudioSubtitleSettings.cpp
 msgctxt "#14054"
 msgid "%2.1f dB"
 msgstr ""
@@ -6690,14 +6690,14 @@ msgctxt "#14075"
 msgid "Use daylight saving time"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#14076"
 msgid "Add to favourites"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#14077"
 msgid "Remove from favourites"
 msgstr ""
@@ -6807,7 +6807,7 @@ msgctxt "#14099"
 msgid "Eject disc when CD ripping is complete"
 msgstr ""
 
-#: xbmc/music/windows/GUIWindowMusicSongs.cpp
+#: src/music/windows/GUIWindowMusicSongs.cpp
 msgctxt "#14100"
 msgid "Stop ripping CD"
 msgstr ""
@@ -6838,23 +6838,23 @@ msgstr ""
 
 #empty strings from id 14105 to 15011
 
-#: xbmc/video/VideoDatabase.cpp
+#: src/video/VideoDatabase.cpp
 msgctxt "#15012"
 msgid "Unavailable source"
 msgstr ""
 
-#: xbmc/video/VideoDatabase.cpp
+#: src/video/VideoDatabase.cpp
 msgctxt "#15013"
 msgid "What would you like to do with media items from %s"
 msgstr ""
 
-#: xbmc/video/VideoDatabase.cpp
+#: src/video/VideoDatabase.cpp
 msgctxt "#15014"
 msgid "Keep"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFavourites.cpp
-#: xbmc/video/VideoDatabase.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
+#: src/video/VideoDatabase.cpp
 msgctxt "#15015"
 msgid "Remove"
 msgstr ""
@@ -6885,28 +6885,28 @@ msgctxt "#15101"
 msgid "Database"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeAlbum.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeCompilations.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeRcentlyAdded.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeRcentlyPlayed.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeYearAlbum.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeAlbum.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeCompilations.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeRcentlyAdded.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeRcentlyPlayed.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeYearAlbum.cpp
 msgctxt "#15102"
 msgid "* All albums"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNodeArtist.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNodeArtist.cpp
 msgctxt "#15103"
 msgid "* All artists"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
 msgctxt "#15104"
 msgid "* All songs"
 msgstr ""
 
-#: xbmc/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
+#: src/filesystem/MusicDatabaseDirectory/DirectoryNode.cpp
 msgctxt "#15105"
 msgid "* All genres"
 msgstr ""
@@ -6948,19 +6948,19 @@ msgstr ""
 
 #empty strings from id 15201 to 15206
 
-#: xbmc/GUIInfoManager.cpp
+#: src/GUIInfoManager.cpp
 msgctxt "#15207"
 msgid "Connected"
 msgstr ""
 
-#: xbmc/GUIInfoManager.cpp
+#: src/GUIInfoManager.cpp
 msgctxt "#15208"
 msgid "Not connected"
 msgstr ""
 
 #empty strings from id 15209 to 15212
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#15213"
 msgid "Play using..."
 msgstr ""
@@ -6979,14 +6979,14 @@ msgstr ""
 
 #empty strings from id 15217 to 15299
 
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#15300"
 msgid "Path not found or invalid"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#15301"
 msgid "Could not connect to network server"
 msgstr ""
@@ -6995,8 +6995,8 @@ msgctxt "#15302"
 msgid "No servers found"
 msgstr ""
 
-#: xbmc/windows/GUIMediaWindow.cpp
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIMediaWindow.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#15303"
 msgid "Workgroup not found"
 msgstr ""
@@ -7034,7 +7034,7 @@ msgstr ""
 
 #empty strings from id 16005 to 16007
 
-#: xbmc/dialogs/GUIDialogFavourites.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
 msgctxt "#16008"
 msgid "Enter new title"
 msgstr ""
@@ -7051,17 +7051,17 @@ msgctxt "#16011"
 msgid "Enter the album name"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#16012"
 msgid "Enter the playlist name"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#16013"
 msgid "Enter new filename"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16014"
 msgid "Enter folder name"
 msgstr ""
@@ -7074,40 +7074,40 @@ msgctxt "#16016"
 msgid "Available options: %A, %T, %N, %B, %D, %G, %Y, %F, %S"
 msgstr ""
 
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#16017"
 msgid "Enter search string"
 msgstr ""
 
 #: system/settings/settings.xml
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#16018"
 msgid "None"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16019"
 msgid "Auto select"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16020"
 msgid "De-interlace"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16021"
 msgid "Bob"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16022"
 msgid "Bob (inverted)"
 msgstr ""
 
 #empty string with id 16023
 
-#: xbmc/dialogs/GUIDialogProgress.cpp
+#: src/dialogs/GUIDialogProgress.cpp
 msgctxt "#16024"
 msgid "Cancelling..."
 msgstr ""
@@ -7152,12 +7152,12 @@ msgctxt "#16034"
 msgid "Could not get songs from database."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#16035"
 msgid "Party mode playlist"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16036"
 msgid "De-interlace (Half)"
 msgstr ""
@@ -7166,22 +7166,22 @@ msgctxt "#16037"
 msgid "Deinterlace video"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16038"
 msgid "Deinterlace method"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16039"
 msgid "Off"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16040"
 msgid "Auto"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16041"
 msgid "On"
 msgstr ""
@@ -7222,196 +7222,196 @@ msgstr ""
 
 #empty strings from id 16108 to 16199
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16200"
 msgid "Operation was aborted"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16201"
 msgid "Copy failed"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16202"
 msgid "Failed to copy at least one file"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16203"
 msgid "Move failed"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16204"
 msgid "Failed to move at least one file"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16205"
 msgid "Delete failed"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#16206"
 msgid "Failed to delete at least one file"
 msgstr ""
 
 #empty strings from id 16207 to 16299
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16300"
 msgid "Video scaling method"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16301"
 msgid "Nearest neighbour"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16302"
 msgid "Bilinear"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16303"
 msgid "Bicubic"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16304"
 msgid "Lanczos2"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16305"
 msgid "Lanczos3"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16306"
 msgid "Sinc8"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16307"
 msgid "Bicubic (software)"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16308"
 msgid "Lanczos (software)"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16309"
 msgid "Sinc (software)"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16310"
 msgid "Temporal"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16311"
 msgid "Temporal/Spatial"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16312"
 msgid "(VDPAU)Noise Reduction"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16313"
 msgid "(VDPAU)Sharpness"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16314"
 msgid "Inverse Telecine"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16315"
 msgid "Lanczos3 optimised"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16316"
 msgid "Auto"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16317"
 msgid "Temporal (Half)"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16318"
 msgid "Temporal/Spatial (Half)"
 msgstr ""
 
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#16319"
 msgid "DXVA"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16320"
 msgid "DXVA Bob"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16321"
 msgid "DXVA Best"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16322"
 msgid "Spline36"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16323"
 msgid "Spline36 optimised"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16324"
 msgid "Software Blend"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16325"
 msgid "VDPAU - Bob"
 msgstr ""
 
-#: xbmc/cores/VideoRenderers/BaseRenderer.cpp
+#: src/cores/VideoRenderers/BaseRenderer.cpp
 msgctxt "#16326"
 msgid "DXVA-HD"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16327"
 msgid "VAAPI Bob"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16328"
 msgid "VAAPI Motion Adaptive"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16329"
 msgid "VAAPI Motion Compensated"
 msgstr ""
 
 #empty strings from id 16330 to 16399
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#16400"
 msgid "Post-processing"
 msgstr ""
@@ -7455,15 +7455,15 @@ msgstr ""
 
 #. Label of the button / context menu entry to find similar programs in the PVR EPG data
 #: skin.confluence
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/pvr/windows/GUIWindowPVRGuide.cpp
-#: xbmc/pvr/windows/GUIWindowPVRRecordings.cpp
-#: xbmc/pvr/windows/GUIWindowPVRTimers.cpp
+#: src/pvr/windows/GUIWindowPVRChannels.cpp
+#: src/pvr/windows/GUIWindowPVRGuide.cpp
+#: src/pvr/windows/GUIWindowPVRRecordings.cpp
+#: src/pvr/windows/GUIWindowPVRTimers.cpp
 msgctxt "#19003"
 msgid "Find similar"
 msgstr ""
 
-#: xbmc/epg/EpgContainer.cpp
+#: src/epg/EpgContainer.cpp
 msgctxt "#19004"
 msgid "Importing EPG from clients"
 msgstr ""
@@ -7496,7 +7496,7 @@ msgctxt "#19011"
 msgid "UNC"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19012"
 msgid "PVR Backend"
 msgstr ""
@@ -7517,7 +7517,7 @@ msgctxt "#19016"
 msgid "PVR Backend %i - %s"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#19017"
 msgid "Recordings"
 msgstr ""
@@ -7528,7 +7528,7 @@ msgctxt "#19018"
 msgid "Folder with channel icons"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 #: skin.confluence
 msgctxt "#19019"
 msgid "Channels"
@@ -7554,7 +7554,7 @@ msgctxt "#19024"
 msgid "Radio channels"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19025"
 msgid "Upcoming recordings"
 msgstr ""
@@ -7678,7 +7678,7 @@ msgctxt "#19054"
 msgid "Hide channel"
 msgstr ""
 
-#: xbmc/epg/EpgInfoTag.cpp
+#: src/epg/EpgInfoTag.cpp
 msgctxt "#19055"
 msgid "No information available"
 msgstr ""
@@ -7722,8 +7722,8 @@ msgstr ""
 #empty string with id 19065
 
 #. Name of a shortcut to a custom folder for channel icons
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/pvr/dialogs/GUIDialogPVRChannelManager.cpp
+#: src/pvr/windows/GUIWindowPVRChannels.cpp
+#: src/pvr/dialogs/GUIDialogPVRChannelManager.cpp
 msgctxt "#19066"
 msgid "Channel icons"
 msgstr ""
@@ -7859,17 +7859,17 @@ msgctxt "#19098"
 msgid "Warning"
 msgstr ""
 
-#: xbmc/pvr/PVRGUIInfo.cpp
+#: src/pvr/PVRGUIInfo.cpp
 msgctxt "#19099"
 msgid "Service"
 msgstr ""
 
-#: xbmc/pvr/PVRGUIInfo.cpp
+#: src/pvr/PVRGUIInfo.cpp
 msgctxt "#19100"
 msgid "Mux"
 msgstr ""
 
-#: xbmc/pvr/PVRGUIInfo.cpp
+#: src/pvr/PVRGUIInfo.cpp
 msgctxt "#19101"
 msgid "Provider"
 msgstr ""
@@ -7879,7 +7879,7 @@ msgid "Please switch to another channel."
 msgstr ""
 
 #. Title of numeric dialog for choosing a channel by entering a number
-#: xbmc/pvr/windows/GUIWindowPVRCommon.cpp
+#: src/pvr/windows/GUIWindowPVRCommon.cpp
 msgctxt "#19103"
 msgid "Go to channel"
 msgstr ""
@@ -7922,17 +7922,17 @@ msgctxt "#19113"
 msgid "Delete all recordings in this folder?"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19114"
 msgid "Version"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19115"
 msgid "Address"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19116"
 msgid "Disksize"
 msgstr ""
@@ -7950,7 +7950,7 @@ msgctxt "#19119"
 msgid "On which server do you want to search?"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19120"
 msgid "Client number"
 msgstr ""
@@ -8031,7 +8031,7 @@ msgctxt "#19139"
 msgid "Name of the new group"
 msgstr ""
 
-#: xbmc/pvr/windows/GUIWindowPVRSearch.cpp
+#: src/pvr/windows/GUIWindowPVRSearch.cpp
 msgctxt "#19140"
 msgid "Search..."
 msgstr ""
@@ -8122,7 +8122,7 @@ msgctxt "#19162"
 msgid "Recording active"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19163"
 msgid "Recordings"
 msgstr ""
@@ -8135,7 +8135,7 @@ msgctxt "#19165"
 msgid "Switch"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#19166"
 msgid "PVR information"
 msgstr ""
@@ -8272,12 +8272,12 @@ msgctxt "#19196"
 msgid "PVR client specific actions"
 msgstr ""
 
-#: xbmc/addons/addoncallbackspvr.cpp
+#: src/addons/addoncallbackspvr.cpp
 msgctxt "#19197"
 msgid "Recording started on: %s"
 msgstr ""
 
-#: xbmc/addons/addoncallbackspvr.cpp
+#: src/addons/addoncallbackspvr.cpp
 msgctxt "#19198"
 msgid "Recording finished on: %s"
 msgstr ""
@@ -8497,7 +8497,7 @@ msgctxt "#19249"
 msgid "Filter channels"
 msgstr ""
 
-#: xbmc/epg/EpgContainer.cpp
+#: src/epg/EpgContainer.cpp
 msgctxt "#19250"
 msgid "Loading EPG from database"
 msgstr ""
@@ -8565,7 +8565,7 @@ msgctxt "#19265"
 msgid "The entered PIN number was incorrect."
 msgstr ""
 
-#: xbmc/epg/EpgInfoTag.cpp
+#: src/epg/EpgInfoTag.cpp
 msgctxt "#19266"
 msgid "Parental locked"
 msgstr ""
@@ -8606,22 +8606,22 @@ msgctxt "#19274"
 msgid "Please visit xbmc.org/pvr to learn more."
 msgstr ""
 
-#: xbmc/pvr/timers/PVRTimerInfoTag.cpp
+#: src/pvr/timers/PVRTimerInfoTag.cpp
 msgctxt "#19275"
 msgid "Conflict warning"
 msgstr ""
 
-#: xbmc/pvr/timers/PVRTimerInfoTag.cpp
+#: src/pvr/timers/PVRTimerInfoTag.cpp
 msgctxt "#19276"
 msgid "Conflict error"
 msgstr ""
 
-#: xbmc/pvr/timers/PVRTimerInfoTag.cpp
+#: src/pvr/timers/PVRTimerInfoTag.cpp
 msgctxt "#19277"
 msgid "Recording conflict"
 msgstr ""
 
-#: xbmc/pvr/timers/PVRTimerInfoTag.cpp
+#: src/pvr/timers/PVRTimerInfoTag.cpp
 msgctxt "#19278"
 msgid "Recording error"
 msgstr ""
@@ -8642,41 +8642,41 @@ msgid "Confirm channel switches by pressing OK"
 msgstr ""
 
 #. Label for a select option or list item, representing an icon graphic (like a TV channel icon)
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/pvr/dialogs/GUIDialogPVRChannelManager.cpp
+#: src/pvr/windows/GUIWindowPVRChannels.cpp
+#: src/pvr/dialogs/GUIDialogPVRChannelManager.cpp
 msgctxt "#19282"
 msgid "Current icon"
 msgstr ""
 
 #. Label for a select option or list item, representing an icon graphic (like a TV channel icon)
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/pvr/dialogs/GUIDialogPVRChannelManager.cpp
+#: src/pvr/windows/GUIWindowPVRChannels.cpp
+#: src/pvr/dialogs/GUIDialogPVRChannelManager.cpp
 msgctxt "#19283"
 msgid "No icon"
 msgstr ""
 
 #. Label for a select/menu option to select an icon graphic
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/pvr/dialogs/GUIDialogPVRChannelManager.cpp
+#: src/pvr/windows/GUIWindowPVRChannels.cpp
+#: src/pvr/dialogs/GUIDialogPVRChannelManager.cpp
 msgctxt "#19284"
 msgid "Choose icon"
 msgstr ""
 
 #. Label for a select/menu option to select an icon graphic
-#: xbmc/pvr/windows/GUIWindowPVRChannels.cpp
-#: xbmc/pvr/dialogs/GUIDialogPVRChannelManager.cpp
+#: src/pvr/windows/GUIWindowPVRChannels.cpp
+#: src/pvr/dialogs/GUIDialogPVRChannelManager.cpp
 msgctxt "#19285"
 msgid "Browse for icon"
 msgstr ""
 
 #. Notification message if process starts searching for missing channel icons
-#: xbmc/pvr/PVRManager.cpp
+#: src/pvr/PVRManager.cpp
 msgctxt "#19286"
 msgid "Searching for channel icons"
 msgstr ""
 
 #. Label for the default pvr channel group
-#: xbmc/pvr/windows/GUIWindowPVRCommon.cpp
+#: src/pvr/windows/GUIWindowPVRCommon.cpp
 msgctxt "#19287"
 msgid "All channels"
 msgstr ""
@@ -8688,195 +8688,195 @@ msgstr ""
 
 #empty strings from id 19289 to 19498
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19499"
 msgid "Other/Unknown"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19500"
 msgid "Movie/Drama"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19501"
 msgid "Detective/Thriller"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19502"
 msgid "Adventure/Western/War"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19503"
 msgid "Science Fiction/Fantasy/Horror"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19504"
 msgid "Comedy"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19505"
 msgid "Soap/Melodrama/Folkloric"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19506"
 msgid "Romance"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19507"
 msgid "Serious/Classical/Religious/Historical Movie/Drama"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19508"
 msgid "Adult Movie/Drama"
 msgstr ""
 
 #empty strings from id 19509 to 19515
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19516"
 msgid "News/Current Affairs"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19517"
 msgid "News/Weather Report"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19518"
 msgid "News Magazine"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19519"
 msgid "Documentary"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19520"
 msgid "Discussion/Interview/Debate"
 msgstr ""
 
 #empty strings from id 19521 to 19531
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19532"
 msgid "Show/Game Show"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19533"
 msgid "Game Show/Quiz/Contest"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19534"
 msgid "Variety Show"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19535"
 msgid "Talk Show"
 msgstr ""
 
 #empty strings from id 19536 to 19547
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19548"
 msgid "Sports"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19549"
 msgid "Special Event"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19550"
 msgid "Sport Magazine"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19551"
 msgid "Football"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19552"
 msgid "Tennis/Squash"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19553"
 msgid "Team Sports"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19554"
 msgid "Athletics"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19555"
 msgid "Motor Sport"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19556"
 msgid "Water Sport"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19557"
 msgid "Winter Sports"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19558"
 msgid "Equestrian"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19559"
 msgid "Martial Sports"
 msgstr ""
 
 #empty strings from id 19560 to 19563
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19564"
 msgid "Children's/Youth Programmes"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19565"
 msgid "Pre-school Children's Programmes"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19566"
 msgid "Entertainment Programmes for 6 to 14"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19567"
 msgid "Entertainment Programmes for 10 to 16"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19568"
 msgid "Informational/Educational/School Programme"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19569"
 msgid "Cartoons/Puppets"
 msgstr ""
@@ -8887,269 +8887,269 @@ msgctxt "#19580"
 msgid "Music/Ballet/Dance"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19581"
 msgid "Rock/Pop"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19582"
 msgid "Serious/Classical Music"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19583"
 msgid "Folk/Traditional Music"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19584"
 msgid "Musical/Opera"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19585"
 msgid "Ballet"
 msgstr ""
 
 #empty strings from id 19586 to 19595
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19596"
 msgid "Arts/Culture"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19597"
 msgid "Performing Arts"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19598"
 msgid "Fine Arts"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19599"
 msgid "Religion"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19600"
 msgid "Popular Culture/Traditional Arts"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19601"
 msgid "Literature"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19602"
 msgid "Film/Cinema"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19603"
 msgid "Experimental Film/Video"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19604"
 msgid "Broadcasting/Press"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19605"
 msgid "New Media"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19606"
 msgid "Arts/Culture Magazines"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19607"
 msgid "Fashion"
 msgstr ""
 
 #empty strings from id 19608 to 19611
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19612"
 msgid "Social/Political/Economics"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19613"
 msgid "Magazines/Reports/Documentary"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19614"
 msgid "Economics/Social Advisory"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19615"
 msgid "Remarkable People"
 msgstr ""
 
 #empty strings from id 19616 to 19627
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19628"
 msgid "Education/Science/Factual"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19629"
 msgid "Nature/Animals/Environment"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19630"
 msgid "Technology/Natural Sciences"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19631"
 msgid "Medicine/Physiology/Psychology"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19632"
 msgid "Foreign Countries/Expeditions"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19633"
 msgid "Social/Spiritual Sciences"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19634"
 msgid "Further Education"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19635"
 msgid "Languages"
 msgstr ""
 
 #empty strings from id 19636 to 19643
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19644"
 msgid "Leisure/Hobbies"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19645"
 msgid "Tourism/Travel"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19646"
 msgid "Handicraft"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19647"
 msgid "Motoring"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19648"
 msgid "Fitness & Health"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19649"
 msgid "Cooking"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19650"
 msgid "Advertisement/Shopping"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19651"
 msgid "Gardening"
 msgstr ""
 
 #empty strings from id 19652 to 19659
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19660"
 msgid "Special Characteristics"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19661"
 msgid "Original Language"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19662"
 msgid "Black & White"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19663"
 msgid "Unpublished"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19664"
 msgid "Live Broadcast"
 msgstr ""
 
 #empty strings from id 19665 to 19675
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19676"
 msgid "Drama"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19677"
 msgid "Detective/Thriller"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19678"
 msgid "Adventure/Western/War"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19679"
 msgid "Science Fiction/Fantasy/Horror"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19680"
 msgid "Comedy"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19681"
 msgid "Soap/Melodrama/Folkloric"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19682"
 msgid "Romance"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19683"
 msgid "Serious/ClassicalReligion/Historical"
 msgstr ""
 
-#: xbmc/epg/Epg.cpp
+#: src/epg/Epg.cpp
 msgctxt "#19684"
 msgid "Adult"
 msgstr ""
@@ -9189,7 +9189,7 @@ msgctxt "#20007"
 msgid "Recordings"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20008"
 msgid "Screenshots"
 msgstr ""
@@ -9200,12 +9200,12 @@ msgstr ""
 
 #empty string with id 20010
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20011"
 msgid "Music playlists"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20012"
 msgid "Video playlists"
 msgstr ""
@@ -9218,34 +9218,34 @@ msgctxt "#20014"
 msgid "Sort by: Playlist"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20015"
 msgid "Remote thumb"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
-#: xbmc/music/dialogs/GUIDialogSongInfo.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogSongInfo.cpp
 msgctxt "#20016"
 msgid "Current thumb"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
-#: xbmc/music/dialogs/GUIDialogSongInfo.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogSongInfo.cpp
 msgctxt "#20017"
 msgid "Local thumb"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
-#: xbmc/music/dialogs/GUIDialogSongInfo.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogSongInfo.cpp
 msgctxt "#20018"
 msgid "No thumb"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogContextMenu.cpp
-#: xbmc/dialogs/GUIDialogFavourites.cpp
+#: src/dialogs/GUIDialogContextMenu.cpp
+#: src/dialogs/GUIDialogFavourites.cpp
 msgctxt "#20019"
 msgid "Choose thumbnail"
 msgstr ""
@@ -9391,22 +9391,22 @@ msgctxt "#20066"
 msgid "Lock preferences"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20067"
 msgid "Edit profile"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20068"
 msgid "Profile lock"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#20069"
 msgid "Could not create folder"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#20070"
 msgid "Profile directory"
 msgstr ""
@@ -9415,22 +9415,22 @@ msgctxt "#20071"
 msgid "Start with fresh media sources"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#20072"
 msgid "Make sure the selected folder is writable"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#20073"
 msgid "and that the new folder name is valid"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20074"
 msgid "MPAA rating"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20075"
 msgid "Enter master lock code"
 msgstr ""
@@ -9565,7 +9565,7 @@ msgctxt "#20107"
 msgid "Separate (locked)"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#20108"
 msgid "Root"
 msgstr ""
@@ -9583,22 +9583,22 @@ msgctxt "#20111"
 msgid "Autostart UPnP client"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20112"
 msgid "Last login: %s"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20113"
 msgid "Never logged on"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20114"
 msgid "Profile %i / %i"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20115"
 msgid "User login / Select a profile"
 msgstr ""
@@ -9607,7 +9607,7 @@ msgctxt "#20116"
 msgid "Use lock on login screen"
 msgstr ""
 
-#: xbmc/windows/GUIWindowLoginScreen.cpp
+#: src/windows/GUIWindowLoginScreen.cpp
 msgctxt "#20117"
 msgid "Invalid lock code."
 msgstr ""
@@ -9628,7 +9628,7 @@ msgctxt "#20121"
 msgid "Party on!"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20122"
 msgid "True"
 msgstr ""
@@ -9651,22 +9651,22 @@ msgstr ""
 
 #empty string with id 20127
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#20128"
 msgid "Go to root"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#20129"
 msgid "Weave"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#20130"
 msgid "Weave (inverted)"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#20131"
 msgid "Blend"
 msgstr ""
@@ -9675,12 +9675,12 @@ msgctxt "#20132"
 msgid "Restart video"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#20133"
 msgid "Edit network location"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#20134"
 msgid "Remove network location"
 msgstr ""
@@ -9709,7 +9709,7 @@ msgctxt "#20140"
 msgid "Lock screensaver"
 msgstr ""
 
-#: xbmc/media/MediaTypes.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#20141"
 msgid "Set"
 msgstr ""
@@ -9758,17 +9758,17 @@ msgctxt "#20152"
 msgid "Lock preferences for %s"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#20153"
 msgid "Browse..."
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#20154"
 msgid "Summary information"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#20155"
 msgid "Storage information"
 msgstr ""
@@ -9781,17 +9781,17 @@ msgctxt "#20157"
 msgid "DVD-ROM information"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#20158"
 msgid "Network information"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#20159"
 msgid "Video information"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#20160"
 msgid "Hardware information"
 msgstr ""
@@ -9836,7 +9836,7 @@ msgctxt "#20170"
 msgid "Line"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20171"
 msgid "Windows network (SMB)"
 msgstr ""
@@ -9845,17 +9845,17 @@ msgctxt "#20172"
 msgid "XBMSP server"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20173"
 msgid "FTP server"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20174"
 msgid "iTunes music share (DAAP)"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20175"
 msgid "UPnP server"
 msgstr ""
@@ -9910,7 +9910,7 @@ msgctxt "#20187"
 msgid "UPnP"
 msgstr ""
 
-#: xbmc/network/upnp/UPnPServer.cpp
+#: src/network/upnp/UPnPServer.cpp
 #: system/settings/settings.xml
 msgctxt "#20188"
 msgid "Announce library updates via UPnP"
@@ -9982,22 +9982,22 @@ msgstr ""
 
 #empty strings from id 20222 to 20239
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20240"
 msgid "Android music"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20241"
 msgid "Android videos"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20242"
 msgid "Android pictures"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#20243"
 msgid "Android photos"
 msgstr ""
@@ -10020,12 +10020,12 @@ msgctxt "#20252"
 msgid "Filling glasses (videos)"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20253"
 msgid "WebDAV server (HTTP)"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20254"
 msgid "WebDAV server (HTTPS)"
 msgstr ""
@@ -10034,44 +10034,44 @@ msgctxt "#20255"
 msgid "First logon, edit your profile"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20256"
 msgid "HTS Tvheadend client"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20257"
 msgid "VDR Streamdev client"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20258"
 msgid "MythTV client"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20259"
 msgid "Network Filesystem (NFS)"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20260"
 msgid "Secure Shell (SSH/SFTP)"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20261"
 msgid "Apple Filing Protocol (AFP)"
 msgstr ""
 
 #empty strings from id 20262 to 20299
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20300"
 msgid "Web server directory (HTTP)"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20301"
 msgid "Web server directory (HTTPS)"
 msgstr ""
@@ -10084,14 +10084,14 @@ msgctxt "#20303"
 msgid "Do you want to skip and proceed?"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#20304"
 msgid "RSS Feed"
 msgstr ""
 
 #empty strings from id 20305 to 20306
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#20307"
 msgid "Secondary DNS"
 msgstr ""
@@ -10100,7 +10100,7 @@ msgctxt "#20308"
 msgid "DHCP server:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowFileManager.cpp
+#: src/windows/GUIWindowFileManager.cpp
 msgctxt "#20309"
 msgid "Make new folder"
 msgstr ""
@@ -10145,7 +10145,7 @@ msgstr ""
 
 #empty string with id 20322
 
-#: xbmc/video/windows/GUIWindowVideoNav.cpp
+#: src/video/windows/GUIWindowVideoNav.cpp
 msgctxt "#20323"
 msgid "Movie plot"
 msgstr ""
@@ -10202,21 +10202,21 @@ msgctxt "#20336"
 msgid "Unlock sources"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20337"
 msgid "Actor"
 msgstr ""
 
-#: xbmc/media/MediaTypes.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#20338"
 msgid "Movie"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20339"
 msgid "Director"
 msgstr ""
@@ -10229,17 +10229,17 @@ msgctxt "#20341"
 msgid "this path from the Kodi library?"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#20342"
 msgid "Movies"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#20343"
 msgid "TV shows"
 msgstr ""
@@ -10260,9 +10260,9 @@ msgctxt "#20347"
 msgid "as"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20348"
 msgid "Directors"
 msgstr ""
@@ -10303,22 +10303,22 @@ msgctxt "#20357"
 msgid "Enter the TV show name"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeSeasons.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeSeasons.cpp
 msgctxt "#20358"
 msgid "Season %i"
 msgstr ""
 
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20359"
 msgid "Episode"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20360"
 msgid "Episodes"
 msgstr ""
@@ -10335,7 +10335,7 @@ msgctxt "#20363"
 msgid "Remove TV show from library"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20364"
 msgid "TV show"
 msgstr ""
@@ -10344,8 +10344,8 @@ msgctxt "#20365"
 msgid "Episode plot"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNode.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeSeasons.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNode.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeSeasons.cpp
 msgctxt "#20366"
 msgid "* All seasons"
 msgstr ""
@@ -10375,8 +10375,8 @@ msgctxt "#20372"
 msgid "Season image"
 msgstr ""
 
-#: xbmc/media/MediaTypes.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/media/MediaTypes.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20373"
 msgid "Season"
 msgstr ""
@@ -10409,7 +10409,7 @@ msgctxt "#20380"
 msgid "Exclude selected folder from scans"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeSeasons.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeSeasons.cpp
 msgctxt "#20381"
 msgid "Specials"
 msgstr ""
@@ -10428,39 +10428,39 @@ msgctxt "#20385"
 msgid "Remove link to TV show"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#20386"
 msgid "Recently added movies"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#20387"
 msgid "Recently added episodes"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20388"
 msgid "Studios"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#20389"
 msgid "Music videos"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeOverview.cpp
 msgctxt "#20390"
 msgid "Recently added music videos"
 msgstr ""
 
-#: xbmc/media/MediaTypes.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#20391"
 msgid "Music video"
 msgstr ""
@@ -10477,7 +10477,7 @@ msgctxt "#20394"
 msgid "Loading music video information"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#20395"
 msgid "Mixed"
 msgstr ""
@@ -10515,7 +10515,7 @@ msgctxt "#20403"
 msgid "Set actor thumb"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoBookmarks.cpp
+#: src/video/dialogs/GUIDialogVideoBookmarks.cpp
 msgctxt "#20404"
 msgid "Remove bookmark"
 msgstr ""
@@ -10565,19 +10565,19 @@ msgctxt "#20415"
 msgid "Scanning for new content"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20416"
 msgid "First aired"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20417"
 msgid "Writer"
 msgstr ""
 
-#: xbmc/playlists/SmartPlayList.cpp
+#: src/playlists/SmartPlayList.cpp
 msgctxt "#20418"
 msgid "Writers"
 msgstr ""
@@ -10602,12 +10602,12 @@ msgctxt "#20422"
 msgid "Always"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20423"
 msgid "Has trailer"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20424"
 msgid "False"
 msgstr ""
@@ -10649,9 +10649,9 @@ msgctxt "#20433"
 msgid "Extract thumbnails and video information"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#20434"
 msgid "Sets"
 msgstr ""
@@ -10665,27 +10665,27 @@ msgctxt "#20436"
 msgid "Export actor thumbs?"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20437"
 msgid "Choose fanart"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20438"
 msgid "Local fanart"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20439"
 msgid "No fanart"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20440"
 msgid "Current fanart"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20441"
 msgid "Remote fanart"
 msgstr ""
@@ -10702,7 +10702,7 @@ msgctxt "#20444"
 msgid "items within this path?"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#20445"
 msgid "Fanart"
 msgstr ""
@@ -10727,8 +10727,8 @@ msgctxt "#20450"
 msgid "Would you like to continue scanning?"
 msgstr ""
 
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20451"
 msgid "Countries"
 msgstr ""
@@ -10754,7 +10754,7 @@ msgctxt "#20456"
 msgid "Flatten library hierarchy"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20457"
 msgid "Movie set"
 msgstr ""
@@ -10764,12 +10764,12 @@ msgctxt "#20458"
 msgid "Group movies in sets"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
-#: xbmc/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMoviesOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeMusicVideosOverview.cpp
+#: src/filesystem/VideoDatabaseDirectory/DirectoryNodeTvShowOverview.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#20459"
 msgid "Tags"
 msgstr ""
@@ -10822,7 +10822,7 @@ msgctxt "#21330"
 msgid "Show hidden files and directories"
 msgstr ""
 
-#: xbmc/network/GUIDialogNetworkSetup.cpp
+#: src/network/GUIDialogNetworkSetup.cpp
 msgctxt "#21331"
 msgid "TuxBox client"
 msgstr ""
@@ -10843,7 +10843,7 @@ msgctxt "#21335"
 msgid "Are you sure to start the stream?"
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#21336"
 msgid "Connecting to: %s"
 msgstr ""
@@ -10855,7 +10855,7 @@ msgstr ""
 #empty strings from id 21338 to 21358
 #up to 21355 is reserved for the TuxBox Client!! !
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#21359"
 msgid "Add media share..."
 msgstr ""
@@ -10869,22 +10869,22 @@ msgctxt "#21361"
 msgid "Look for remote UPnP players"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoBookmarks.cpp
+#: src/video/dialogs/GUIDialogVideoBookmarks.cpp
 msgctxt "#21362"
 msgid "Bookmark created"
 msgstr ""
 
-#: xbmc/video/dialogs/GUIDialogVideoBookmarks.cpp
+#: src/video/dialogs/GUIDialogVideoBookmarks.cpp
 msgctxt "#21363"
 msgid "Episode Bookmark created"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#21364"
 msgid "Edit media share"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogFileBrowser.cpp
+#: src/dialogs/GUIDialogFileBrowser.cpp
 msgctxt "#21365"
 msgid "Remove media share"
 msgstr ""
@@ -11031,62 +11031,62 @@ msgctxt "#21399"
 msgid "Use tween animations"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21400"
 msgid "contains"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21401"
 msgid "does not contain"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21402"
 msgid "is"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21403"
 msgid "is not"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21404"
 msgid "starts with"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21405"
 msgid "ends with"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21406"
 msgid "greater than"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21407"
 msgid "less than"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21408"
 msgid "after"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21409"
 msgid "before"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21410"
 msgid "in the last"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21411"
 msgid "not in the last"
 msgstr ""
@@ -11125,7 +11125,7 @@ msgctxt "#21419"
 msgid "No scrapers present"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistRule.cpp
+#: src/dialogs/GUIDialogSmartPlaylistRule.cpp
 msgctxt "#21420"
 msgid "Value to match"
 msgstr ""
@@ -11138,7 +11138,7 @@ msgctxt "#21422"
 msgid "Match items where"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#21423"
 msgid "New rule..."
 msgstr ""
@@ -11147,12 +11147,12 @@ msgctxt "#21424"
 msgid "Items must match"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#21425"
 msgid "all of the rules"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#21426"
 msgid "one or more of the rules"
 msgstr ""
@@ -11161,7 +11161,7 @@ msgctxt "#21427"
 msgid "Limit to"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#21428"
 msgid "No limit"
 msgstr ""
@@ -11194,7 +11194,7 @@ msgctxt "#21435"
 msgid "Edit"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSmartPlaylistEditor.cpp
+#: src/dialogs/GUIDialogSmartPlaylistEditor.cpp
 msgctxt "#21436"
 msgid "%i items"
 msgstr ""
@@ -11223,32 +11223,32 @@ msgctxt "#21442"
 msgid "Episode title"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21443"
 msgid "Video resolution"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21444"
 msgid "Audio channels"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21445"
 msgid "Video codec"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21446"
 msgid "Audio codec"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21447"
 msgid "Audio language"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21448"
 msgid "Subtitle language"
 msgstr ""
@@ -11267,8 +11267,8 @@ msgctxt "#21451"
 msgid "Internet connection required."
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#21452"
 msgid "Get More..."
 msgstr ""
@@ -11285,12 +11285,12 @@ msgctxt "#21455"
 msgid "Cache filled before reaching required amount for continous playback"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21456"
 msgid "External storage"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21457"
 msgid "Watched episode count"
 msgstr ""
@@ -11336,33 +11336,33 @@ msgstr ""
 #empty string with id 21466
 
 #. Filter (media data) from float value to float value
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
 msgctxt "#21467"
 msgid "%.1f to %.1f"
 msgstr ""
 
 #. Filter (media data) from int value to int value
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
 msgctxt "#21468"
 msgid "%d to %d"
 msgstr ""
 
 #. Filter (media data) from string value to string value
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
-#: xbmc/settings/SettingControl.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
+#: src/settings/SettingControl.cpp
 msgctxt "#21469"
 msgid "%s to %s"
 msgstr ""
 
 #. Field (e.g. "Genre") [count]
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
 msgctxt "#21470"
 msgid "%s [%d]"
 msgstr ""
 
 #empty strings from id 21471 to 21601
 
-#: xbmc/Util.cpp
+#: src/Util.cpp
 msgctxt "#21602"
 msgid "(External)"
 msgstr ""
@@ -11611,7 +11611,7 @@ msgctxt "#21882"
 msgid "Attempt to skip introduction before DVD menu"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaSource.cpp
+#: src/dialogs/GUIDialogMediaSource.cpp
 msgctxt "#21883"
 msgid "Saved music"
 msgstr ""
@@ -11628,18 +11628,18 @@ msgctxt "#21886"
 msgid "Downloading artist information"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21887"
 msgid "Biography"
 msgstr ""
 
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#21888"
 msgid "Discography"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogMediaFilter.cpp
+#: src/dialogs/GUIDialogMediaFilter.cpp
 msgctxt "#21889"
 msgid "Searching artist"
 msgstr ""
@@ -11652,32 +11652,32 @@ msgctxt "#21891"
 msgid "Artist information"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21892"
 msgid "Instruments"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21893"
 msgid "Born"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21894"
 msgid "Formed"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21895"
 msgid "Themes"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21896"
 msgid "Disbanded"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21897"
 msgid "Died"
 msgstr ""
@@ -11686,7 +11686,7 @@ msgctxt "#21898"
 msgid "Years active"
 msgstr ""
 
-#: xbmc/playlists/SmartPlaylist.cpp
+#: src/playlists/SmartPlaylist.cpp
 msgctxt "#21899"
 msgid "Label"
 msgstr ""
@@ -11729,7 +11729,7 @@ msgctxt "#22006"
 msgid "Subtitle offset"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22007"
 msgid "OpenGL vendor:"
 msgstr ""
@@ -11738,22 +11738,22 @@ msgctxt "#22008"
 msgid "OpenGL renderer:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22009"
 msgid "OpenGL version:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22010"
 msgid "GPU temperature:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22011"
 msgid "CPU temperature:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22012"
 msgid "Total memory"
 msgstr ""
@@ -11789,7 +11789,7 @@ msgstr ""
 
 #. Electronic program guide, used as label in the menu of the PVR section and the MythDirectory
 #: addons/skin/confluence
-#: xbmc/filesystem/MythDirectory.cpp
+#: src/filesystem/MythDirectory.cpp
 msgctxt "#22020"
 msgid "Guide"
 msgstr ""
@@ -11804,12 +11804,12 @@ msgctxt "#22022"
 msgid "Show video files in listings"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22023"
 msgid "DirectX vendor:"
 msgstr ""
 
-#: xbmc/windows/GUIWindowSystemInfo.cpp
+#: src/windows/GUIWindowSystemInfo.cpp
 msgctxt "#22024"
 msgid "Direct3D version:"
 msgstr ""
@@ -11958,12 +11958,12 @@ msgstr ""
 #empty strings from id 23105 to 23999
 #strings 24000 thru 24299 reserved for the Add-ons framework
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#24000"
 msgid "Add-on"
 msgstr ""
 
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24001"
 msgid "Add-ons"
 msgstr ""
@@ -11978,74 +11978,74 @@ msgstr ""
 
 #empty string with id 24004
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24005"
 msgid "Media sources"
 msgstr ""
 
 #empty string with id 24006
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24007"
 msgid "Movie information"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24008"
 msgid "Screensaver"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24009"
 msgid "Script"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24010"
 msgid "Visualisation"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24011"
 msgid "Add-on repository"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24012"
 msgid "Subtitles"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24013"
 msgid "Lyrics"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24014"
 msgid "TV information"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24015"
 msgid "Music video information"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24016"
 msgid "Album information"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24017"
 msgid "Artist information"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24018"
 msgid "Services"
 msgstr ""
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24019"
 msgid "PVR clients"
 msgstr ""
@@ -12063,20 +12063,20 @@ msgid "Enable"
 msgstr ""
 
 #. Defines the state of the add-on in the add-on manager window
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24023"
 msgid "Disabled"
 msgstr ""
 
 #. Used as an error message (triggered from content dialog) on disabled scrapers
-#: xbmc/settings/dialogs/GUIDialogContentSettings.cpp
+#: src/settings/dialogs/GUIDialogContentSettings.cpp
 msgctxt "#24024"
 msgid "Add-on disabled"
 msgstr ""
 
 #empty strings from id 24025 to 24026
 
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24027"
 msgid "Weather"
 msgstr ""
@@ -12098,13 +12098,13 @@ msgctxt "#24031"
 msgid "Error loading settings"
 msgstr ""
 
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24032"
 msgid "All Add-ons"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24033"
 msgid "Get Add-ons"
 msgstr ""
@@ -12129,45 +12129,45 @@ msgctxt "#24038"
 msgid "Install"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24039"
 msgid "Disabled Add-ons"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#24040"
 msgid "(Clear the current setting)"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#24041"
 msgid "Install from zip file"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#24042"
 msgid "Downloading %i%%"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24043"
 msgid "Available Updates"
 msgstr ""
 
-#: xbmc/addons/AddonInstaller.cpp
-#: xbmc/addons/AddonsDatabase.cpp
+#: src/addons/AddonInstaller.cpp
+#: src/addons/AddonsDatabase.cpp
 msgctxt "#24044"
 msgid "Dependencies not met. Please contact Add-on author."
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24045"
 msgid "Add-on does not have the correct structure"
 msgstr ""
 
-#: xbmc/addons/guidialogaddoninfo.cpp
+#: src/addons/guidialogaddoninfo.cpp
 msgctxt "#24046"
 msgid "%s is used by the following installed Add-on(s)"
 msgstr ""
@@ -12182,7 +12182,7 @@ msgctxt "#24048"
 msgid "Rollback"
 msgstr ""
 
-#: xbmc/addons/AddonsDirectory.cpp
+#: src/addons/AddonsDirectory.cpp
 msgctxt "#24049"
 msgid "Incompatible"
 msgstr ""
@@ -12192,7 +12192,7 @@ msgctxt "#24050"
 msgid "Available Add-ons"
 msgstr ""
 
-#: xbmc/addons/addonversion.cpp
+#: src/addons/addonversion.cpp
 msgctxt "#24051"
 msgid "Version:"
 msgstr ""
@@ -12208,19 +12208,19 @@ msgctxt "#24053"
 msgid "License:"
 msgstr ""
 
-#: xbmc/addons/guidialogaddoninfo.cpp
+#: src/addons/guidialogaddoninfo.cpp
 msgctxt "#24054"
 msgid "Changelog"
 msgstr ""
 
 #. Used in the Add-on Manager
-#: xbmc/addons/GUIViewStateAddonBrowser.cpp
+#: src/addons/GUIViewStateAddonBrowser.cpp
 msgctxt "#24055"
 msgid "Check for updates"
 msgstr ""
 
 #. Used in the Add-on Manager to specify last update time
-#: xbmc/addons/GUIViewStateAddonBrowser.cpp
+#: src/addons/GUIViewStateAddonBrowser.cpp
 msgctxt "#24056"
 msgid "Last updated %s"
 msgstr ""
@@ -12235,14 +12235,14 @@ msgctxt "#24060"
 msgid "Would you like to disable this Add-on?"
 msgstr ""
 
-#: xbmc/addons/Repository.cpp
+#: src/addons/Repository.cpp
 msgctxt "#24061"
 msgid "Add-on update available!"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
-#: xbmc/filesystem/AddonsDirectory.cpp
-#: xbmc/filesystem/AndroidAppDirectory.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
+#: src/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AndroidAppDirectory.cpp
 msgctxt "#24062"
 msgid "Enabled Add-ons"
 msgstr ""
@@ -12251,27 +12251,27 @@ msgctxt "#24063"
 msgid "Auto update"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24064"
 msgid "Add-on enabled"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24065"
 msgid "Add-on updated"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#24066"
 msgid "Cancel Add-on download?"
 msgstr ""
 
-#: xbmc/addons/guiviewstateaddonbrowser.cpp
+#: src/addons/guiviewstateaddonbrowser.cpp
 msgctxt "#24067"
 msgid "Currently downloading Add-ons"
 msgstr ""
 
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24068"
 msgid "Update available"
 msgstr ""
@@ -12304,7 +12304,7 @@ msgctxt "#24075"
 msgid "Disable"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24076"
 msgid "Add-on Required"
 msgstr ""
@@ -12316,25 +12316,25 @@ msgid "Try to reconnect?"
 msgstr ""
 
 #. The label in the add-ons manager for helper add-ons
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24081"
 msgid "Helper Add-ons"
 msgstr ""
 
 #. The label in the add-ons manager for add-on libraries
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24082"
 msgid "Add-on libraries"
 msgstr ""
 
 #. The label in the add-ons manager for information libraries
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24083"
 msgid "Information libraries"
 msgstr ""
 
 #. The label in the add-ons manager for visualisation libraries
-#: xbmc/addons/addon.cpp
+#: src/addons/addon.cpp
 msgctxt "#24084"
 msgid "Visualisation libraries"
 msgstr ""
@@ -12356,57 +12356,57 @@ msgstr ""
 
 #empty strings from id 24092 to 24093
 
-#: xbmc/addons/guidialogaddoninfo.cpp
+#: src/addons/guidialogaddoninfo.cpp
 msgctxt "#24094"
 msgid "(current)"
 msgstr ""
 
-#: xbmc/addons/guidialogaddoninfo.cpp
+#: src/addons/guidialogaddoninfo.cpp
 msgctxt "#24095"
 msgid "(blacklisted)"
 msgstr ""
 
-#: xbmc/addons/Repository.cpp
+#: src/addons/Repository.cpp
 msgctxt "#24096"
 msgid "Add-on is incompatible or has been marked broken in repository."
 msgstr ""
 
-#: xbmc/addons/Repository.cpp
+#: src/addons/Repository.cpp
 msgctxt "#24097"
 msgid "Would you like to disable it on your system?"
 msgstr ""
 
-#: xbmc/filesystem/AddonsDirectory.cpp
+#: src/filesystem/AddonsDirectory.cpp
 msgctxt "#24098"
 msgid "Broken"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24099"
 msgid "Would you like to switch to this skin?"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24100"
 msgid "To use this feature you must download an Add-on:"
 msgstr ""
 
-#: xbmc/addons/addoninstaller.cpp
+#: src/addons/addoninstaller.cpp
 msgctxt "#24101"
 msgid "Would you like to download this Add-on?"
 msgstr ""
 
-#: xbmc/Application.cpp
+#: src/Application.cpp
 msgctxt "#24102"
 msgid "Unable to load skin"
 msgstr ""
 
-#: xbmc/Application.cpp
+#: src/Application.cpp
 msgctxt "#24103"
 msgid "Skin is missing some files"
 msgstr ""
 
-#: xbmc/addons/Repository.cpp
+#: src/addons/Repository.cpp
 msgctxt "#24104"
 msgid "Add-on is incompatible due to unmet dependencies."
 msgstr ""
@@ -12422,22 +12422,22 @@ msgctxt "#24106"
 msgid "Specify where downloaded subtitles should be saved, the same location as the video or a custom location."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24107"
 msgid "Searching for subtitles ..."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24108"
 msgid "%d subtitles found"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24109"
 msgid "No subtitles found"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24110"
 msgid "Downloading subtitles ..."
 msgstr ""
@@ -12453,12 +12453,12 @@ msgctxt "#24112"
 msgid "Set languages to use when searching for subtitles. Not all subtitle services will use all languages."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24113"
 msgid "Failed to download subtitle"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24114"
 msgid "No subtitle services installed"
 msgstr ""
@@ -12490,18 +12490,18 @@ msgctxt "#24119"
 msgid "Select service that will be used as default to search for Movie subtitles."
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24120"
 msgid "Manual search string"
 msgstr ""
 
-#: xbmc/dialogs/GUIDialogSubtitles.cpp
+#: src/dialogs/GUIDialogSubtitles.cpp
 msgctxt "#24121"
 msgid "Enter search string"
 msgstr ""
 
 #. Button in Add-on Manager -> Available Updates for updating all add-ons when auto-updating is off.
-#: xbmc/filesystem/AddonDirectory.cpp
+#: src/filesystem/AddonDirectory.cpp
 msgctxt "#24122"
 msgid "Update all"
 msgstr ""
@@ -12543,24 +12543,24 @@ msgctxt "#25001"
 msgid "Hide foreign"
 msgstr ""
 
-#: xbmc/filesystem/BlurayDirectory.cpp
+#: src/filesystem/BlurayDirectory.cpp
 msgctxt "#25002"
 msgid "Select from all titles ..."
 msgstr ""
 
 #. A Blu-ray playback mode and a option in the simplified Blu-ray menu
-#: xbmc/filesystem/BlurayDirectory.cpp
+#: src/filesystem/BlurayDirectory.cpp
 #: system/settings/settings.xml
 msgctxt "#25003"
 msgid "Show Blu-ray menu"
 msgstr ""
 
-#: xbmc/filesystem/BlurayDirectory.cpp
+#: src/filesystem/BlurayDirectory.cpp
 msgctxt "#25004"
 msgid "Play main title: %d"
 msgstr ""
 
-#: xbmc/filesystem/BlurayDirectory.cpp
+#: src/filesystem/BlurayDirectory.cpp
 msgctxt "#25005"
 msgid "Title: %d"
 msgstr ""
@@ -12570,17 +12570,17 @@ msgctxt "#25006"
 msgid "Select playback item"
 msgstr ""
 
-#: xbmc/filesystem/BlurayDirectory.cpp
+#: src/filesystem/BlurayDirectory.cpp
 msgctxt "#25007"
 msgid "Chapters: %u - duration: %s"
 msgstr ""
 
-#: xbmc/cores/dvdplayer/DVDPlayer.cpp
+#: src/cores/dvdplayer/DVDPlayer.cpp
 msgctxt "#25008"
 msgid "Playback of Blu-ray failed"
 msgstr ""
 
-#: xbmc/cores/dvdplayer/DVDPlayer.cpp
+#: src/cores/dvdplayer/DVDPlayer.cpp
 msgctxt "#25009"
 msgid "The menu of this Blu-ray is not supported"
 msgstr ""
@@ -12792,7 +12792,7 @@ msgstr ""
 
 #: addons/skin.confluence/720p/script-globalsearch-main.xml
 #: xbmc\filesystem\VideoDatabaseDirectory.cpp
-#: xbmc/media/MediaTypes.cpp
+#: src/media/MediaTypes.cpp
 msgctxt "#33054"
 msgid "Seasons"
 msgstr ""
@@ -12947,23 +12947,23 @@ msgstr ""
 
 #empty strings from id 33085 to 33099
 
-#: xbmc/network/network.cpp
+#: src/network/network.cpp
 msgctxt "#33100"
 msgid "Failed to start"
 msgstr ""
 
-#: xbmc/network/network.cpp
+#: src/network/network.cpp
 #: system/settings/settings.xml
 msgctxt "#33101"
 msgid "Webserver"
 msgstr ""
 
-#: xbmc/network/network.cpp
+#: src/network/network.cpp
 msgctxt "#33102"
 msgid "Event Server"
 msgstr ""
 
-#: xbmc/network/network.cpp
+#: src/network/network.cpp
 msgctxt "#33103"
 msgid "Remote communication server"
 msgstr ""
@@ -13186,39 +13186,39 @@ msgctxt "#34401"
 msgid "Failed to init video filters/scalers, falling back to bilinear scaling"
 msgstr ""
 
-#: xbmc/cores/audioengine/sinks/aesinknull.cpp
+#: src/cores/audioengine/sinks/aesinknull.cpp
 msgctxt "#34402"
 msgid "Failed to initialise audio device"
 msgstr ""
 
-#: xbmc/cores/audioengine/sinks/aesinknull.cpp
+#: src/cores/audioengine/sinks/aesinknull.cpp
 msgctxt "#34403"
 msgid "Check your audiosettings"
 msgstr ""
 
 #description for the touchscreen when using the tvout feature on iDevices
 
-#: xbmc/osx/IOSExternalTouchController.mm
+#: src/osx/IOSExternalTouchController.mm
 msgctxt "#34404"
 msgid "Use gestures for navigation:"
 msgstr ""
 
-#: xbmc/osx/IOSExternalTouchController.mm
+#: src/osx/IOSExternalTouchController.mm
 msgctxt "#34405"
 msgid "1 finger swipe left,right,up,down for cursors"
 msgstr ""
 
-#: xbmc/osx/IOSExternalTouchController.mm
+#: src/osx/IOSExternalTouchController.mm
 msgctxt "#34406"
 msgid "2 finger swipe left for backspace"
 msgstr ""
 
-#: xbmc/osx/IOSExternalTouchController.mm
+#: src/osx/IOSExternalTouchController.mm
 msgctxt "#34407"
 msgid "1 finger single tap for enter"
 msgstr ""
 
-#: xbmc/osx/IOSExternalTouchController.mm
+#: src/osx/IOSExternalTouchController.mm
 msgctxt "#34408"
 msgid "2 finger single tap or 1 finger long press for contextmenu"
 msgstr ""
@@ -13231,18 +13231,18 @@ msgctxt "#35000"
 msgid "Peripherals"
 msgstr ""
 
-#: xbmc/pheripherals/devices/PeripheralHID.cpp
-#: xbmc/pheripherals/devices/Peripheralmon.cpp
+#: src/pheripherals/devices/PeripheralHID.cpp
+#: src/pheripherals/devices/Peripheralmon.cpp
 msgctxt "#35001"
 msgid "Generic HID device"
 msgstr ""
 
-#: xbmc/pheripherals/devices/PeripheralNIC.cpp
+#: src/pheripherals/devices/PeripheralNIC.cpp
 msgctxt "#35002"
 msgid "Generic network adaptor"
 msgstr ""
 
-#: xbmc/pheripherals/devices/PeripheralDisk.cpp
+#: src/pheripherals/devices/PeripheralDisk.cpp
 msgctxt "#35003"
 msgid "Generic disk"
 msgstr ""
@@ -13252,12 +13252,12 @@ msgctxt "#35004"
 msgid "There are no settings available\nfor this peripheral."
 msgstr ""
 
-#: xbmc/pheripherals/Peripherals.cpp
+#: src/pheripherals/Peripherals.cpp
 msgctxt "#35005"
 msgid "New device configured"
 msgstr ""
 
-#: xbmc/pheripherals/Peripherals.cpp
+#: src/pheripherals/Peripherals.cpp
 msgctxt "#35006"
 msgid "Device removed"
 msgstr ""
@@ -13320,7 +13320,7 @@ msgstr ""
 
 #empty strings from id 35505 to 35999
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 msgctxt "#36000"
 msgid "Pulse-Eight CEC adaptor"
 msgstr ""
@@ -13372,12 +13372,12 @@ msgctxt "#36010"
 msgid "Wake devices when deactivating screensaver"
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36011"
 msgid "Could not detect the CEC com port. Set it up manually."
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36012"
 msgid "Could not initialise the CEC adaptor. Please check your settings."
 msgstr ""
@@ -13390,12 +13390,12 @@ msgid "HDMI port number"
 msgstr ""
 
 #. max. 13 characters
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36016"
 msgid "Connected"
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36017"
 msgid "Could not initialise the CEC adaptor: libCEC was not found on your system."
 msgstr ""
@@ -13425,12 +13425,12 @@ msgctxt "#36022"
 msgid "COM port (leave empty unless needed)"
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36023"
 msgid "Configuration updated"
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36024"
 msgid "Failed to set the new configuration. Please check your settings."
 msgstr ""
@@ -13445,37 +13445,37 @@ msgctxt "#36026"
 msgid "Put devices in standby mode when putting the PC in standby"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 msgctxt "#36027"
 msgid "This device needs servicing"
 msgstr ""
 
 #. Label for a select option
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 #: system/peripherals.xml
 #: system/settings.xml
 msgctxt "#36028"
 msgid "Ignore"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 #: system/peripherals.xml
 msgctxt "#36029"
 msgid "When the TV is switched off"
 msgstr ""
 
-#: xbmc/addons/addonstatushandler.cpp
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/addons/addonstatushandler.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 msgctxt "#36030"
 msgid "Connection lost"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 msgctxt "#36031"
 msgid "This user does not have permissions to open the CEC adaptor"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 msgctxt "#36032"
 msgid "The port is busy. Only one program can access the CEC adaptor"
 msgstr ""
@@ -13499,31 +13499,31 @@ msgctxt "#36036"
 msgid "On start/stop"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 #: system/peripherals.xml
 msgctxt "#36037"
 msgid "TV"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 #: system/peripherals.xml
 msgctxt "#36038"
 msgid "Amplifier / AVR device"
 msgstr ""
 
-#: xbmc/peripherals/devices/PeripheralCecAdapter.cpp
+#: src/peripherals/devices/PeripheralCecAdapter.cpp
 #: system/peripherals.xml
 msgctxt "#36039"
 msgid "TV and AVR device (explicit)"
 msgstr ""
 
-#: xbmc/peripherals/devices/peripheralcecadapter.cpp
+#: src/peripherals/devices/peripheralcecadapter.cpp
 msgctxt "#36040"
 msgid "Unsupported libCEC interface version. %x is lower than the version Kodi supports (%x)"
 msgstr ""
 
-#: xbmc/video/dialogs/guidialogvideoinfo.cpp
-#: xbmc/music/dialogs/GUIDialogMusicInfo.cpp
+#: src/video/dialogs/guidialogvideoinfo.cpp
+#: src/music/dialogs/GUIDialogMusicInfo.cpp
 msgctxt "#36041"
 msgid "* Item folder"
 msgstr ""
@@ -15467,14 +15467,14 @@ msgstr ""
 
 #. name of a stereoscopic mode
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#36503"
 msgid "Over/Under"
 msgstr ""
 
 #. name of a stereoscopic mode
 #: system/settings/settings.xml
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#36504"
 msgid "Side by side"
 msgstr ""
@@ -15591,14 +15591,14 @@ msgstr ""
 
 #. label of a setting, allowing to specify the stereoscopic 3D mode of a video
 #: guilib/StereoscopicsManager.cpp
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#36535"
 msgid "Stereoscopic 3D mode of video"
 msgstr ""
 
 #. label of a toggle option that allows to invert the stereoscopic 3d mode
 #: guilib/StereoscopicsManager.cpp
-#: xbmc/video/dialogs/GUIDialogVideoSettings.cpp
+#: src/video/dialogs/GUIDialogVideoSettings.cpp
 msgctxt "#36536"
 msgid "Invert Stereoscopic 3D mode (flip eyes)"
 msgstr ""
@@ -15699,156 +15699,156 @@ msgstr ""
 
 #empty strings from id 36604 to 36899
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36900"
 msgid "movie"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36901"
 msgid "movies"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36902"
 msgid "TV show"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36903"
 msgid "TV shows"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36904"
 msgid "season"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36905"
 msgid "seasons"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36906"
 msgid "episode"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36907"
 msgid "episodes"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36908"
 msgid "musicvideo"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36909"
 msgid "musicvideos"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36910"
 msgid "set"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36911"
 msgid "sets"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36912"
 msgid "video"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36913"
 msgid "videos"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36914"
 msgid "music"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36915"
 msgid "music"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36916"
 msgid "artist"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36917"
 msgid "artists"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36918"
 msgid "album"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36919"
 msgid "albums"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36920"
 msgid "song"
 msgstr ""
 
-#: xbmc/media/MediaType.cpp
+#: src/media/MediaType.cpp
 msgctxt "#36921"
 msgid "songs"
 msgstr ""
 
 #empty strings from id 36922 to 36999
 
-#: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
+#: src/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37000"
 msgid "(Visually Impaired)"
 msgstr ""
 
-#: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
+#: src/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37001"
 msgid "(Directors Comments)"
 msgstr ""
 
-#: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
+#: src/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37002"
 msgid "(Directors Comments 2)"
 msgstr ""
 
 #empty strings from id 37003 to 37010
 
-#: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
+#: src/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37011"
 msgid "(CC)"
 msgstr ""
 
-#: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
+#: src/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37012"
 msgid "(Forced)"
 msgstr ""
 
-#: xbmc/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
+#: src/cores/dvdplayer/DVDInputStreams/DVDInputStreamNavigator.cpp
 msgctxt "#37013"
 msgid "(Directors Comments)"
 msgstr ""
 
-#: xbmc/GUIInfoManager.cpp
+#: src/GUIInfoManager.cpp
 msgctxt "#37014"
 msgid "Last used profile"
 msgstr ""
 
-#: xbmc/Windows/GUIMediaWindow.cpp
+#: src/Windows/GUIMediaWindow.cpp
 msgctxt "#37015"
 msgid "Browse Into"
 msgstr ""
@@ -15881,12 +15881,12 @@ msgctxt "#37021"
 msgid "Set GUI resolution limit"
 msgstr ""
 
-#: xbmc/network/upnp/UPnPPlayer.cpp
+#: src/network/upnp/UPnPPlayer.cpp
 msgctxt "#37022"
 msgid "UPnP Player"
 msgstr ""
 
-#: xbmc/network/upnp/UPnPPlayer.cpp
+#: src/network/upnp/UPnPPlayer.cpp
 msgctxt "#37023"
 msgid "Do you wish to stop playback on the remote device?"
 msgstr ""
