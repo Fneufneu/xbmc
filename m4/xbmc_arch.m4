@@ -23,6 +23,9 @@ case $build in
   powerpc64-*-linux-gnu*|powerpc64-*-linux-uclibc*)
      AC_SUBST(NATIVE_ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_POWERPC64")
      ;;
+  powerpc64-*-freebsd*)
+     AC_SUBST(NATIVE_ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_FREEBSD -D_LINUX -D_POWERPC64")
+     ;;
   arm*-*-linux-gnu*|arm*-*-linux-uclibc*)
      AC_SUBST(NATIVE_ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX")
      ;;
@@ -59,6 +62,9 @@ case $host in
      ;;
   powerpc64*-*-linux-gnu*|powerpc64*-*-linux-uclibc*)
      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX -D_POWERPC64")
+     ;;
+  powerpc64-*-freebsd*)
+     AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_FREEBSD -D_LINUX -D_POWERPC64")
      ;;
   arm*-*-linux-gnu*|arm*-*-linux-uclibc*|aarch64*-*-linux-gnu*|aarch64*-*-linux-uclibc*)
      AC_SUBST(ARCH_DEFINES, "-DTARGET_POSIX -DTARGET_LINUX -D_LINUX")

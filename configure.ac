@@ -619,6 +619,10 @@ case $host in
      CORE_SYSTEM_NAME=linux
      ARCH="powerpc64-linux"
      ;;
+  powerpc64-*-freebsd*)
+     ARCH="powerpc64-freebsd"
+     use_arch="ppc64"
+     ;;
   arm*-*-linux-gnu*|arm*-*-linux-uclibc*)
      target_platform=target_linux
      CORE_SYSTEM_NAME=linux
